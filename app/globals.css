@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --wl-blue: #003580;
+  --wl-blue-light: #0052CC;
+  --wl-blue-lighter: #4A90E2;
+  --wl-blue-lightest: #E8F1FA;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply text-gray-900 bg-white;
+}
+
+section {
+  @apply min-h-screen py-20 px-4 sm:px-6 lg:px-8;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto;
+}
+
+.section-title {
+  @apply text-4xl md:text-5xl font-bold text-wl-blue mb-12 text-center;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6;
+}
+
+.btn-primary {
+  @apply bg-wl-blue text-white px-8 py-3 rounded-lg font-medium hover:bg-wl-blue-light transition-colors duration-300;
+}
+
+.btn-secondary {
+  @apply border-2 border-wl-blue text-wl-blue px-8 py-3 rounded-lg font-medium hover:bg-wl-blue hover:text-white transition-all duration-300;
+}
+
+.link-hover {
+  @apply relative inline-block after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-wl-blue-light after:transition-all after:duration-300 hover:after:w-full;
+}
