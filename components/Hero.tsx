@@ -1,6 +1,11 @@
 'use client';
 
+import Image from 'next/image';
+import { useState } from 'react';
+
 const Hero = () => {
+  const [hasHeadshot, setHasHeadshot] = useState(true);
+
   return (
     <section
       id="home"
@@ -51,11 +56,26 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Placeholder for future headshot */}
+          {/* Headshot Image */}
           <div className="flex justify-center md:justify-end">
-            <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-white/10 border-4 border-white/20 flex items-center justify-center">
-              <span className="text-6xl text-white/50">DK</span>
-            </div>
+            {hasHeadshot ? (
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                <div className="absolute inset-0 bg-white/10 rounded-full blur-2xl" />
+                <Image
+                  src="/images/headshot/headshot.jpg.jpeg"
+                  alt="Drake Krommenhoek"
+                  width={400}
+                  height={400}
+                  className="relative rounded-full object-cover border-4 border-white/20 shadow-2xl"
+                  onError={() => setHasHeadshot(false)}
+                  priority
+                />
+              </div>
+            ) : (
+              <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-white/10 border-4 border-white/20 flex items-center justify-center">
+                <span className="text-6xl text-white/50">DK</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
