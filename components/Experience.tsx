@@ -5,12 +5,12 @@ const Experience = () => {
     {
       institution: 'Washington and Lee University',
       location: 'Lexington, VA',
-      degree: 'B.A. in Economics and Accounting, Minor in Philosophy',
-      gpa: '3.93',
+      degree: 'Bachelor of Science Major: Economics, Minor: Philosophy and Entrepreneurship',
+      gpa: '3.8',
       dates: 'Class of 2028',
       highlights: [
-        'Relevant Courses Through May 2026: Managerial Finance, Corporate Financial Accounting, Business Analytics, ECON-100',
-        'Honorable Mention, Writing Award for "The Monster Was Never In Your Closet" - 1 of 8 students out of 400 applicants',
+        'Relevant Courses Through May 2026: Managerial Finance, Accounting, Business Analytics, Microeconomic Theory',
+        'Awards: Writing Award for "The Monster Was Never In Your Closet" – 1 out of 8 students selected from 400+ applicants',
       ],
     },
     {
@@ -19,100 +19,97 @@ const Experience = () => {
       degree: '',
       dates: 'Class of 2024',
       highlights: [
-        "Principal's Honor Roll every semester",
-        'Golf Regional Champions (x2)',
-        'Captain for Varsity Golf, NHS Curator of Academic Inductions',
+        "Honors and Awards: Principal's Honor Roll every semester, Golf Regional Champions (x2)",
+        'Activities: Captain for Varsity Golf, NHS Curator of Academic Inductions',
       ],
     },
   ];
 
   const professionalExperience = [
     {
-      company: 'AMB Investment Banking (Remote Internship)',
-      location: 'Boulder, CO',
-      role: 'Research Intern',
-      dates: 'May - September 2025',
+      company: 'AMB Investment Banking',
+      location: 'Remote',
+      role: 'Target Client Research Intern',
+      dates: 'May 2025 – September 2025',
       responsibilities: [
-        'Conduct comprehensive research on private equity firms and build target lists aligned with sellside and buyside objectives',
-        "Verify each firm's investment criteria, sub-sector focuses, and identify key contacts to support targeted outreach",
-        "Deliver summaries that assist AMB's industry research, pitch materials, and go-to-market strategies",
+        'Conducted research on PE firms and built target lists aligned with sellside and buyside objectives',
+        "Delivered timely summaries that assisted AMB's industry research, pitch materials, and go-to-market strategies",
       ],
     },
     {
       company: 'Lucky Pie Pizza',
       location: 'Louisville, CO',
-      role: 'Busser/Server',
-      dates: 'June - August 2025',
+      role: 'Busser/Server in training',
+      dates: 'June 2025 – August 2025',
       responsibilities: [
-        'Supported a high-volume, upscale restaurant, coordinated with the kitchen and service team, and managed weekend shifts',
-        'Went beyond core duties by maintaining outdoor area, managing customers, and helping with dishwashing and restocking',
+        'Improved operational efficiency serving guests, ensuring customer satisfaction, upselling menu items, and communicating with a team at a fast paced, upscale pizza restaurant serving 300+ customers daily',
       ],
     },
     {
       company: 'Freelance Entrepreneur',
       location: 'Boulder, CO',
-      role: 'E-commerce Product Sourcing and Resale Specialist',
-      dates: 'Summer 2023 - Present',
+      role: 'E-commerce Fashion Product Sourcing and Resale Specialist',
+      dates: 'May 2023 – September 2025',
       responsibilities: [
-        'Research high-demand products across multiple marketplaces, purchase at discounted prices, and resell for a profit',
-        'Clean, refurbish, and improve products to increase market value, consistently achieving strong profit margins',
-        'Coordinate the transportation of sold goods, maintain inventories, and advertise products on several e-commerce sites',
+        'Researched and forecasted high-demand products from multiple marketplaces, contacted manufacturers and shipping agents, purchased at below market value resold across several e-commerce sites',
+        'Sold 50+ items, generating $2200+ in profit with average margins of 40% while retaining 98% customer satisfaction',
       ],
     },
     {
-      company: 'Water World',
-      location: 'Federal Heights, CO',
-      role: 'Deep Lifeguard',
-      dates: 'Summer 2022 – 2024',
+      company: 'Water World Colorado',
+      location: 'Denver, CO',
+      role: 'Advanced Deep Dive Lifeguard',
+      dates: 'June 2022 – August 2024',
       responsibilities: [
-        'Implemented safety measures, performed frequent pool inspections, and monitored for hazards to maintain a safe environment for thousands of guests at one of the largest water parks in the world',
-        'Participated and later led specialized lifeguard training and actively pursued advanced certifications to stay current on water safety practices and emergency response protocols',
+        'Maintained safety at one of the largest water parks in the world, averaging 10+ saves per summer',
+        'Led specialized trainings and advanced certification courses to strengthen response effectiveness',
       ],
     },
   ];
 
   const leadership = [
     {
+      organization: 'Connolly Entrepreneurship Society',
+      location: 'Lexington, VA',
+      role: 'Member',
+      dates: 'January 2026 – Present',
+      description: [
+        'Selected to elite team to develop a startup idea, build pitch decks, and present progress to secure funding',
+        'Commit 6+ hours weekly to research, product design, web development, and alumni mentorship',
+      ],
+    },
+    {
       organization: 'Sigma Chi Fraternity Zeta Chapter',
       location: 'Lexington, VA',
       role: 'Rush Chair',
-      dates: '2024-Present',
+      dates: 'August 2025 – Present',
       description: [
-        'Manage rush budget, outreach, event logistics and synthesize feedback on potential candidates for group decisions',
+        'Manage rush budget, event logistics, outreach, and new member evaluation for group decisions',
       ],
     },
     {
-      organization: 'RWEsearch & Health Innovation Summit',
+      organization: 'RWEsearch & Health Innovation Summit - HealthArk',
       location: '',
-      role: 'Guest Speaker',
+      role: 'Student Guest Speaker',
       dates: 'September 2025',
       description: [
-        'Delivered a talk and engaged with key opinion leaders on the future of artificial intelligence in education, drawing on personal experiences and highlighting opportunities for democratization and innovation',
-      ],
-    },
-    {
-      organization: 'World Affairs Challenge',
-      location: 'Louisville, CO',
-      role: 'Champion Group Lead and Speaker',
-      dates: '2020-2021',
-      description: [
-        'Led a team of students to develop a fully functional solar stove, winning the national World Affairs Challenge',
-        'Oversaw research, prototype, and presentation while assigning roles and presenting to judging panels under strict time limits',
+        'Qualified with international candidates for presenting at RWE conference',
+        'Collaborated with top industry leaders on the future of AI use cases in Healthcare & Life Sciences on panel',
       ],
     },
   ];
 
   const skills = {
-    technical: ['Microsoft Office Suite', 'Python', 'Trend Analysis', 'Public Speaking'],
-    certifications: ['Wall Street Prep', 'Lifeguard', 'CPR', 'Scuba diving'],
+    technical: ['MS Excel', 'PowerPoint', 'Claude Code', 'Canva'],
+    certifications: ['Wall Street Prep', 'PADI Open Water', 'Lifeguard', 'CPR', '3D Design (In Progress)'],
     interests: [
       'Golf',
+      'Travel',
       'Basketball',
-      'Volunteering',
-      'Business',
-      'Fitness',
-      'Emerging Technology',
+      'SCUBA',
+      'Pickleball',
       'Stock Trading',
+      'Euchre',
     ],
   };
 
