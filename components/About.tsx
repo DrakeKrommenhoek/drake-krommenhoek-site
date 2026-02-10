@@ -1,25 +1,6 @@
 'use client';
 
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
-
 const About = () => {
-  const [images, setImages] = useState<string[]>([]);
-
-  useEffect(() => {
-    // Image paths based on the folder structure
-    const imagePaths = [
-      '/images/golf/golf-1.jpg.jpeg',
-      '/images/basketball/basketball-1.jpg.jpeg',
-      '/images/about/Senior Photo.jpeg',
-      '/images/about/travel-1.jpg.jpeg',
-      '/images/about/surf-1.jpg.jpeg',
-      '/images/family/TST W&L Photo.jpeg',
-    ];
-
-    setImages(imagePaths);
-  }, []);
-
   return (
     <section id="about" className="bg-gray-50">
       <div className="container-custom">
@@ -66,28 +47,12 @@ const About = () => {
             </p>
           </div>
 
-          {/* Photo Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {images.map((imgPath, index) => (
-              <div
-                key={index}
-                className={`relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ${
-                  index === 0 ? 'col-span-2 h-64' : 'h-48'
-                }`}
-              >
-                <Image
-                  src={imgPath}
-                  alt={`Drake Krommenhoek ${index + 1}`}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                  }}
-                />
-              </div>
-            ))}
+          {/* Photo Gallery - Coming Soon */}
+          <div className="flex items-center justify-center h-64 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300">
+            <div className="text-center">
+              <p className="text-gray-500 text-lg font-medium">Photo Gallery</p>
+              <p className="text-gray-400 mt-2">Coming Soon</p>
+            </div>
           </div>
         </div>
       </div>
