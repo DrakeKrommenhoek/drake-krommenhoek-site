@@ -2,42 +2,74 @@ const Upcoming = () => {
   return (
     <section id="upcoming" className="bg-white">
       <div className="container-custom">
-        <h2 className="section-title">Upcoming Experience</h2>
+        <div className="text-center mb-14">
+          <p className="section-label">What&apos;s next</p>
+          <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Upcoming</h2>
+          <div className="section-divider" />
+        </div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="card border-2 border-wl-blue-lighter">
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+        <div className="max-w-2xl mx-auto">
+          <div style={{
+            backgroundColor: '#002147',
+            padding: '2.5rem',
+          }}>
+            {/* Header row */}
+            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
               <div>
-                <h3 className="text-2xl font-bold text-wl-blue mb-2">
-                  Private Equity Intern
+                <p style={{
+                  fontFamily: '"DM Sans", sans-serif',
+                  fontSize: '0.65rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: '#C4AE78',
+                  marginBottom: '0.5rem',
+                }}>Private Equity</p>
+                <h3 style={{
+                  fontFamily: '"Cormorant Garamond", Georgia, serif',
+                  fontSize: '2rem',
+                  fontWeight: 600,
+                  color: '#FFFFFF',
+                  letterSpacing: '-0.01em',
+                  lineHeight: 1.1,
+                  marginBottom: '0.3rem',
+                }}>
+                  Mountaingate Capital
                 </h3>
-                <p className="text-xl text-gray-900 font-medium">Mountaingate Capital</p>
+                <p style={{
+                  fontFamily: '"DM Sans", sans-serif',
+                  fontSize: '0.88rem',
+                  color: 'rgba(255,255,255,0.6)',
+                  fontWeight: 300,
+                }}>Intern</p>
               </div>
-              <div className="text-gray-600 mt-2 md:mt-0 md:text-right">
-                <p className="font-medium text-lg">Denver, CO</p>
-                <p className="text-lg">June 2026 – August 2026</p>
+              <div className="mt-3 md:mt-0 md:text-right">
+                <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.85rem', fontWeight: 500, color: 'rgba(255,255,255,0.75)' }}>
+                  Denver, CO
+                </p>
+                <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.8rem', color: 'rgba(255,255,255,0.45)', marginTop: '0.15rem' }}>
+                  June 2026 – August 2026
+                </p>
               </div>
             </div>
-            <ul className="space-y-2 mt-4">
-              <li className="flex items-start">
-                <span className="text-wl-blue mr-2 mt-1">•</span>
-                <span className="text-gray-700">
-                  Support the Mountaingate Team by preparing research, diligence materials, and analyses for partners to execute platform and add-on transactions
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-wl-blue mr-2 mt-1">•</span>
-                <span className="text-gray-700">
-                  Hands-on experience related to acquisitions, financial modeling, market research, due diligence and related activities
-                </span>
-              </li>
-            </ul>
-          </div>
 
-          <div className="mt-8 text-center">
-            <p className="text-gray-600 italic">
-              Excited to join Mountaingate Capital for Summer 2026
-            </p>
+            {/* Divider */}
+            <div style={{ height: '1px', backgroundColor: 'rgba(196,174,120,0.25)', marginBottom: '1.5rem' }} />
+
+            {/* Bullets */}
+            <ul className="space-y-3">
+              {[
+                'Support the Mountaingate team by preparing research, diligence materials, and analyses for partners to execute platform and add-on transactions',
+                'Hands-on experience related to acquisitions, financial modeling, market research, due diligence, and related activities',
+              ].map((item, i) => (
+                <li key={i} className="flex items-start" style={{ gap: '0.75rem' }}>
+                  <span style={{ color: '#9B8B5E', marginTop: '0.42rem', flexShrink: 0, fontSize: '0.45rem' }}>◆</span>
+                  <span style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, fontWeight: 300 }}>
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

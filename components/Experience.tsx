@@ -1,11 +1,39 @@
 'use client';
 
+const SectionHeader = ({ label, title }: { label: string; title: string }) => (
+  <div className="mb-10">
+    <p className="section-label">{label}</p>
+    <h3
+      style={{
+        fontFamily: '"Cormorant Garamond", Georgia, serif',
+        fontSize: '1.9rem',
+        fontWeight: 600,
+        color: '#002147',
+        letterSpacing: '-0.01em',
+        marginBottom: '0.5rem',
+      }}
+    >
+      {title}
+    </h3>
+    <div style={{ width: '2rem', height: '1px', backgroundColor: '#9B8B5E' }} />
+  </div>
+);
+
+const BulletItem = ({ text }: { text: string }) => (
+  <li className="flex items-start" style={{ gap: '0.75rem' }}>
+    <span style={{ color: '#9B8B5E', marginTop: '0.45rem', flexShrink: 0, fontSize: '0.5rem' }}>◆</span>
+    <span style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.92rem', color: '#4B5563', lineHeight: 1.65 }}>
+      {text}
+    </span>
+  </li>
+);
+
 const Experience = () => {
   const education = [
     {
       institution: 'Washington and Lee University',
       location: 'Lexington, VA',
-      degree: 'Bachelor of Science Major: Economics, Minor: Philosophy and Entrepreneurship',
+      degree: 'Bachelor of Science — Major: Economics & Accounting, Minor: Philosophy',
       gpa: '3.8',
       dates: 'Class of 2028',
       highlights: [
@@ -39,7 +67,7 @@ const Experience = () => {
     {
       company: 'Lucky Pie Pizza',
       location: 'Louisville, CO',
-      role: 'Busser/Server in training',
+      role: 'Server',
       dates: 'June 2025 – August 2025',
       responsibilities: [
         'Improved operational efficiency serving guests, ensuring customer satisfaction, upselling menu items, and communicating with a team at a fast paced, upscale pizza restaurant serving 300+ customers daily',
@@ -48,11 +76,11 @@ const Experience = () => {
     {
       company: 'Freelance Entrepreneur',
       location: 'Boulder, CO',
-      role: 'E-commerce Fashion Product Sourcing and Resale Specialist',
+      role: 'E-commerce Product Sourcing & Resale',
       dates: 'May 2023 – September 2025',
       responsibilities: [
-        'Researched and forecasted high-demand products from multiple marketplaces, contacted manufacturers and shipping agents, purchased at below market value resold across several e-commerce sites',
-        'Sold 50+ items, generating $2200+ in profit with average margins of 40% while retaining 98% customer satisfaction',
+        'Researched and forecasted high-demand products from multiple marketplaces, contacted manufacturers and shipping agents, purchased at below market value and resold across several e-commerce platforms',
+        'Sold 50+ items, generating $2,200+ in profit with average margins of 40% while retaining 98% customer satisfaction',
       ],
     },
     {
@@ -79,7 +107,7 @@ const Experience = () => {
       ],
     },
     {
-      organization: 'Sigma Chi Fraternity Zeta Chapter',
+      organization: 'Sigma Chi Fraternity — Zeta Chapter',
       location: 'Lexington, VA',
       role: 'Rush Chair',
       dates: 'August 2025 – Present',
@@ -88,13 +116,13 @@ const Experience = () => {
       ],
     },
     {
-      organization: 'RWEsearch & Health Innovation Summit - HealthArk',
+      organization: 'RWEsearch & Health Innovation Summit — HealthArk',
       location: '',
       role: 'Student Guest Speaker',
       dates: 'September 2025',
       description: [
-        'Qualified with international candidates for presenting at RWE conference',
-        'Collaborated with top industry leaders on the future of AI use cases in Healthcare & Life Sciences on panel',
+        'Qualified alongside international candidates to present at RWE conference',
+        'Collaborated with top industry leaders on the future of AI in Healthcare & Life Sciences',
       ],
     },
   ];
@@ -102,49 +130,69 @@ const Experience = () => {
   const skills = {
     technical: ['MS Excel', 'PowerPoint', 'Claude Code', 'Canva'],
     certifications: ['Wall Street Prep', 'PADI Open Water', 'Lifeguard', 'CPR', '3D Design (In Progress)'],
-    interests: [
-      'Golf',
-      'Travel',
-      'Basketball',
-      'SCUBA',
-      'Pickleball',
-      'Stock Trading',
-      'Euchre',
-    ],
+    interests: ['Golf', 'Travel', 'Basketball', 'SCUBA', 'Pickleball', 'Stock Trading', 'Euchre'],
+  };
+
+  const cardStyle: React.CSSProperties = {
+    backgroundColor: '#FFFFFF',
+    borderLeft: '2px solid #C4AE78',
+    padding: '1.5rem',
+    marginBottom: '1rem',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+    transition: 'box-shadow 0.3s, border-color 0.3s',
+  };
+
+  const eduCardStyle: React.CSSProperties = {
+    backgroundColor: '#FFFFFF',
+    border: '1px solid #E8E8E4',
+    padding: '1.5rem',
+    marginBottom: '1rem',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
   };
 
   return (
-    <section id="experience" className="bg-gray-50">
+    <section id="experience" style={{ backgroundColor: '#F7F5F0' }}>
       <div className="container-custom">
-        <h2 className="section-title">Experience</h2>
+        <div className="text-center mb-14">
+          <p className="section-label">Background</p>
+          <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Experience</h2>
+          <div className="section-divider" />
+        </div>
 
         {/* Education */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-wl-blue mb-8 border-b-2 border-wl-blue-lighter pb-2">
-            Education
-          </h3>
-          <div className="space-y-6">
+          <SectionHeader label="Academic" title="Education" />
+          <div>
             {education.map((edu, index) => (
-              <div key={index} className="card">
+              <div key={index} style={eduCardStyle}>
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900">{edu.institution}</h4>
+                    <h4 style={{
+                      fontFamily: '"Cormorant Garamond", Georgia, serif',
+                      fontSize: '1.25rem',
+                      fontWeight: 600,
+                      color: '#002147',
+                      marginBottom: '0.2rem',
+                    }}>{edu.institution}</h4>
                     {edu.degree && (
-                      <p className="text-wl-blue-light font-medium">{edu.degree}</p>
+                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.88rem', color: '#9B8B5E', fontWeight: 500, marginBottom: '0.1rem' }}>
+                        {edu.degree}
+                      </p>
                     )}
-                    {edu.gpa && <p className="text-gray-700">GPA: {edu.gpa}</p>}
+                    {edu.gpa && (
+                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.85rem', color: '#6B7280' }}>
+                        GPA: {edu.gpa}
+                      </p>
+                    )}
                   </div>
-                  <div className="text-gray-600 md:text-right mt-2 md:mt-0">
-                    <p className="font-medium">{edu.location}</p>
-                    <p>{edu.dates}</p>
+                  <div className="md:text-right mt-2 md:mt-0">
+                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#374151' }}>{edu.location}</p>
+                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.82rem', color: '#9CA3AF' }}>{edu.dates}</p>
                   </div>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mt-3">
                   {edu.highlights.map((highlight, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-wl-blue mr-2 mt-1">•</span>
-                      <span className="text-gray-700">{highlight}</span>
-                    </li>
+                    <BulletItem key={i} text={highlight} />
                   ))}
                 </ul>
               </div>
@@ -154,28 +202,31 @@ const Experience = () => {
 
         {/* Professional Experience */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-wl-blue mb-8 border-b-2 border-wl-blue-lighter pb-2">
-            Professional Experience
-          </h3>
-          <div className="space-y-6">
+          <SectionHeader label="Career" title="Professional Experience" />
+          <div>
             {professionalExperience.map((exp, index) => (
-              <div key={index} className="card">
+              <div key={index} style={cardStyle}>
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900">{exp.company}</h4>
-                    <p className="text-wl-blue-light font-medium">{exp.role}</p>
+                    <h4 style={{
+                      fontFamily: '"Cormorant Garamond", Georgia, serif',
+                      fontSize: '1.2rem',
+                      fontWeight: 600,
+                      color: '#002147',
+                      marginBottom: '0.15rem',
+                    }}>{exp.company}</h4>
+                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.83rem', color: '#9B8B5E', fontWeight: 500, letterSpacing: '0.02em' }}>
+                      {exp.role}
+                    </p>
                   </div>
-                  <div className="text-gray-600 md:text-right mt-2 md:mt-0">
-                    <p className="font-medium">{exp.location}</p>
-                    <p>{exp.dates}</p>
+                  <div className="md:text-right mt-2 md:mt-0">
+                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.82rem', fontWeight: 500, color: '#374151' }}>{exp.location}</p>
+                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.8rem', color: '#9CA3AF' }}>{exp.dates}</p>
                   </div>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mt-3">
                   {exp.responsibilities.map((resp, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-wl-blue mr-2 mt-1">•</span>
-                      <span className="text-gray-700">{resp}</span>
-                    </li>
+                    <BulletItem key={i} text={resp} />
                   ))}
                 </ul>
               </div>
@@ -183,30 +234,35 @@ const Experience = () => {
           </div>
         </div>
 
-        {/* Leadership & Activities */}
+        {/* Leadership */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-wl-blue mb-8 border-b-2 border-wl-blue-lighter pb-2">
-            Leadership & Extracurricular Activities
-          </h3>
-          <div className="space-y-6">
+          <SectionHeader label="Involvement" title="Leadership & Activities" />
+          <div>
             {leadership.map((item, index) => (
-              <div key={index} className="card">
+              <div key={index} style={cardStyle}>
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900">{item.organization}</h4>
-                    <p className="text-wl-blue-light font-medium">{item.role}</p>
+                    <h4 style={{
+                      fontFamily: '"Cormorant Garamond", Georgia, serif',
+                      fontSize: '1.2rem',
+                      fontWeight: 600,
+                      color: '#002147',
+                      marginBottom: '0.15rem',
+                    }}>{item.organization}</h4>
+                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.83rem', color: '#9B8B5E', fontWeight: 500 }}>
+                      {item.role}
+                    </p>
                   </div>
-                  <div className="text-gray-600 md:text-right mt-2 md:mt-0">
-                    {item.location && <p className="font-medium">{item.location}</p>}
-                    <p>{item.dates}</p>
+                  <div className="md:text-right mt-2 md:mt-0">
+                    {item.location && (
+                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.82rem', fontWeight: 500, color: '#374151' }}>{item.location}</p>
+                    )}
+                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.8rem', color: '#9CA3AF' }}>{item.dates}</p>
                   </div>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mt-3">
                   {item.description.map((desc, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-wl-blue mr-2 mt-1">•</span>
-                      <span className="text-gray-700">{desc}</span>
-                    </li>
+                    <BulletItem key={i} text={desc} />
                   ))}
                 </ul>
               </div>
@@ -216,49 +272,43 @@ const Experience = () => {
 
         {/* Skills */}
         <div>
-          <h3 className="text-3xl font-bold text-wl-blue mb-8 border-b-2 border-wl-blue-lighter pb-2">
-            Skills & Interests
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="card">
-              <h4 className="text-lg font-bold text-wl-blue mb-4">Technical Skills</h4>
-              <div className="flex flex-wrap gap-2">
-                {skills.technical.map((skill, index) => (
-                  <span
-                    key={index}
-                    className="bg-wl-blue-lightest text-wl-blue px-3 py-1 rounded-full text-sm"
-                  >
-                    {skill}
-                  </span>
-                ))}
+          <SectionHeader label="Capabilities" title="Skills & Interests" />
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              { label: 'Technical Skills', items: skills.technical },
+              { label: 'Certifications', items: skills.certifications },
+              { label: 'Interests', items: skills.interests },
+            ].map(({ label, items }) => (
+              <div key={label} style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8E8E4', padding: '1.5rem' }}>
+                <h4 style={{
+                  fontFamily: '"DM Sans", sans-serif',
+                  fontSize: '0.7rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: '#9B8B5E',
+                  marginBottom: '1rem',
+                }}>{label}</h4>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                  {items.map((item, i) => (
+                    <span
+                      key={i}
+                      style={{
+                        fontFamily: '"DM Sans", sans-serif',
+                        fontSize: '0.78rem',
+                        fontWeight: 400,
+                        color: '#003580',
+                        backgroundColor: '#EDF3FB',
+                        padding: '0.25rem 0.75rem',
+                        letterSpacing: '0.01em',
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="card">
-              <h4 className="text-lg font-bold text-wl-blue mb-4">Certifications</h4>
-              <div className="flex flex-wrap gap-2">
-                {skills.certifications.map((cert, index) => (
-                  <span
-                    key={index}
-                    className="bg-wl-blue-lightest text-wl-blue px-3 py-1 rounded-full text-sm"
-                  >
-                    {cert}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="card">
-              <h4 className="text-lg font-bold text-wl-blue mb-4">Interests</h4>
-              <div className="flex flex-wrap gap-2">
-                {skills.interests.map((interest, index) => (
-                  <span
-                    key={index}
-                    className="bg-wl-blue-lightest text-wl-blue px-3 py-1 rounded-full text-sm"
-                  >
-                    {interest}
-                  </span>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

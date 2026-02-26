@@ -3,44 +3,131 @@
 @tailwind utilities;
 
 :root {
-  --wl-blue: #003580;
-  --wl-blue-light: #0052CC;
+  --wl-blue: #002147;
+  --wl-blue-light: #003580;
   --wl-blue-lighter: #4A90E2;
-  --wl-blue-lightest: #E8F1FA;
+  --wl-blue-lightest: #EDF3FB;
+  --cream: #F7F5F0;
+  --gold: #9B8B5E;
+  --gold-light: #C4AE78;
 }
 
 * {
   scroll-behavior: smooth;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   @apply text-gray-900 bg-white;
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
 }
 
 section {
-  @apply min-h-screen py-20 px-4 sm:px-6 lg:px-8;
+  @apply py-20 px-4 sm:px-6 lg:px-8;
 }
 
 .container-custom {
-  @apply max-w-7xl mx-auto;
+  @apply max-w-6xl mx-auto;
 }
 
 .section-title {
-  @apply text-4xl md:text-5xl font-bold text-wl-blue mb-12 text-center;
+  @apply text-4xl md:text-5xl text-wl-blue mb-4 text-center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.section-label {
+  @apply text-xs font-semibold uppercase text-gold mb-3 text-center block;
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.18em;
+}
+
+.section-divider {
+  @apply w-12 h-px bg-gold mx-auto mb-12;
 }
 
 .card {
-  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6;
+  @apply bg-white hover:border-gold/40 transition-all duration-300 p-6;
+  border: 1px solid #E8E8E4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.exp-card {
+  @apply bg-white p-6 transition-all duration-300;
+  border-left: 2px solid #C4AE78;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.exp-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  border-left-color: #9B8B5E;
 }
 
 .btn-primary {
-  @apply bg-wl-blue text-white px-8 py-3 rounded-lg font-medium hover:bg-wl-blue-light transition-colors duration-300;
+  @apply bg-wl-blue text-white px-8 py-3 font-medium transition-all duration-300;
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background-color: #003580;
 }
 
 .btn-secondary {
-  @apply border-2 border-wl-blue text-wl-blue px-8 py-3 rounded-lg font-medium hover:bg-wl-blue hover:text-white transition-all duration-300;
+  @apply border text-white px-8 py-3 font-medium transition-all duration-300;
+  border-color: rgba(255,255,255,0.5);
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.8);
+}
+
+.btn-outline {
+  @apply border text-wl-blue px-8 py-3 font-medium transition-all duration-300;
+  border-color: #002147;
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.btn-outline:hover {
+  @apply bg-wl-blue text-white;
 }
 
 .link-hover {
-  @apply relative inline-block after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-wl-blue-light after:transition-all after:duration-300 hover:after:w-full;
+  @apply relative inline-block;
+}
+
+.link-hover::after {
+  content: '';
+  @apply absolute w-0 h-px bottom-0 left-0 transition-all duration-300;
+  background-color: var(--gold);
+}
+
+.link-hover:hover::after {
+  @apply w-full;
+}
+
+.tag {
+  @apply inline-block px-3 py-1 text-xs font-medium;
+  background-color: var(--wl-blue-lightest);
+  color: var(--wl-blue-light);
+  letter-spacing: 0.02em;
 }

@@ -10,14 +10,21 @@ const config: Config = {
     extend: {
       colors: {
         'wl-blue': {
-          DEFAULT: '#003580',
-          light: '#0052CC',
+          DEFAULT: '#002147',
+          light: '#003580',
           lighter: '#4A90E2',
-          lightest: '#E8F1FA',
+          lightest: '#EDF3FB',
         },
+        'cream': '#F7F5F0',
+        'gold': '#9B8B5E',
+        'gold-light': '#C4AE78',
       },
       fontFamily: {
-        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      letterSpacing: {
+        'widest-2': '0.2em',
       },
     },
   },
