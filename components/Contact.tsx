@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useInView, fadeInStyle } from '@/hooks/useInView';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ const Contact = () => {
     email: '',
     message: '',
   });
+
+  const [ref, isInView] = useInView<HTMLElement>();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,7 +50,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" style={{ backgroundColor: '#F7F5F0' }}>
+    <section
+      id="contact"
+      ref={ref}
+      style={{ backgroundColor: '#F7F5F0', ...fadeInStyle(isInView) }}
+    >
       <div className="container-custom">
         <div className="text-center mb-14">
           <p className="section-label">Let&apos;s connect</p>
