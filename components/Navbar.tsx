@@ -1,24 +1,30 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+interface NavbarProps {
+  forceScrolled?: boolean;
+}
+
+const Navbar = ({ forceScrolled = false }: NavbarProps) => {
+  const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    if (forceScrolled) return;
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 60);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [forceScrolled]);
 
-  const navLinks = [
-    { name: 'Experience', href: '#experience' },
-    { name: 'Upcoming', href: '#upcoming' },
-    { name: 'Who Am I', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+  const homeLinks = [
+    { name: 'Experience', href: '/#experience' },
+    { name: 'Upcoming', href: '/#upcoming' },
+    { name: 'Who Am I', href: '/#about' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -32,8 +38,8 @@ const Navbar = () => {
     >
       <div className="container-custom flex justify-between items-center">
         {/* Logo / Name */}
-        <a
-          href="#home"
+        <Link
+          href="/"
           style={{
             fontFamily: '"Cormorant Garamond", Georgia, serif',
             fontSize: '1.25rem',
@@ -46,11 +52,11 @@ const Navbar = () => {
           }}
         >
           Drake Krommenhoek
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center" style={{ gap: '2.5rem' }}>
-          {navLinks.map((link) => (
+          {homeLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
@@ -65,16 +71,40 @@ const Navbar = () => {
                 transition: 'color 0.25s',
                 position: 'relative',
               }}
-              onMouseEnter={e => {
+              onMouseEnter={(e) => {
                 (e.currentTarget.style.color = isScrolled ? '#002147' : '#FFFFFF');
               }}
-              onMouseLeave={e => {
+              onMouseLeave={(e) => {
                 (e.currentTarget.style.color = isScrolled ? '#374151' : 'rgba(255,255,255,0.85)');
               }}
             >
               {link.name}
             </a>
           ))}
+
+          {/* Writing link */}
+          <Link
+            href="/writing"
+            style={{
+              fontFamily: '"DM Sans", sans-serif',
+              fontSize: '0.78rem',
+              fontWeight: 500,
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              color: isScrolled ? '#374151' : 'rgba(255,255,255,0.85)',
+              textDecoration: 'none',
+              transition: 'color 0.25s',
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget.style.color = isScrolled ? '#002147' : '#FFFFFF');
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget.style.color = isScrolled ? '#374151' : 'rgba(255,255,255,0.85)');
+            }}
+          >
+            Writing
+          </Link>
+
           <a
             href="/Krommenhoek_Resume_Feb.pdf"
             target="_blank"
@@ -118,7 +148,7 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #EBEBEB' }}>
           <div className="container-custom py-4 flex flex-col" style={{ gap: '1.25rem' }}>
-            {navLinks.map((link) => (
+            {homeLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
@@ -136,6 +166,21 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            <Link
+              href="/writing"
+              onClick={() => setIsMobileMenuOpen(false)}
+              style={{
+                fontFamily: '"DM Sans", sans-serif',
+                fontSize: '0.82rem',
+                fontWeight: 500,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                color: '#374151',
+                textDecoration: 'none',
+              }}
+            >
+              Writing
+            </Link>
             <a
               href="/Krommenhoek_Resume_Feb.pdf"
               target="_blank"

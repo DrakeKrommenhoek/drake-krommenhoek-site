@@ -131,3 +131,101 @@ section {
   color: var(--wl-blue-light);
   letter-spacing: 0.02em;
 }
+
+/* Article body prose */
+.prose-writing {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.82;
+  color: #374151;
+}
+
+.prose-writing p {
+  margin-bottom: 1.6em;
+}
+
+.prose-writing h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--wl-blue);
+  letter-spacing: -0.01em;
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  line-height: 1.2;
+}
+
+.prose-writing h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--wl-blue);
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  line-height: 1.25;
+}
+
+.prose-writing strong {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.prose-writing em {
+  font-style: italic;
+  color: #4b5563;
+}
+
+.prose-writing hr {
+  border: none;
+  border-top: 1px solid var(--gold-light);
+  margin: 2.5em 0;
+  width: 4rem;
+}
+
+.prose-writing blockquote {
+  border-left: 2px solid var(--gold);
+  padding-left: 1.25rem;
+  margin: 1.75em 0;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.prose-writing ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.25em 0 1.75em;
+}
+
+.prose-writing ul li {
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.5em;
+}
+
+.prose-writing ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+.prose-writing ol {
+  padding-left: 1.5rem;
+  margin: 1.25em 0 1.75em;
+}
+
+.prose-writing ol li {
+  margin-bottom: 0.5em;
+}
+
+.prose-writing a {
+  color: var(--wl-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(155, 139, 94, 0.5);
+  transition: text-decoration-color 0.2s;
+}
+
+.prose-writing a:hover {
+  text-decoration-color: var(--gold);
+}
