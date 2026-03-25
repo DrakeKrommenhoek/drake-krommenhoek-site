@@ -1,6 +1,17 @@
+'use client';
+
+import { useInView, fadeInStyle } from '@/hooks/useInView';
+
 const Upcoming = () => {
+  const [ref, isInView] = useInView<HTMLElement>();
+
   return (
-    <section id="upcoming" className="bg-white">
+    <section
+      id="upcoming"
+      ref={ref}
+      className="bg-white"
+      style={fadeInStyle(isInView)}
+    >
       <div className="container-custom">
         <div className="text-center mb-14">
           <p className="section-label">What&apos;s next</p>
