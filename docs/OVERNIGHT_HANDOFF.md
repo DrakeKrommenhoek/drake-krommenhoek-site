@@ -1,5 +1,35 @@
 # Overnight Handoff — Drake Krommenhoek site rebuild
 
+---
+
+## ⚠️ SUPERSEDED IN PART — read `docs/MORNING_REVIEW.md` first
+
+A second session (4 Sep 2026, branch **`site-2026-full-refresh`**) executed most of the
+"what is left" list below. Current state, corrections to this document, and the open
+questions are in **`docs/MORNING_REVIEW.md`**. The hostile second-pass review is in
+**`docs/QA_CRITIQUE.md`**, and every public claim is traced in
+**`docs/content-source-map.md`**.
+
+**Corrections to this file:**
+
+- **`docs/writing-candidates.md` does exist** (481 lines). This document says it does not.
+  It was never mined for new pieces, so that gap is real, but the file is there.
+- **`theanswermovement.com` is not the app.** It is the trainer's Shopify storefront. The
+  habit app is at `the-answer-movement-app.vercel.app`. All three live URLs were opened and
+  verified from a machine with normal egress.
+- **The components have been rewritten and the compatibility layer is deleted.** "Step 1"
+  below is done. So are the typed content layer, `/work/[slug]`, `/lab`, the reading room,
+  metadata, sitemap, robots and favicon.
+- **Branch:** work continued on `site-2026-full-refresh`, which contains everything from
+  `claude/festive-wozniak-voawei` plus the previously-unpushed `feat/scroll-animations`.
+
+**Verification tooling added** (`scripts/`): `qa-shots.mjs` (35 screenshots per pass across
+five widths, with overflow and console-error detection), `a11y-check.mjs`, `check-motion.mjs`,
+`measure-ia.mjs`. All currently pass.
+
+---
+
+
 **Branch:** `claude/festive-wozniak-voawei` (pushed to origin)
 **Base:** `main` @ `dc76be0`
 **Build status:** ✅ `npm run build` passes, with and without `RESEND_API_KEY`
