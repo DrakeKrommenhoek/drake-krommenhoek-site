@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Drake Krommenhoek",
-  description:
-    "Economics at Washington and Lee. I build software with AI, spent a summer inside a private equity firm figuring out where it actually helps, and write about what I find.",
-  keywords: [
-    "Drake Krommenhoek",
-    "Washington and Lee",
-    "Economics",
-    "Philosophy",
-    "Entrepreneurship",
-    "Private equity",
-    "Applied AI",
-  ],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({

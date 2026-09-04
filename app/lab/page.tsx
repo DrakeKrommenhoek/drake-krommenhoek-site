@@ -6,7 +6,7 @@ import Reveal from '@/components/Reveal';
 import StatusBadge from '@/components/work/StatusBadge';
 
 export const metadata: Metadata = {
-  title: 'Lab | Drake Krommenhoek',
+  title: 'Lab',
   description:
     'Smaller experiments — some finished, most retired. Every entry says what is wrong with it.',
 };

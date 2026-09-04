@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject(params.slug);
   if (!project) return {};
   return {
-    title: `${project.name} | Drake Krommenhoek`,
+    title: project.name,
     description: project.tagline,
     openGraph: { title: project.name, description: project.tagline, type: 'article' },
   };

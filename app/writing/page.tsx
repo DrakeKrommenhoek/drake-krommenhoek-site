@@ -7,7 +7,8 @@ import Footer from '@/components/Footer';
 import Reveal from '@/components/Reveal';
 
 export const metadata = {
-  title: 'Writing | Drake Krommenhoek',
+  // The layout supplies "| Drake Krommenhoek" via the title template.
+  title: 'Writing',
   description:
     'Essays on attention, building things, and what happens when you take a game seriously.',
 };

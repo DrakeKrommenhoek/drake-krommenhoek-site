@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await getArticleBySlug(params.slug);
   if (!article) return {};
   return {
-    title: `${article.title} | Drake Krommenhoek`,
+    title: article.title,
     description: article.subtitle,
     openGraph: {
       title: article.title,
