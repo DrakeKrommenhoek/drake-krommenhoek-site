@@ -1,5 +1,7 @@
 'use client';
 
+import { useInView, fadeInStyle } from '@/hooks/useInView';
+
 const SectionHeader = ({ label, title }: { label: string; title: string }) => (
   <div className="mb-10">
     <p className="section-label">{label}</p>
@@ -28,7 +30,18 @@ const BulletItem = ({ text }: { text: string }) => (
   </li>
 );
 
+const AnimatedCard = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
+  const [ref, isInView] = useInView<HTMLDivElement>();
+  return (
+    <div ref={ref} style={fadeInStyle(isInView, delay)}>
+      {children}
+    </div>
+  );
+};
+
 const Experience = () => {
+  const [sectionRef, sectionInView] = useInView<HTMLElement>();
+
   const education = [
     {
       institution: 'Washington and Lee University',
@@ -151,7 +164,11 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" style={{ backgroundColor: '#F7F5F0' }}>
+    <section
+      id="experience"
+      ref={sectionRef}
+      style={{ backgroundColor: '#F7F5F0', ...fadeInStyle(sectionInView) }}
+    >
       <div className="container-custom">
         <div className="text-center mb-14">
           <p className="section-label">Background</p>
@@ -164,38 +181,40 @@ const Experience = () => {
           <SectionHeader label="Academic" title="Education" />
           <div>
             {education.map((edu, index) => (
-              <div key={index} style={eduCardStyle}>
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
-                  <div>
-                    <h4 style={{
-                      fontFamily: '"Cormorant Garamond", Georgia, serif',
-                      fontSize: '1.25rem',
-                      fontWeight: 600,
-                      color: '#002147',
-                      marginBottom: '0.2rem',
-                    }}>{edu.institution}</h4>
-                    {edu.degree && (
-                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.88rem', color: '#9B8B5E', fontWeight: 500, marginBottom: '0.1rem' }}>
-                        {edu.degree}
-                      </p>
-                    )}
-                    {edu.gpa && (
-                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.85rem', color: '#6B7280' }}>
-                        GPA: {edu.gpa}
-                      </p>
-                    )}
+              <AnimatedCard key={index} delay={index * 80}>
+                <div style={eduCardStyle}>
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+                    <div>
+                      <h4 style={{
+                        fontFamily: '"Cormorant Garamond", Georgia, serif',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: '#002147',
+                        marginBottom: '0.2rem',
+                      }}>{edu.institution}</h4>
+                      {edu.degree && (
+                        <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.88rem', color: '#9B8B5E', fontWeight: 500, marginBottom: '0.1rem' }}>
+                          {edu.degree}
+                        </p>
+                      )}
+                      {edu.gpa && (
+                        <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.85rem', color: '#6B7280' }}>
+                          GPA: {edu.gpa}
+                        </p>
+                      )}
+                    </div>
+                    <div className="md:text-right mt-2 md:mt-0">
+                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#374151' }}>{edu.location}</p>
+                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.82rem', color: '#9CA3AF' }}>{edu.dates}</p>
+                    </div>
                   </div>
-                  <div className="md:text-right mt-2 md:mt-0">
-                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#374151' }}>{edu.location}</p>
-                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.82rem', color: '#9CA3AF' }}>{edu.dates}</p>
-                  </div>
+                  <ul className="space-y-2 mt-3">
+                    {edu.highlights.map((highlight, i) => (
+                      <BulletItem key={i} text={highlight} />
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-2 mt-3">
-                  {edu.highlights.map((highlight, i) => (
-                    <BulletItem key={i} text={highlight} />
-                  ))}
-                </ul>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -205,31 +224,33 @@ const Experience = () => {
           <SectionHeader label="Career" title="Professional Experience" />
           <div>
             {professionalExperience.map((exp, index) => (
-              <div key={index} style={cardStyle}>
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
-                  <div>
-                    <h4 style={{
-                      fontFamily: '"Cormorant Garamond", Georgia, serif',
-                      fontSize: '1.2rem',
-                      fontWeight: 600,
-                      color: '#002147',
-                      marginBottom: '0.15rem',
-                    }}>{exp.company}</h4>
-                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.83rem', color: '#9B8B5E', fontWeight: 500, letterSpacing: '0.02em' }}>
-                      {exp.role}
-                    </p>
+              <AnimatedCard key={index} delay={index * 80}>
+                <div style={cardStyle}>
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+                    <div>
+                      <h4 style={{
+                        fontFamily: '"Cormorant Garamond", Georgia, serif',
+                        fontSize: '1.2rem',
+                        fontWeight: 600,
+                        color: '#002147',
+                        marginBottom: '0.15rem',
+                      }}>{exp.company}</h4>
+                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.83rem', color: '#9B8B5E', fontWeight: 500, letterSpacing: '0.02em' }}>
+                        {exp.role}
+                      </p>
+                    </div>
+                    <div className="md:text-right mt-2 md:mt-0">
+                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.82rem', fontWeight: 500, color: '#374151' }}>{exp.location}</p>
+                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.8rem', color: '#9CA3AF' }}>{exp.dates}</p>
+                    </div>
                   </div>
-                  <div className="md:text-right mt-2 md:mt-0">
-                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.82rem', fontWeight: 500, color: '#374151' }}>{exp.location}</p>
-                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.8rem', color: '#9CA3AF' }}>{exp.dates}</p>
-                  </div>
+                  <ul className="space-y-2 mt-3">
+                    {exp.responsibilities.map((resp, i) => (
+                      <BulletItem key={i} text={resp} />
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-2 mt-3">
-                  {exp.responsibilities.map((resp, i) => (
-                    <BulletItem key={i} text={resp} />
-                  ))}
-                </ul>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -239,33 +260,35 @@ const Experience = () => {
           <SectionHeader label="Involvement" title="Leadership & Activities" />
           <div>
             {leadership.map((item, index) => (
-              <div key={index} style={cardStyle}>
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
-                  <div>
-                    <h4 style={{
-                      fontFamily: '"Cormorant Garamond", Georgia, serif',
-                      fontSize: '1.2rem',
-                      fontWeight: 600,
-                      color: '#002147',
-                      marginBottom: '0.15rem',
-                    }}>{item.organization}</h4>
-                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.83rem', color: '#9B8B5E', fontWeight: 500 }}>
-                      {item.role}
-                    </p>
+              <AnimatedCard key={index} delay={index * 80}>
+                <div style={cardStyle}>
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+                    <div>
+                      <h4 style={{
+                        fontFamily: '"Cormorant Garamond", Georgia, serif',
+                        fontSize: '1.2rem',
+                        fontWeight: 600,
+                        color: '#002147',
+                        marginBottom: '0.15rem',
+                      }}>{item.organization}</h4>
+                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.83rem', color: '#9B8B5E', fontWeight: 500 }}>
+                        {item.role}
+                      </p>
+                    </div>
+                    <div className="md:text-right mt-2 md:mt-0">
+                      {item.location && (
+                        <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.82rem', fontWeight: 500, color: '#374151' }}>{item.location}</p>
+                      )}
+                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.8rem', color: '#9CA3AF' }}>{item.dates}</p>
+                    </div>
                   </div>
-                  <div className="md:text-right mt-2 md:mt-0">
-                    {item.location && (
-                      <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.82rem', fontWeight: 500, color: '#374151' }}>{item.location}</p>
-                    )}
-                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.8rem', color: '#9CA3AF' }}>{item.dates}</p>
-                  </div>
+                  <ul className="space-y-2 mt-3">
+                    {item.description.map((desc, i) => (
+                      <BulletItem key={i} text={desc} />
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-2 mt-3">
-                  {item.description.map((desc, i) => (
-                    <BulletItem key={i} text={desc} />
-                  ))}
-                </ul>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -278,36 +301,38 @@ const Experience = () => {
               { label: 'Technical Skills', items: skills.technical },
               { label: 'Certifications', items: skills.certifications },
               { label: 'Interests', items: skills.interests },
-            ].map(({ label, items }) => (
-              <div key={label} style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8E8E4', padding: '1.5rem' }}>
-                <h4 style={{
-                  fontFamily: '"DM Sans", sans-serif',
-                  fontSize: '0.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: '#9B8B5E',
-                  marginBottom: '1rem',
-                }}>{label}</h4>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                  {items.map((item, i) => (
-                    <span
-                      key={i}
-                      style={{
-                        fontFamily: '"DM Sans", sans-serif',
-                        fontSize: '0.78rem',
-                        fontWeight: 400,
-                        color: '#003580',
-                        backgroundColor: '#EDF3FB',
-                        padding: '0.25rem 0.75rem',
-                        letterSpacing: '0.01em',
-                      }}
-                    >
-                      {item}
-                    </span>
-                  ))}
+            ].map(({ label, items }, index) => (
+              <AnimatedCard key={label} delay={index * 80}>
+                <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #E8E8E4', padding: '1.5rem' }}>
+                  <h4 style={{
+                    fontFamily: '"DM Sans", sans-serif',
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    color: '#9B8B5E',
+                    marginBottom: '1rem',
+                  }}>{label}</h4>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                    {items.map((item, i) => (
+                      <span
+                        key={i}
+                        style={{
+                          fontFamily: '"DM Sans", sans-serif',
+                          fontSize: '0.78rem',
+                          fontWeight: 400,
+                          color: '#003580',
+                          backgroundColor: '#EDF3FB',
+                          padding: '0.25rem 0.75rem',
+                          letterSpacing: '0.01em',
+                        }}
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>

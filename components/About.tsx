@@ -1,8 +1,16 @@
 'use client';
 
+import { useInView, fadeInStyle } from '@/hooks/useInView';
+
 const About = () => {
+  const [ref, isInView] = useInView<HTMLElement>();
   return (
-    <section id="about" className="bg-white">
+    <section
+      id="about"
+      ref={ref}
+      className="bg-white"
+      style={fadeInStyle(isInView)}
+    >
       <div className="container-custom">
         <div className="text-center mb-14">
           <p className="section-label">The person behind the resume</p>
