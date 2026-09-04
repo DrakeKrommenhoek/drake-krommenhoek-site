@@ -13,9 +13,10 @@ import Reveal from './Reveal';
  */
 
 const navLinks = [
-  { label: 'Experience', href: '/#experience' },
-  { label: 'Now', href: '/#now' },
-  { label: 'Who Am I', href: '/#about' },
+  { label: 'Work', href: '/#work' },
+  { label: 'Lab', href: '/lab' },
+  { label: 'Writing', href: '/writing' },
+  { label: 'About', href: '/#about' },
   { label: 'Contact', href: '/#contact' },
 ];
 
@@ -36,8 +37,9 @@ export default function Footer() {
           <div className="grid gap-12 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)] md:gap-10">
             <div>
               <p className="font-serif text-xl text-night-ink">Drake Krommenhoek</p>
-              <p className="mt-3 max-w-[24ch] text-sm text-night-ink-2">
-                W&amp;L student — finance, entrepreneurship, and meaningful impact.
+              <p className="mt-3 max-w-[26ch] text-sm text-night-ink-2">
+                Economics at Washington and Lee. Currently working out which half of the
+                job a machine can be trusted with.
               </p>
             </div>
 
