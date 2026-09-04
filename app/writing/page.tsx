@@ -32,7 +32,7 @@ export default function WritingPage() {
             </Reveal>
             <Reveal delay={140}>
               <p className="lede mt-8">
-                Mostly essays about paying attention — to people, to games, and to the
+                Mostly essays about paying attention: to people, to games, and to the
                 difference between a thing that works and a thing that only looks like it does.
               </p>
             </Reveal>

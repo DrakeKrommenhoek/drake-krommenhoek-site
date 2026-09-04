@@ -59,7 +59,7 @@ const groups: Group[] = [
           'Researched and profiled 15–20 investment firms by focus, portfolio and strategic fit, and turned them into target lists and summary briefs for the sourcing team.',
       },
       {
-        title: 'Freelance — e-commerce sourcing and resale',
+        title: 'Freelance e-commerce sourcing and resale',
         dates: 'May 2023 – Sep 2025',
         place: 'Boulder, CO',
         summary:
@@ -71,7 +71,7 @@ const groups: Group[] = [
         place: 'Colorado',
         compact: true,
         summary:
-          'Server at a high-volume pizza restaurant. Before that, advanced lifeguard at one of the largest water parks in the world — 10+ saves a summer, and later running the training for it.',
+          'Server at a high-volume pizza restaurant. Before that, advanced lifeguard at one of the largest water parks in the world, averaging 10+ saves a summer and later running the training for it.',
       },
     ],
   },
@@ -85,10 +85,10 @@ const groups: Group[] = [
         dates: 'Jan 2026 – present',
         place: 'Lexington, VA',
         summary:
-          'Selective venture program — six-plus hours a week on research, product design and alumni mentorship. It funded Ascend with a $2,866 grant.',
+          'Selective venture program. Six-plus hours a week on research, product design and alumni mentorship. It funded Ascend with a $2,866 grant.',
       },
       {
-        title: 'Sigma Chi — Zeta Chapter',
+        title: 'Sigma Chi, Zeta Chapter',
         role: 'Rush Chair',
         dates: 'Aug 2025 – present',
         place: 'Lexington, VA',
@@ -110,7 +110,7 @@ const groups: Group[] = [
     entries: [
       {
         title: 'Washington and Lee University',
-        role: 'B.S. Economics — minors in Entrepreneurship and Philosophy',
+        role: 'B.S. Economics, minors in Entrepreneurship and Philosophy',
         dates: 'Expected May 2028',
         place: 'Lexington, VA',
         summary:
@@ -132,13 +132,13 @@ const capabilities = [
   {
     label: 'Certifications',
     items: [
-      'Wall Street Prep — Excel, Accounting, Financial Statement Analysis',
+      'Wall Street Prep: Excel, Accounting, Financial Statement Analysis',
       'PADI Open Water',
     ],
   },
   {
     label: 'Away from a screen',
-    items: ['Golf — former varsity captain, low single-digit handicap', 'SCUBA', 'Euchre'],
+    items: ['Golf (former varsity captain, low single-digit handicap)', 'SCUBA', 'Euchre'],
   },
 ];
 

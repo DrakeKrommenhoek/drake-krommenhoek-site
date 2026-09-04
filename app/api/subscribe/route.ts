@@ -43,9 +43,9 @@ export async function POST(request: Request) {
         <div style="font-family: Georgia, serif; max-width: 520px; margin: 0 auto; color: #1f2937; padding: 2rem;">
           <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">You're in.</p>
           <p style="font-size: 0.95rem; line-height: 1.7; color: #4b5563;">
-            I'll send you a note when something new is up. No noise — just writing worth reading.
+            I'll send you a note when something new is up. No noise, just writing worth reading.
           </p>
-          <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 2rem;">— Drake</p>
+          <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 2rem;">Drake</p>
         </div>
       `,
     });

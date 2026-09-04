@@ -15,7 +15,7 @@ export default function Hero() {
         <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-20">
           <div>
             <Reveal>
-              <p className="meta">Washington &amp; Lee University — Economics, 2028</p>
+              <p className="meta">Washington &amp; Lee University · Economics, 2028</p>
             </Reveal>
 
             <Reveal delay={80}>

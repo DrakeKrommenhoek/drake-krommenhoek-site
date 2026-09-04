@@ -432,7 +432,10 @@ html[data-reveal-ready='true'] [data-reveal].is-revealed {
 }
 
 .reading ul li::before {
-  content: '—';
+  /* Was an em dash. The site no longer uses them anywhere, including as a
+     list marker, so the reading room takes the middot that the mono metadata
+     lines already use as a separator. */
+  content: '·';
   position: absolute;
   left: 0;
   color: rgb(var(--clay));

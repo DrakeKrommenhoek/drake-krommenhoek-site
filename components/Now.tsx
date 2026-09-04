@@ -41,7 +41,7 @@ export default function Now() {
               {current.map((item, i) => (
                 <Reveal as="li" key={item} delay={120 + i * 70} className="flex gap-4">
                   <span aria-hidden="true" className="text-clay-lift">
-                    —
+                    ·
                   </span>
                   <span className="body-text">{item}</span>
                 </Reveal>
@@ -61,7 +61,7 @@ export default function Now() {
                   How do you hand off a system whose value depends on tacit judgment? The
                   prompts and the workflows are the easy part. Knowing when not to use the
                   tool, how far to trust an output, and when to stop is what determines the
-                  outcome — and it does not transfer in a document.
+                  outcome, and it does not transfer in a document.
                 </p>
               </blockquote>
             </Reveal>

@@ -175,7 +175,9 @@ export default function ProjectPage({ params }: Props) {
                     <dt className="meta">{item.label}</dt>
                     <dd className="max-w-measure">
                       <span className="text-ink">{item.value}</span>
-                      {item.note && <span className="text-ink-3"> — {item.note}</span>}
+                      {/* The note used to hang off an em dash. It reads better on
+                          its own line anyway, since several of them are clauses. */}
+                      {item.note && <span className="mt-1 block text-ink-3">{item.note}</span>}
                     </dd>
                   </Reveal>
                 ))}

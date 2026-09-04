@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: "/images/og/default.png",
         width: 1200,
         height: 630,
-        alt: "Drake Krommenhoek — Washington and Lee, Economics 2028",
+        alt: "Drake Krommenhoek. Washington and Lee, Economics 2028",
       },
     ],
   },

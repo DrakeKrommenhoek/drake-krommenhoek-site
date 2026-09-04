@@ -44,7 +44,7 @@ export default function SubscribeForm() {
         setEmail('');
       } else if (res.status === 503) {
         setStatus('unavailable');
-        setMessage("Subscriptions aren't set up yet — email me instead and I'll add you by hand.");
+        setMessage("Subscriptions aren't set up yet. Email me instead and I'll add you by hand.");
       } else {
         setStatus('error');
         setMessage(data.error ?? 'Something went wrong. Please try again.');

@@ -8,7 +8,7 @@ import StatusBadge from '@/components/work/StatusBadge';
 export const metadata: Metadata = {
   title: 'Lab',
   description:
-    'Smaller experiments — some finished, most retired. Every entry says what is wrong with it.',
+    'Smaller experiments, some finished and most retired. Every entry says what is wrong with it.',
 };
 
 export default function LabPage() {

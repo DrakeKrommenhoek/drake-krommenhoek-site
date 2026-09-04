@@ -85,7 +85,7 @@ export const projects: Project[] = [
       src: '/images/projects/answer-movement/app-intro.jpg',
       alt: 'The Answer Movement app intro screen, reading “One choice. One movement. One breath at a time.”',
       caption:
-        'The intro screen. Deliberately not the daily practice — those pages carry the trainer’s own writing, which is his.',
+        'The intro screen, deliberately not the daily practice, because those pages carry the trainer’s own writing, which is his.',
       width: 780,
       height: 1688,
     },
@@ -93,7 +93,7 @@ export const projects: Project[] = [
       'The whole application is one 9,058-line HTML file. I inherited it from myself, and by the time it was too big to refactor safely, people were already depending on it.',
     cta: 'How I made a 9,058-line file safe to change',
     body: [
-      'A fitness trainer wanted a daily practice his clients would actually finish. The result is one letter of the alphabet per day for 28 days — his definition, a reflection, a journal box, and a workout video. State lives in localStorage. There are no accounts and no database, because asking someone to sign up before their first workout is how you lose them.',
+      'A fitness trainer wanted a daily practice his clients would actually finish. The result is one letter of the alphabet per day for 28 days: his definition, a reflection, a journal box, and a workout video. State lives in localStorage. There are no accounts and no database, because asking someone to sign up before their first workout is how you lose them.',
       'A three-day grace system means missing a day does not break a streak. That is not a feature so much as an argument: the app is for people who will miss days, and a streak that punishes them is a streak that ends.',
       'The interesting engineering is not the app. It is that I could not safely change it. So the test suite brace-extracts the real shipped functions straight out of the HTML at runtime and executes them in a Node VM with an in-memory localStorage and a frozen, settable clock, across three timezones. Nothing is hand-copied, so the tests cannot drift from the code they claim to cover.',
       'Some of those tests deliberately assert behavior that is wrong. Each one is tagged and mapped to a numbered audit finding, under a rule that fixing the bug has to flip the assertion in the same commit. A known bug that is written down and pinned is a liability I can schedule. An unknown one is a liability that finds me on a Tuesday morning in front of 240 people.',
@@ -125,10 +125,10 @@ export const projects: Project[] = [
       {
         text: 'Should the admin endpoint have ever had a hardcoded fallback secret?',
         state: 'Resolved',
-        outcome: 'No. It shipped inside client HTML, was caught in an audit, and was removed — the endpoint now returns 503 rather than falling back.',
+        outcome: 'No. It shipped inside client HTML, was caught in an audit, and was removed. The endpoint now returns 503 rather than falling back.',
       },
     ],
-    needsReview: ['~240 people — his own README figure, never independently counted'],
+    needsReview: ['~240 people: his own README figure, never independently counted'],
   },
   {
     slug: 'operation-drake',
@@ -144,21 +144,21 @@ export const projects: Project[] = [
       'An agent that can act on your behalf is only as safe as the moment where it has to stop and ask. Most of the design is that moment.',
     cta: 'How the approval gate decides',
     body: [
-      'A message arrives over Telegram or the command line. It gets stored, normalized, and handed to a router agent that decides what kind of thing it is. That becomes a task with a status lifecycle, which either executes on its own — if it is the sort of thing that is safe to execute on its own — or parks and waits for approval. The result comes back as a Markdown artifact on the channel it came in on.',
+      'A message arrives over Telegram or the command line. It gets stored, normalized, and handed to a router agent that decides what kind of thing it is. That becomes a task with a status lifecycle. If it is the sort of thing that is safe to run unattended, it executes. If it is not, it parks and waits for approval. Either way the result comes back as a Markdown artifact on the channel it came in on.',
       'The split between those two paths is the actual product. Extraction, restructuring and summarizing go through. Anything that commits me to something waits.',
       'The provider layer has a mock implementation alongside the real Anthropic and OpenAI clients, which is why the test suite runs with no API keys and no network. That is a small decision that pays every single day: tests that need a key are tests that eventually stop being run.',
       'It runs on a DigitalOcean box under Docker. I keep a state file that records what is actually deployed against what is committed, because I have been wrong about that before. New phases soak for fourteen days before I move on, one at a time.',
     ],
     evidence: [
-      { label: 'Test functions', value: '280 across 29 files', note: 'not executed in the audit environment — file contents verified' },
+      { label: 'Test functions', value: '280 across 29 files', note: 'not executed in the audit environment; file contents verified' },
       { label: 'Largest subsystem', value: 'Notion sync', note: '12 modules, 98 tests' },
       { label: 'Deployment', value: 'Ubuntu 24.04, Docker', note: 'deployed commit tracked against local and origin' },
       { label: 'Soak period', value: '14 days per phase' },
     ],
     stack: ['Python 3.12', 'FastAPI', 'SQLAlchemy 2', 'Pydantic 2', 'Telegram', 'Notion', 'Docker', 'React 19 PWA'],
     pipeline: [
-      'Message arrives — Telegram or CLI',
-      'Stored and normalized — URL detection, type classification',
+      'Message arrives over Telegram or the CLI',
+      'Stored and normalized: URL detection, type classification',
       'Router agent classifies intent',
       'Task record created, status lifecycle begins',
       'Safe? Execute. Not safe? Hold for approval',
@@ -199,7 +199,7 @@ export const projects: Project[] = [
       'Everything I made that summer belongs to the firm. What I can show is the reasoning, which turned out to be the part worth keeping anyway.',
     cta: 'What ten weeks changed my mind about',
     body: [
-      'I spent ten weeks as a private equity intern in Denver. Alongside the diligence and the modeling, I was asked to work out how the deal team should actually use AI — and I started by making the mistake everyone makes.',
+      'I spent ten weeks as a private equity intern in Denver. Alongside the diligence and the modeling, I was asked to work out how the deal team should actually use AI. I started by making the mistake everyone makes.',
       'The first version was a broad, forward-looking case for why AI matters. Market statistics. Model comparisons. Infrastructure we did not have. My supervisor’s feedback narrowed it to two questions, and they are much better questions than mine: what use cases make a team member’s life easier, and how do they run them quickly and securely?',
       'Everything after that got easier, because those two questions kill bad ideas quickly. Several attractive use cases turned out to depend on public-market data in a portfolio of exclusively private companies. They were cut, not adapted. Checking the data premise before designing the workflow would have saved me a week.',
       'The strongest edit I made all summer narrowed one tool from "supports analysis" to "structures data and prepares for audit." The narrower claim was the one that survived scrutiny, and it was also the one that actually worked.',
@@ -219,7 +219,7 @@ export const projects: Project[] = [
     roadmap: [
       { stage: 'Now', text: 'The reference was delivered as a live training session and remains internal to the firm.' },
       { stage: 'Later', text: 'Does a shared method survive the departure of the person who wrote it, or does usage quietly regress to ad hoc?' },
-      { stage: 'Later', text: 'Where is the real boundary between structuring and interpreting — and who decides where it sits?' },
+      { stage: 'Later', text: 'Where is the real boundary between structuring and interpreting, and who decides where it sits?' },
     ],
     questions: [
       {
@@ -234,7 +234,7 @@ export const projects: Project[] = [
       },
     ],
     needsReview: [
-      '~320-company ecosystem map — the figure comes from the résumé and the timestamps around it are inconsistent',
+      '~320-company ecosystem map: the figure comes from the résumé and the timestamps around it are inconsistent',
     ],
   },
 ];

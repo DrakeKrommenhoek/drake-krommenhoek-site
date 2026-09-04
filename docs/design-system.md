@@ -50,6 +50,27 @@ Fluid, roughly a major third. Defined as component classes in `globals.css`.
 **Measure.** Body prose caps at 62ch. Essay prose caps at 36rem (~68 characters at 19px).
 Never let a paragraph run the full shell width.
 
+### No em dashes
+
+**The site uses no em dashes (`—`) anywhere in rendered output.** Not in prose, not as a
+list marker, not as a separator between a value and its note. Verified by scanning the
+built HTML of every route and the compiled CSS for `U+2014`; both return zero.
+
+This is partly a voice decision — stacked em-dash clauses are one of the structural tells
+that make writing read as machine-assembled, and two of the three existing essays suffer
+from exactly that — and partly a consistency one. Replacements, in order of preference:
+
+| Instead of an em dash | Use |
+| --- | --- |
+| A parenthetical aside | A comma pair, or recast as two sentences |
+| A dramatic pause before a clause | A full stop |
+| Introducing a list or elaboration | A colon |
+| Separating metadata in a mono line | A middot `·`, which the meta lines already use |
+| A `::before` list marker | A middot `·` |
+
+En dashes (`–`) are fine and still correct for numeric and date ranges: `May – Sep 2025`,
+`15–20 firms`. Code comments are exempt; they are not rendered.
+
 ## 3. Colour
 
 Warm paper, not clinical white. One accent. Dark grounds used as *punctuation*, not as a

@@ -27,8 +27,8 @@ export default function Work() {
         {/* The thread. Without this the three read as unrelated line items. */}
         <Reveal delay={180}>
           <p className="body-text mt-10 max-w-[52ch]">
-            These look like three different projects — a habit app, an agent that runs on
-            a server, and ten weeks inside a private equity firm. They are the same
+            Three different projects, on the face of it. A habit app, an agent that runs
+            on a server, and ten weeks inside a private equity firm. They are the same
             problem three times: work out which half of the job you can safely hand to a
             machine, then build the thing that tells you when you got that wrong.
           </p>

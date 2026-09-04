@@ -47,10 +47,10 @@ export default function About() {
 
               <Reveal delay={180}>
                 <p className="body-text">
-                  Competition has always been a driving force. Whether it was four years of{' '}
-                  <strong className="font-medium text-ink">high school golf</strong> — serving as
-                  team captain and helping secure back-to-back regional championships — or playing{' '}
-                  <strong className="font-medium text-ink">club basketball</strong> with friends, I
+                  Competition has always been a driving force. I played four years of{' '}
+                  <strong className="font-medium text-ink">high school golf</strong>, serving as
+                  team captain and helping secure back-to-back regional championships, and I still
+                  play <strong className="font-medium text-ink">basketball</strong> with friends. I
                   thrive in environments that demand focus, strategy, and teamwork.
                 </p>
               </Reveal>
@@ -58,7 +58,7 @@ export default function About() {
               <Reveal delay={240}>
                 <p className="body-text">
                   Beyond sports, I grew up playing{' '}
-                  <strong className="font-medium text-ink">card games with my family</strong> — a
+                  <strong className="font-medium text-ink">card games with my family</strong>, a
                   pastime that taught me the value of calculated risk, reading people, and staying
                   calm under pressure. Those habits still shape how I approach problems and
                   decisions.

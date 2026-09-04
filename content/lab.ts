@@ -38,7 +38,7 @@ export const lab: LabEntry[] = [
     blurb:
       'A photo-to-listing pipeline for a household estate sale: Telegram photo intake, vision identification, a confidence-scored pricing engine with list/expected/floor bands, and a markdown schedule that steps prices down toward a deadline without ever breaching the floor.',
     caveat:
-      'The sale it was built for completed by manual marketplace posting. It was never used for a real sale end to end. If I rebuilt it I would cut vision identification first — it was the most code for the least trust, a model guessing what an item is that a human has to check anyway.',
+      'The sale it was built for completed by manual marketplace posting. It was never used for a real sale end to end. If I rebuilt it I would cut vision identification first. It was the most code for the least trust, a model guessing what an item is that a human has to check anyway.',
     stack: ['Python', 'FastAPI', 'SQLAlchemy', 'Telegram'],
     links: [{ label: 'GitHub', href: 'https://github.com/DrakeKrommenhoek/listing-forge' }],
   },
@@ -47,7 +47,7 @@ export const lab: LabEntry[] = [
     status: 'Prototype',
     anchor: 'Two days in August 2026 · 118 tests',
     blurb:
-      'A career compass built for exactly one person. Every screen is computed from YAML through a set of engines, and the central object is a learning loop where the falsifier — what would prove me wrong — has to be written before the outcome is known.',
+      'A career compass built for exactly one person. Every screen is computed from YAML through a set of engines, and the central object is a learning loop where the falsifier, meaning whatever would prove me wrong, has to be written before the outcome is known.',
     caveat:
       'Genuinely closed loops: zero. The corpus starts now. Five of its eighteen dimensions have no evidence behind them and are drawn as guesses, and the home screen prints "the next useful thing is not on this screen" while real-world actions sit at zero. The idea is better than the artifact.',
     stack: ['React 19', 'TypeScript', 'Zod', 'YAML', 'Vitest'],
@@ -59,7 +59,7 @@ export const lab: LabEntry[] = [
     blurb:
       'Upload a batch of photos, get them ranked. Real pipeline underneath: face detection, person matching, then sharpness, lighting, eyes-open, smile and composition scoring, with unit tests over each scoring function.',
     caveat:
-      'It will not run out of the box — you have to download the face-api model weights into the public folder by hand. Built in a day and abandoned the same week.',
+      'It will not run out of the box. You have to download the face-api model weights into the public folder by hand. Built in a day and abandoned the same week.',
     stack: ['Next.js', 'React 19', 'face-api.js', 'Jest'],
   },
   {
