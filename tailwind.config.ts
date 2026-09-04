@@ -16,6 +16,7 @@ const config: Config = {
         paper: 'rgb(var(--paper) / <alpha-value>)',
         'paper-sunk': 'rgb(var(--paper-sunk) / <alpha-value>)',
         rule: 'rgb(var(--rule) / <alpha-value>)',
+        'rule-strong': 'rgb(var(--rule-strong) / <alpha-value>)',
         ink: 'rgb(var(--ink) / <alpha-value>)',
         'ink-2': 'rgb(var(--ink-2) / <alpha-value>)',
         'ink-3': 'rgb(var(--ink-3) / <alpha-value>)',

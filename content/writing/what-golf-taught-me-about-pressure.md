@@ -4,6 +4,14 @@ subtitle: "The game doesn't care how you feel — and neither does the market"
 date: "2026-03-08"
 readTime: "6 min read"
 tags: ["golf", "performance", "mindset"]
+themes: ["pressure", "sport"]
+type: "essay"
+# Held back deliberately. Same problem as the-moment-before-structure: the golf
+# is generic. Drake was a varsity captain with a low single-digit handicap —
+# a named tournament, a specific hole, a specific number would fix this.
+published: false
+featured: false
+needsReview: true
 ---
 
 Golf is the cruelest of games because it removes every excuse.

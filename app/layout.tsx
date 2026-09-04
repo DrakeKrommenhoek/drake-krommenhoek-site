@@ -38,6 +38,14 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        {/* Runs before first paint so [data-reveal] elements are hidden from the
+            very first frame instead of flashing in and then out. If JS is off or
+            this fails, the attribute is never set and everything stays visible. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.setAttribute('data-reveal-ready','true')`,
+          }}
+        />
       </head>
       <body>{children}</body>
     </html>

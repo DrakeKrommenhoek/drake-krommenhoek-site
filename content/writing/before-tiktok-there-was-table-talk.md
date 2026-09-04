@@ -4,6 +4,11 @@ subtitle: "Gen Z has chosen likes over laughter"
 date: "2026-03-25"
 readTime: "7 min read"
 tags: ["gen z", "family", "technology"]
+themes: ["attention", "family"]
+type: "essay"
+published: true
+featured: true
+needsReview: false
 ---
 
 *Shuffling cards, playing tunes, laughter echoing through the room.*

@@ -1,101 +1,44 @@
-'use client';
-
 import Link from 'next/link';
 import { Article, formatDate } from '@/lib/writing-types';
+import Reveal from '../Reveal';
 
 interface Props {
   article: Article;
+  /** Stagger offset in ms when several entries are listed together. */
+  delay?: number;
 }
 
-const ArticleCard = ({ article }: Props) => {
+/**
+ * An index entry, not a card. The old version was a bordered white rectangle with
+ * a gold left edge and two box-shadows swapped through mouse handlers — the single
+ * compositional idea the rebuild rejects. It is now a hairline-separated row on the
+ * ledger grid: mono metadata in the margin column, serif headline in the text
+ * column, depth from rules. See docs/design-system.md §§ 5, 10.
+ */
+export default function ArticleCard({ article, delay = 0 }: Props) {
   return (
-    <Link href={`/writing/${article.slug}`} className="block group h-full">
-      <div
-        className="h-full flex flex-col"
-        style={{
-          border: '1px solid #E8E8E4',
-          borderLeft: '2px solid #C4AE78',
-          backgroundColor: '#FFFFFF',
-          padding: '1.75rem',
-          transition: 'all 0.3s',
-          boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-        }}
-        onMouseEnter={(e) => {
-          (e.currentTarget.style.borderLeftColor = '#9B8B5E');
-          (e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.07)');
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget.style.borderLeftColor = '#C4AE78');
-          (e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)');
-        }}
-      >
-        {/* Meta */}
-        <div
-          style={{
-            fontFamily: '"DM Sans", sans-serif',
-            fontSize: '0.72rem',
-            color: '#9CA3AF',
-            letterSpacing: '0.02em',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.4rem',
-            marginBottom: '0.75rem',
-          }}
-        >
+    <Reveal as="article" delay={delay} className="border-t border-rule">
+      <Link href={`/writing/${article.slug}`} className="ledger group py-8 lg:py-10">
+        <p className="meta transition-colors duration-200 group-hover:text-clay-deep">
           <span>{formatDate(article.date)}</span>
-          <span style={{ color: '#D1D5DB' }}>·</span>
+          <span className="mx-2 text-rule-strong" aria-hidden="true">
+            ·
+          </span>
           <span>{article.readTime}</span>
-        </div>
-
-        {/* Title */}
-        <h3
-          style={{
-            fontFamily: '"Cormorant Garamond", Georgia, serif',
-            fontSize: '1.35rem',
-            fontWeight: 600,
-            color: '#002147',
-            lineHeight: 1.2,
-            letterSpacing: '-0.01em',
-            marginBottom: '0.6rem',
-            transition: 'color 0.2s',
-          }}
-        >
-          {article.title}
-        </h3>
-
-        {/* Subtitle */}
-        <p
-          style={{
-            fontFamily: '"DM Sans", sans-serif',
-            fontSize: '0.875rem',
-            color: '#6B7280',
-            lineHeight: 1.55,
-            marginBottom: '1.25rem',
-            flex: 1,
-            overflow: 'hidden',
-            display: '-webkit-box',
-            WebkitLineClamp: 3,
-            WebkitBoxOrient: 'vertical',
-          }}
-        >
-          {article.subtitle}
         </p>
 
-        {/* Arrow */}
-        <span
-          style={{
-            fontFamily: '"DM Sans", sans-serif',
-            fontSize: '0.8rem',
-            color: '#9B8B5E',
-            transition: 'transform 0.2s',
-            display: 'inline-block',
-          }}
-        >
-          →
-        </span>
-      </div>
-    </Link>
+        <div>
+          <h3 className="h3 transition-colors duration-200 group-hover:text-clay-deep">
+            {article.title}
+            <span className="ml-2 align-baseline text-clay" aria-hidden="true">
+              →
+            </span>
+          </h3>
+          <p className="mt-3 max-w-[36rem] font-serif text-[1.0625rem] leading-relaxed text-ink-3">
+            {article.subtitle}
+          </p>
+        </div>
+      </Link>
+    </Reveal>
   );
-};
-
-export default ArticleCard;
+}

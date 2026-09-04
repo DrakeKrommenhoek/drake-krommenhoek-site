@@ -1,207 +1,112 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-interface NavbarProps {
-  forceScrolled?: boolean;
-}
+const links = [
+  { name: 'Experience', href: '/#experience' },
+  { name: 'Now', href: '/#now' },
+  { name: 'About', href: '/#about' },
+  { name: 'Writing', href: '/writing' },
+  { name: 'Contact', href: '/#contact' },
+];
 
-const Navbar = ({ forceScrolled = false }: NavbarProps) => {
-  const [isScrolled, setIsScrolled] = useState(forceScrolled);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+/**
+ * The old navbar switched every colour through onMouseEnter/onMouseLeave and
+ * needed a forceScrolled prop because the homepage hero was a navy field while
+ * the writing pages were white. The hero is paper now, so the nav has one
+ * appearance everywhere and all state lives in CSS. See docs/design-system.md § 9.
+ */
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    if (forceScrolled) return;
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [forceScrolled]);
-
-  const homeLinks = [
-    { name: 'Experience', href: '/#experience' },
-    { name: 'Upcoming', href: '/#upcoming' },
-    { name: 'Who Am I', href: '/#about' },
-    { name: 'Contact', href: '/#contact' },
-  ];
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-400"
-      style={{
-        backgroundColor: isScrolled ? '#FFFFFF' : 'transparent',
-        borderBottom: isScrolled ? '1px solid #EBEBEB' : '1px solid transparent',
-        padding: isScrolled ? '1rem 0' : '1.5rem 0',
-      }}
+    <header
+      className={`sticky top-0 z-50 bg-paper/90 backdrop-blur-sm transition-colors duration-200 ${
+        isScrolled ? 'border-b border-rule' : 'border-b border-transparent'
+      }`}
     >
-      <div className="container-custom flex justify-between items-center">
-        {/* Logo / Name */}
-        <Link
-          href="/"
-          style={{
-            fontFamily: '"Cormorant Garamond", Georgia, serif',
-            fontSize: '1.25rem',
-            fontWeight: 600,
-            fontStyle: 'italic',
-            letterSpacing: '0.01em',
-            color: isScrolled ? '#002147' : '#FFFFFF',
-            textDecoration: 'none',
-            transition: 'color 0.3s',
-          }}
-        >
+      <nav className="shell flex items-center justify-between py-4" aria-label="Main">
+        <Link href="/" className="font-serif text-lg text-ink link-underline">
           Drake Krommenhoek
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center" style={{ gap: '2.5rem' }}>
-          {homeLinks.map((link) => (
-            <a
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <Link
               key={link.name}
               href={link.href}
-              style={{
-                fontFamily: '"DM Sans", sans-serif',
-                fontSize: '0.78rem',
-                fontWeight: 500,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                color: isScrolled ? '#374151' : 'rgba(255,255,255,0.85)',
-                textDecoration: 'none',
-                transition: 'color 0.25s',
-                position: 'relative',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget.style.color = isScrolled ? '#002147' : '#FFFFFF');
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget.style.color = isScrolled ? '#374151' : 'rgba(255,255,255,0.85)');
-              }}
+              className="meta link-underline hover:text-ink"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
-
-          {/* Writing link */}
-          <Link
-            href="/writing"
-            style={{
-              fontFamily: '"DM Sans", sans-serif',
-              fontSize: '0.78rem',
-              fontWeight: 500,
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              color: isScrolled ? '#374151' : 'rgba(255,255,255,0.85)',
-              textDecoration: 'none',
-              transition: 'color 0.25s',
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget.style.color = isScrolled ? '#002147' : '#FFFFFF');
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget.style.color = isScrolled ? '#374151' : 'rgba(255,255,255,0.85)');
-            }}
-          >
-            Writing
-          </Link>
-
           <a
             href="/Krommenhoek_Resume_Feb.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              fontFamily: '"DM Sans", sans-serif',
-              fontSize: '0.72rem',
-              fontWeight: 500,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              color: isScrolled ? '#002147' : 'rgba(255,255,255,0.7)',
-              textDecoration: 'none',
-              borderBottom: '1px solid',
-              borderColor: isScrolled ? 'rgba(155,139,94,0.6)' : 'rgba(196,174,120,0.5)',
-              paddingBottom: '1px',
-              transition: 'all 0.25s',
-            }}
+            className="meta link-underline text-clay-deep"
           >
-            Resume ↓
+            Résumé ↓
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
-          className="md:hidden"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-          style={{ color: isScrolled ? '#002147' : '#FFFFFF', background: 'none', border: 'none', cursor: 'pointer' }}
+          type="button"
+          className="-mr-2 flex h-11 w-11 items-center justify-center text-ink md:hidden"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
-          <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
-            {isMobileMenuOpen ? (
-              <path d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            )}
+          <svg
+            width="22"
+            height="22"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            {isMenuOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
           </svg>
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #EBEBEB' }}>
-          <div className="container-custom py-4 flex flex-col" style={{ gap: '1.25rem' }}>
-            {homeLinks.map((link) => (
-              <a
+      {isMenuOpen && (
+        <div id="mobile-menu" className="border-t border-rule bg-paper md:hidden">
+          <div className="shell flex flex-col gap-5 py-6">
+            {links.map((link) => (
+              <Link
                 key={link.name}
                 href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                style={{
-                  fontFamily: '"DM Sans", sans-serif',
-                  fontSize: '0.82rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: '#374151',
-                  textDecoration: 'none',
-                }}
+                onClick={() => setIsMenuOpen(false)}
+                className="meta hover:text-ink"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
-            <Link
-              href="/writing"
-              onClick={() => setIsMobileMenuOpen(false)}
-              style={{
-                fontFamily: '"DM Sans", sans-serif',
-                fontSize: '0.82rem',
-                fontWeight: 500,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                color: '#374151',
-                textDecoration: 'none',
-              }}
-            >
-              Writing
-            </Link>
             <a
               href="/Krommenhoek_Resume_Feb.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                fontFamily: '"DM Sans", sans-serif',
-                fontSize: '0.78rem',
-                fontWeight: 500,
-                color: '#9B8B5E',
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-              }}
+              onClick={() => setIsMenuOpen(false)}
+              className="meta text-clay-deep"
             >
-              Resume ↓
+              Résumé ↓
             </a>
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}

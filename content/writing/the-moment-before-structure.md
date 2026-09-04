@@ -4,6 +4,15 @@ subtitle: "On honor, entrepreneurship, and the moment everything quietly changes
 date: "2026-03-22"
 readTime: "9 min read"
 tags: ["entrepreneurship", "leadership"]
+themes: ["building"]
+type: "essay"
+# Held back deliberately. Reads as generic: aphoristic fragments strung on
+# em-dashes and no detail that could only come from Drake's life. Rewrite with a
+# specific moment — a real week of Ascend, a real Sigma Chi rush decision — or
+# leave it unpublished. See docs/QUALITY_BAR.md § 2.
+published: false
+featured: false
+needsReview: true
 ---
 
 There is a moment — brief, almost invisible — that comes before a thing becomes what it is.
