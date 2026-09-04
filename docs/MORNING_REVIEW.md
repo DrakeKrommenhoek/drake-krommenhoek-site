@@ -115,16 +115,23 @@ Being blunt, because you will find these in thirty seconds otherwise.
   I cut it from 37% by making every entry one line, but a résumé block is still the biggest
   thing on a page arguing that you build software. Moving it to its own page is the real
   fix and I did not do it.
-- **No project screenshots.** The brief asked for Playwright shots of the live apps. I
-  built the QA tooling and ran it against localhost, but never captured
-  `theanswermovement.com` or the Ascend demo. The project pages are all type, no images.
+- **Only one project screenshot.** The Answer Movement page now shows the app's intro
+  screen. Operation D.R.A.K.E. has no public URL to shoot, and I decided against an Ascend
+  screenshot: its landing animation is a cluster of Google, Outlook, Gmail, LinkedIn and
+  Handshake logos, which looks cluttered and leans on other people's trademarks.
+- **I deliberately did not screenshot the app's daily pages.** They carry the trainer's own
+  letter definitions and prompts, which are his writing, not yours.
 - **No OG image.** Metadata declares `summary_large_image` and there is no image behind it,
   so link previews will be bare. `app/icon.svg` exists; a proper OG card does not.
 - **The canonical domain is a guess.** `lib/site.ts` falls back to
   `https://drakekrommenhoek.com`, which I invented. Set `NEXT_PUBLIC_SITE_URL` or the
   sitemap and canonical tags will point somewhere that may not exist.
-- **The three live URLs were never opened.** Everything about The Answer Movement and Ascend
-  comes from reading their source. Someone should click them.
+- **The live URLs are now opened and verified** — all three return 200 from this machine,
+  which the previous session's sandbox could not reach. That immediately caught a real bug:
+  **`theanswermovement.com` is the trainer's Shopify storefront selling fitness equipment,
+  not your app.** The flagship project page had been linking to a shop. It now links to
+  `the-answer-movement-app.vercel.app`, which is the actual app. Worth deciding whether you
+  want a subdomain so the app has a real address.
 - **`docs/writing-candidates.md` was never re-run.** The previous handoff said it did not
   exist; it does, at 481 lines, but I did not mine it for new pieces.
 - **No `/explorations` section.** The brief asked for live open questions on the homepage.

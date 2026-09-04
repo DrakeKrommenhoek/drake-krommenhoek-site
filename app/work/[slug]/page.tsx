@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { projects, getProject } from '@/content/projects';
 import Navbar from '@/components/Navbar';
@@ -104,6 +105,24 @@ export default function ProjectPage({ params }: Props) {
                 </Reveal>
               ))}
             </div>
+
+            {project.shot && (
+              <Reveal>
+                <figure className="mt-20">
+                  <Image
+                    src={project.shot.src}
+                    alt={project.shot.alt}
+                    width={project.shot.width}
+                    height={project.shot.height}
+                    sizes="(min-width: 640px) 20rem, 60vw"
+                    className="w-48 border border-rule sm:w-64"
+                  />
+                  <figcaption className="meta mt-4 max-w-measure normal-case tracking-normal">
+                    {project.shot.caption}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            )}
 
             {/* Only where the flow is the story. */}
             {project.pipeline && (

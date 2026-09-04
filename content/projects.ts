@@ -55,6 +55,9 @@ export interface Project {
   pipeline?: string[];
   /** Optional verbatim quote to carry the page. */
   pullQuote?: { text: string; source: string };
+  /** Optional screenshot of the real thing. Only where publishing one exposes
+      nothing that belongs to someone else — see docs/content-source-map.md. */
+  shot?: { src: string; alt: string; caption: string; width: number; height: number };
   roadmap: RoadmapItem[];
   questions: OpenQuestion[];
   needsReview?: string[];
@@ -70,7 +73,22 @@ export const projects: Project[] = [
     status: 'Live',
     anchor: '302 commits · last shipped 3 September 2026',
     period: 'February 2026 – present',
-    links: [{ label: 'theanswermovement.com', href: 'https://theanswermovement.com' }],
+    // theanswermovement.com is the trainer's Shopify storefront, not this app —
+    // verified by opening it. The app lives at the Vercel URL.
+    links: [
+      {
+        label: 'Open the app',
+        href: 'https://the-answer-movement-app.vercel.app',
+      },
+    ],
+    shot: {
+      src: '/images/projects/answer-movement/app-intro.jpg',
+      alt: 'The Answer Movement app intro screen, reading “One choice. One movement. One breath at a time.”',
+      caption:
+        'The intro screen. Deliberately not the daily practice — those pages carry the trainer’s own writing, which is his.',
+      width: 780,
+      height: 1688,
+    },
     constraint:
       'The whole application is one 9,058-line HTML file. I inherited it from myself, and by the time it was too big to refactor safely, people were already depending on it.',
     cta: 'How I made a 9,058-line file safe to change',

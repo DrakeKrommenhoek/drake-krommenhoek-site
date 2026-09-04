@@ -39,3 +39,8 @@ next-env.d.ts
 # QA screenshots are regenerable artifacts (node scripts/qa-shots.mjs).
 # ~30 MB per full run — not worth carrying in git history.
 docs/qa-screenshots*/
+
+# Staging for live-app captures. Contains third-party imagery (the trainer's
+# storefront) that must not be committed. Only reviewed, cleared shots are
+# copied into public/ by hand.
+docs/live-shots/
