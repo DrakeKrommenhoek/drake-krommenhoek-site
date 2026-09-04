@@ -23,7 +23,7 @@ export const lab: LabEntry[] = [
   {
     name: 'Ascend',
     status: 'Prototype',
-    anchor: 'Three days of work in March 2026 · dormant since',
+    anchor: 'Three days of work in March 2026 · untouched since',
     blurb:
       'A productivity and recruiting dashboard for college students. It won a $2,866 non-dilutive grant from the Connolly Entrepreneurship Society and placed top ten at the W&L Entrepreneurship Summit. It started as a three-person course team; I designed and built the MVP and kept it after the others moved on.',
     caveat:

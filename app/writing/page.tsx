@@ -19,16 +19,15 @@ export default function WritingPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main">
         {/* The reading room runs on a narrower measure and a serif register than
             the rest of the site. See docs/design-system.md § 10. */}
         <section className="section-y">
           <div className="shell-narrow">
+            {/* No "Writing" eyebrow above a "Writing" heading under a "Writing"
+                nav item. Three times in 300px is a stutter, not a reading room. */}
             <Reveal>
-              <p className="meta">Writing</p>
-            </Reveal>
-            <Reveal delay={80}>
-              <h1 className="display mt-5">Writing</h1>
+              <h1 className="display">Writing</h1>
             </Reveal>
             <Reveal delay={140}>
               <p className="lede mt-8">
@@ -58,7 +57,14 @@ export default function WritingPage() {
             <p className="body-text py-16">Nothing published yet.</p>
           )}
 
-          <Reveal className="mt-20 border-t border-rule pt-14 pb-24">
+          {/* FeaturedArticle already closes with a rule. Adding another one here
+              when the archive is empty produced two hairlines with a dead band
+              between them. */}
+          <Reveal
+            className={`pb-24 ${
+              rest.length > 0 ? 'mt-20 border-t border-rule pt-14' : 'mt-14'
+            }`}
+          >
             <h2 className="h3">Get a note when something new is ready.</h2>
             <p className="body-text mt-3 max-w-prose">
               Infrequent, and only when there is actually something worth reading.

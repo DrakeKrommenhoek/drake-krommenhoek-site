@@ -33,57 +33,58 @@ export default function ProjectPage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main">
         <article className="section-y">
-          <div className="shell">
+          <div className="shell-work">
             <Reveal>
               <Link href="/#work" className="meta link-underline hover:text-ink">
                 ← Work
               </Link>
             </Reveal>
 
-            <div className="ledger mt-12">
+            {/* Header sits on the same left edge as everything below it. It used
+                to live in the ledger's content column, which put the title on one
+                axis and the entire body on another. */}
+            <header className="mt-12">
               <Reveal>
-                <div>
-                  <p className="meta">{project.period}</p>
-                  <p className="meta mt-1.5 text-clay-deep">{project.domain}</p>
+                <p className="meta">
+                  {project.period}
+                  <span className="text-clay-deep"> · {project.domain}</span>
+                </p>
+              </Reveal>
+
+              <Reveal delay={60}>
+                <h1 className="display mt-5">{project.name}</h1>
+              </Reveal>
+
+              <Reveal delay={120}>
+                <p className="lede mt-8">{project.tagline}</p>
+              </Reveal>
+
+              <Reveal delay={160}>
+                <div className="mt-8">
+                  <StatusBadge status={project.status} anchor={project.anchor} />
                 </div>
               </Reveal>
 
-              <div>
-                <Reveal>
-                  <h1 className="display">{project.name}</h1>
-                </Reveal>
-
-                <Reveal delay={80}>
-                  <p className="lede mt-8 max-w-[46ch]">{project.tagline}</p>
-                </Reveal>
-
-                <Reveal delay={140}>
-                  <div className="mt-8">
-                    <StatusBadge status={project.status} anchor={project.anchor} />
+              {project.links.length > 0 && (
+                <Reveal delay={200}>
+                  <div className="mt-6 flex flex-wrap gap-4">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="meta link-underline text-clay-deep"
+                      >
+                        {link.label} ↗
+                      </a>
+                    ))}
                   </div>
                 </Reveal>
-
-                {project.links.length > 0 && (
-                  <Reveal delay={180}>
-                    <div className="mt-6 flex flex-wrap gap-4">
-                      {project.links.map((link) => (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="meta link-underline text-clay-deep"
-                        >
-                          {link.label} ↗
-                        </a>
-                      ))}
-                    </div>
-                  </Reveal>
-                )}
-              </div>
-            </div>
+              )}
+            </header>
 
             {/* The constraint. This is the sentence that stops the three flagships
                 reading as the same page with different nouns. */}

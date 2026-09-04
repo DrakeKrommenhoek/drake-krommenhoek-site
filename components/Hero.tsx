@@ -32,15 +32,18 @@ export default function Hero() {
 
             <Reveal delay={200}>
               <p className="lede mt-8">
-                I build software with AI, spent a summer inside a private equity firm
-                working out where it actually helps, and write about what I find.
+                I build software people actually use, and spent last summer inside a
+                private equity firm working out which half of the work a machine can be
+                trusted with.
               </p>
             </Reveal>
 
             <Reveal delay={280}>
               <div className="mt-10 flex flex-wrap items-center gap-3">
-                <a href="#experience" className="btn btn-primary">
-                  Experience
+                {/* The most emphasised control on the site used to point at the
+                    résumé block. It points at the work now. */}
+                <a href="#work" className="btn btn-primary">
+                  See the work
                 </a>
                 <a href="#contact" className="btn btn-secondary">
                   Get in touch

@@ -73,6 +73,27 @@ body {
   color: rgb(var(--ink));
 }
 
+/* Off-screen until focused, then pinned top-left. Without this a keyboard user
+   tabs through the whole nav on every page before reaching the content. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background-color: rgb(var(--ink));
+  color: rgb(var(--paper));
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
 /* One focus treatment for the whole site. Two rings so it stays visible on
    both the paper ground and the dark punctuation sections. */
 :focus-visible {
@@ -93,6 +114,16 @@ body {
   .shell {
     width: 100%;
     max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: var(--shell-x);
+  }
+
+  /* For pages that are mostly prose beside a ledger column. The 78rem shell
+     leaves roughly a third of a 1440 viewport permanently empty once the mono
+     margin and the 62ch measure are accounted for. */
+  .shell-work {
+    width: 100%;
+    max-width: 64rem;
     margin-inline: auto;
     padding-inline: var(--shell-x);
   }

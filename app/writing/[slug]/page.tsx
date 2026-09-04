@@ -38,7 +38,7 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main">
         <article className="section-y">
           <div className="shell-narrow">
             <Link href="/writing" className="meta link-underline hover:text-ink">

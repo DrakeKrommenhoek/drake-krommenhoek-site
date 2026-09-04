@@ -70,24 +70,14 @@ const groups: Group[] = [
         ],
       },
       {
-        title: 'Lucky Pie Pizza',
-        role: 'Server',
-        dates: 'Jun 2025 – Aug 2025',
-        place: 'Louisville, CO',
+        // Compressed to one line. These were four bullets each, which made the
+        // résumé block nearly three times the size of the work it supports.
+        title: 'Earlier',
+        dates: '2022 – 2025',
+        place: 'Colorado',
         compact: true,
         points: [
-          'Improved operational efficiency serving guests, ensuring customer satisfaction, upselling menu items, and communicating with a team at a fast paced, upscale pizza restaurant serving 300+ customers daily',
-        ],
-      },
-      {
-        title: 'Water World Colorado',
-        role: 'Advanced Deep Dive Lifeguard',
-        dates: 'Jun 2022 – Aug 2024',
-        place: 'Denver, CO',
-        compact: true,
-        points: [
-          'Maintained safety at one of the largest water parks in the world, averaging 10+ saves per summer',
-          'Led specialized trainings and advanced certification courses to strengthen response effectiveness',
+          'Server at an upscale, high-volume pizza restaurant. Before that, advanced lifeguard at one of the largest water parks in the world — 10+ saves a summer, and later running the training for it.',
         ],
       },
     ],
@@ -149,23 +139,29 @@ const groups: Group[] = [
         place: 'Broomfield, CO',
         compact: true,
         points: [
-          "Principal's Honor Roll every semester; Golf Regional Champions (x2)",
-          'Captain for Varsity Golf; NHS Curator of Academic Inductions',
+          "Principal's Honor Roll every semester. Varsity golf captain, two regional titles.",
         ],
       },
     ],
   },
 ];
 
+/**
+ * Was three rows including "MS Excel · PowerPoint · Canva", which is résumé
+ * padding that actively works against the argument the rest of the site makes.
+ * Two rows, and only the things a reader would act on or remember.
+ */
 const capabilities = [
-  { label: 'Technical', items: ['MS Excel', 'PowerPoint', 'Claude Code', 'Canva'] },
   {
     label: 'Certifications',
-    items: ['Wall Street Prep', 'PADI Open Water', 'Lifeguard', 'CPR', '3D Design (In Progress)'],
+    items: [
+      'Wall Street Prep — Excel, Accounting, Financial Statement Analysis',
+      'PADI Open Water',
+    ],
   },
   {
-    label: 'Interests',
-    items: ['Golf', 'Travel', 'Basketball', 'SCUBA', 'Pickleball', 'Stock Trading', 'Euchre'],
+    label: 'Away from a screen',
+    items: ['Golf — former varsity captain, low single-digit handicap', 'SCUBA', 'Euchre'],
   },
 ];
 
@@ -222,16 +218,20 @@ export default function Experience() {
   return (
     <section id="experience" className="section-y bg-paper-sunk">
       <div className="shell">
+        {/* Deliberately a quieter entrance than Work or Now: a full-width rule
+            and a ledger row rather than another eyebrow-heading-rule fanfare.
+            Every section opening the same way is what makes a page feel
+            generated rather than authored. */}
         <Reveal>
+          <hr className="rule-line" />
+        </Reveal>
+
+        <Reveal delay={60} className="ledger mt-10">
           <p className="meta">Background</p>
-        </Reveal>
-
-        <Reveal delay={70}>
-          <h2 className="h2 mt-4">Experience</h2>
-        </Reveal>
-
-        <Reveal delay={140}>
-          <hr className="rule-line mt-8 w-10" />
+          <div>
+            <h2 className="h2">Experience</h2>
+            <p className="meta mt-3">The résumé version, for anyone who needs it</p>
+          </div>
         </Reveal>
 
         {groups.map((group) => (

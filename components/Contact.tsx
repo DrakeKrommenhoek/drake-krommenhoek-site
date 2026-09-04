@@ -15,7 +15,9 @@ import Reveal from './Reveal';
 const emails = ['drake.krommenhoek@gmail.com', 'dkrommenhoek@mail.wlu.edu'];
 
 const fieldClass =
-  'mt-2 w-full border-b border-rule bg-transparent py-2 text-ink transition-colors duration-200 hover:border-rule-strong focus:border-ink';
+  // min-h-11 is 44px — the design system's minimum target size. At py-2 alone
+  // these measured 43px, which is the kind of miss only a script catches.
+  'mt-2 min-h-11 w-full border-b border-rule bg-transparent py-2 text-ink transition-colors duration-200 hover:border-rule-strong focus:border-ink';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });

@@ -64,7 +64,7 @@ export default function Work() {
                   href={`/work/${project.slug}`}
                   className="meta link-underline mt-6 inline-block text-clay-deep"
                 >
-                  Read the whole thing →
+                  {project.cta} →
                 </Link>
               </div>
             </Reveal>

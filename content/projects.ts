@@ -45,6 +45,9 @@ export interface Project {
   links: { label: string; href: string }[];
   /** The one sentence that makes this project not interchangeable. */
   constraint: string;
+  /** Per-project link text. Three identical "Read more" links stacked is the
+      symmetric-triad tell; each of these names what you actually get. */
+  cta: string;
   body: string[];
   evidence: Evidence[];
   stack: string[];
@@ -70,6 +73,7 @@ export const projects: Project[] = [
     links: [{ label: 'theanswermovement.com', href: 'https://theanswermovement.com' }],
     constraint:
       'The whole application is one 9,058-line HTML file. I inherited it from myself, and by the time it was too big to refactor safely, people were already depending on it.',
+    cta: 'How I made a 9,058-line file safe to change',
     body: [
       'A fitness trainer wanted a daily practice his clients would actually finish. The result is one letter of the alphabet per day for 28 days — his definition, a reflection, a journal box, and a workout video. State lives in localStorage. There are no accounts and no database, because asking someone to sign up before their first workout is how you lose them.',
       'A three-day grace system means missing a day does not break a streak. That is not a feature so much as an argument: the app is for people who will miss days, and a streak that punishes them is a streak that ends.',
@@ -120,6 +124,7 @@ export const projects: Project[] = [
     links: [],
     constraint:
       'An agent that can act on your behalf is only as safe as the moment where it has to stop and ask. Most of the design is that moment.',
+    cta: 'How the approval gate decides',
     body: [
       'A message arrives over Telegram or the command line. It gets stored, normalised, and handed to a router agent that decides what kind of thing it is. That becomes a task with a status lifecycle, which either executes on its own — if it is the sort of thing that is safe to execute on its own — or parks and waits for approval. The result comes back as a Markdown artifact on the channel it came in on.',
       'The split between those two paths is the actual product. Extraction, restructuring and summarising go through. Anything that commits me to something waits.',
@@ -174,6 +179,7 @@ export const projects: Project[] = [
     links: [],
     constraint:
       'Everything I made that summer belongs to the firm. What I can show is the reasoning, which turned out to be the part worth keeping anyway.',
+    cta: 'What ten weeks changed my mind about',
     body: [
       'I spent ten weeks as a private equity intern in Denver. Alongside the diligence and the modelling, I was asked to work out how the deal team should actually use AI — and I started by making the mistake everyone makes.',
       'The first version was a broad, forward-looking case for why AI matters. Market statistics. Model comparisons. Infrastructure we did not have. My supervisor’s feedback narrowed it to two questions, and they are much better questions than mine: what use cases make a team member’s life easier, and how do they run them quickly and securely?',

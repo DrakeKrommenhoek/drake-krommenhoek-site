@@ -15,9 +15,9 @@ export default function LabPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main">
         <section className="section-y">
-          <div className="shell">
+          <div className="shell-work">
             <Reveal>
               <p className="meta">Lab</p>
             </Reveal>

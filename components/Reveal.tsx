@@ -1,7 +1,14 @@
 'use client';
 
-import { createElement, type ElementType, type ReactNode } from 'react';
+import { createElement, useEffect, type ElementType, type ReactNode } from 'react';
 import { useInView } from '@/hooks/useInView';
+
+declare global {
+  interface Window {
+    /** Set on first <Reveal> mount; read by the failsafe in app/layout.tsx. */
+    __revealActive?: boolean;
+  }
+}
 
 interface RevealProps {
   children: ReactNode;
@@ -28,6 +35,12 @@ export default function Reveal({
   id,
 }: RevealProps) {
   const [ref, isInView] = useInView<HTMLElement>();
+
+  // Tells the failsafe in app/layout.tsx that React is alive and will take care
+  // of revealing things, so it should leave the hiding flag in place.
+  useEffect(() => {
+    window.__revealActive = true;
+  }, []);
 
   return createElement(
     as,

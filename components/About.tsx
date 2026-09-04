@@ -80,10 +80,16 @@ export default function About() {
             {/* Pull quote — a hairline in the margin, not a bordered block. */}
             <Reveal delay={360}>
               <blockquote className="mt-12 border-l-2 border-clay/60 pl-6">
-                <p className="h3 max-w-[34ch] italic">
-                  &ldquo;Discipline, curiosity, and a relentless drive to improve — in everything I
-                  do.&rdquo;
+                {/* Was "Discipline, curiosity, and a relentless drive to improve",
+                    which would fit any student on any site. This is his own
+                    sentence, from the record he wrote at the end of the summer. */}
+                <p className="h3 max-w-[38ch] italic">
+                  &ldquo;Confirming a single unit before you move on feels slower, and is
+                  dramatically faster.&rdquo;
                 </p>
+                <footer className="meta mt-4">
+                  One of three rules I ended the summer with
+                </footer>
               </blockquote>
             </Reveal>
           </div>
