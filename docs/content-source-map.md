@@ -94,7 +94,8 @@ codename, a colleague, an internal URL, or reproduces any slide.
 | CES member, $2,866 grant to Ascend | Term sheet + résumé | High | PUBLIC SAFE |
 | HealthArk panel, Sep 2025, healthcare and life sciences | Two of three résumés agree; the 2025 version says "education" instead | Medium | NEEDS DRAKE |
 | Holy Family: honor roll, golf captain, two regional titles | Résumés | Medium | PUBLIC SAFE |
-| "Social Chair", campus AI initiative, club golf, club basketball | **Not published.** None appear anywhere in Drive | Low | HELD |
+| Club basketball at W&L | **Confirmed by Drake in session, 4 Sep 2026.** The Drive audit found no trace of it, but absence from Drive is not evidence of absence — he does not necessarily keep a document about a club team. Drake's word outranks the audit here | High | PUBLIC SAFE |
+| "Social Chair", campus AI initiative, club golf | **Not published.** None appear anywhere in Drive, and none have been confirmed. Ask before publishing any of them | Low | HELD |
 | DK Consulting | **Not published.** No Drive artifact names it directly | Low | NEEDS DRAKE |
 
 ## Writing

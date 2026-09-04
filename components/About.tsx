@@ -49,9 +49,10 @@ export default function About() {
                 <p className="body-text">
                   Competition has always been a driving force. I played four years of{' '}
                   <strong className="font-medium text-ink">high school golf</strong>, serving as
-                  team captain and helping secure back-to-back regional championships, and I still
-                  play <strong className="font-medium text-ink">basketball</strong> with friends. I
-                  thrive in environments that demand focus, strategy, and teamwork.
+                  team captain and helping secure back-to-back regional championships, and these
+                  days I play <strong className="font-medium text-ink">club basketball</strong> at
+                  Washington and Lee. I thrive in environments that demand focus, strategy, and
+                  teamwork.
                 </p>
               </Reveal>
 
