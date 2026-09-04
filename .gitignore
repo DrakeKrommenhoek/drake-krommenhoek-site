@@ -35,3 +35,7 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# QA screenshots are regenerable artifacts (node scripts/qa-shots.mjs).
+# ~30 MB per full run — not worth carrying in git history.
+docs/qa-screenshots*/
