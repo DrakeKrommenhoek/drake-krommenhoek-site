@@ -1,25 +1,29 @@
+import Link from 'next/link';
 import Reveal from './Reveal';
 
 /**
- * The old Experience section was fourteen bordered rectangles in a stack, which
- * claimed a lifeguard shift and a private-equity-adjacent research role were
- * equally finished work (docs/design-system.md § 5). It is now an editorial
- * ledger: hairlines instead of cards, dates in the mono margin column, and
- * supporting work rendered at reduced weight so the trajectory reads first.
+ * Deliberately a list, not a narrative.
  *
- * No interactivity here, so it stays a server component; only <Reveal> is client.
+ * This section was 37% of the homepage against Work at 17% — the page read as a
+ * résumé with projects attached, which is the exact failure the brief named. The
+ * first attempt at fixing it trimmed the supporting jobs and barely moved the
+ * number, because the real bulk was four long bullets under Mountaingate that
+ * re-told a story already told properly on /work/ai-playbook.
+ *
+ * So every entry is now one line. Anyone who wants the bullet-point version can
+ * download the résumé; anyone who wants the real version reads the project page.
  */
 
 type Entry = {
   title: string;
-  /** Role or degree — the mono kicker under the title. */
   role?: string;
   dates: string;
   place?: string;
-  /** A short mono aside under the role. */
-  note?: string;
-  points: string[];
-  /** Supporting work. Rendered at roughly 60% of the type scale — see § 5. */
+  summary: string;
+  /** Where the full story actually lives, if it lives somewhere. */
+  href?: string;
+  hrefLabel?: string;
+  /** Supporting work, rendered at reduced weight. */
   compact?: boolean;
 };
 
@@ -32,87 +36,71 @@ type Group = {
 const groups: Group[] = [
   {
     number: '01',
-    title: 'Professional experience',
+    title: 'Professional',
     entries: [
       {
-        // Public-safe abstraction only. No portfolio-company names, no deal
-        // codenames, no internal URLs, no figures from firm materials.
-        // See docs/research/drive-mountaingate-career.md § 3b.
+        // Public-safe abstraction only. No portfolio companies, no deal
+        // codenames, no internal URLs. docs/research/drive-mountaingate-career.md § 3b.
         title: 'Mountaingate Capital',
         role: 'Private Equity Intern',
-        dates: 'Jun 2026 – Aug 2026',
+        dates: 'Jun – Aug 2026',
         place: 'Denver, CO',
-        points: [
-          'Supported diligence across five or more active platform and add-on processes, preparing research, deal materials, and quality-of-earnings workpapers for partner review',
-          'Built a three-statement model, DCF, comparable-company and sum-of-the-parts valuation for a public company as the intern capstone, and presented it to the deal team',
-          'Mapped a ~320-company partner ecosystem for a portfolio company, profiled each by ownership, scale and fit, and triaged it down to a ranked shortlist of roughly fifteen',
-          'Designed and delivered an internal AI reference for the deal team — narrowed after feedback from a broad overview to two questions: which use cases make a team member’s life easier, and how to run them quickly and securely',
-        ],
+        summary:
+          'Ten weeks on a lower-middle-market deal team: diligence across five or more active processes, a public-company valuation as the intern capstone, a ~320-company partner map triaged to a shortlist of fifteen, and an internal AI reference for the deal team.',
+        href: '/work/ai-playbook',
+        hrefLabel: 'What that summer actually taught me',
       },
       {
         title: 'AMB Investment Banking',
-        role: 'Target Client Research Intern',
-        dates: 'May 2025 – Sep 2025',
+        role: 'Investment Research Intern',
+        dates: 'May – Sep 2025',
         place: 'Remote',
-        points: [
-          'Conducted research on PE firms and built target lists aligned with sellside and buyside objectives',
-          "Delivered timely summaries that assisted AMB's industry research, pitch materials, and go-to-market strategies",
-        ],
+        summary:
+          'Researched and profiled 15–20 investment firms by focus, portfolio and strategic fit, and turned them into target lists and summary briefs for the sourcing team.',
       },
       {
-        title: 'Freelance Entrepreneur',
-        role: 'E-commerce Product Sourcing & Resale',
+        title: 'Freelance — e-commerce sourcing and resale',
         dates: 'May 2023 – Sep 2025',
         place: 'Boulder, CO',
-        points: [
-          'Researched and forecasted high-demand products from multiple marketplaces, contacted manufacturers and shipping agents, purchased at below market value and resold across several e-commerce platforms',
-          'Sold 50+ items, generating $2,200+ in profit with average margins of 40% while retaining 98% customer satisfaction',
-        ],
+        summary:
+          'Forecast demand, negotiated with suppliers, bought below market and resold. 50+ items, $2,200+ profit, roughly 40% average margins.',
       },
       {
-        // Compressed to one line. These were four bullets each, which made the
-        // résumé block nearly three times the size of the work it supports.
         title: 'Earlier',
         dates: '2022 – 2025',
         place: 'Colorado',
         compact: true,
-        points: [
-          'Server at an upscale, high-volume pizza restaurant. Before that, advanced lifeguard at one of the largest water parks in the world — 10+ saves a summer, and later running the training for it.',
-        ],
+        summary:
+          'Server at a high-volume pizza restaurant. Before that, advanced lifeguard at one of the largest water parks in the world — 10+ saves a summer, and later running the training for it.',
       },
     ],
   },
   {
     number: '02',
-    title: 'Leadership & activities',
+    title: 'Leadership',
     entries: [
       {
         title: 'Connolly Entrepreneurship Society',
         role: 'Member',
-        dates: 'Jan 2026 – Present',
+        dates: 'Jan 2026 – present',
         place: 'Lexington, VA',
-        points: [
-          'Selected to elite team to develop a startup idea, build pitch decks, and present progress to secure funding',
-          'Commit 6+ hours weekly to research, product design, web development, and alumni mentorship',
-        ],
+        summary:
+          'Selective venture program — six-plus hours a week on research, product design and alumni mentorship. It funded Ascend with a $2,866 grant.',
       },
       {
-        title: 'Sigma Chi Fraternity — Zeta Chapter',
+        title: 'Sigma Chi — Zeta Chapter',
         role: 'Rush Chair',
-        dates: 'Aug 2025 – Present',
+        dates: 'Aug 2025 – present',
         place: 'Lexington, VA',
-        points: [
-          'Manage rush budget, event logistics, outreach, and new member evaluation for group decisions',
-        ],
+        summary:
+          'Run recruitment: budget, event logistics, outreach, and new-member evaluation for chapter decisions.',
       },
       {
-        title: 'RWEsearch & Health Innovation Summit — HealthArk',
-        role: 'Student Guest Speaker',
+        title: 'HealthArk RWE & Health Innovation Summit',
+        role: 'Student Panelist',
         dates: 'Sep 2025',
-        points: [
-          'Qualified alongside international candidates to present at RWE conference',
-          'Collaborated with top industry leaders on the future of AI in Healthcare & Life Sciences',
-        ],
+        summary:
+          'Spoke on a panel about AI use cases across healthcare and life sciences.',
       },
     ],
   },
@@ -122,35 +110,24 @@ const groups: Group[] = [
     entries: [
       {
         title: 'Washington and Lee University',
-        // Corrected: the résumé's "Economics & Accounting, Minor: Philosophy" was
-        // wrong on both counts. GPA omitted deliberately — it drifted 3.93 → 3.8 →
-        // 3.77 across three résumés and adds nothing here.
-        role: 'B.S. Economics — Minors in Entrepreneurship and Philosophy',
+        role: 'B.S. Economics — minors in Entrepreneurship and Philosophy',
         dates: 'Expected May 2028',
         place: 'Lexington, VA',
-        points: [
-          'Coursework: Managerial Finance, Financial Accounting, Business Analytics, Microeconomic Theory',
-          'Finalist and Honorable Mention, W&L First-Year Writing Award, for “The Monster Was Never In Your Closet”',
-        ],
+        summary:
+          'Managerial Finance, Financial Accounting, Business Analytics, Microeconomic Theory. Finalist and Honorable Mention for the First-Year Writing Award, for an essay called “The Monster Was Never In Your Closet”.',
       },
       {
         title: 'Holy Family High School',
         dates: 'Class of 2024',
         place: 'Broomfield, CO',
         compact: true,
-        points: [
+        summary:
           "Principal's Honor Roll every semester. Varsity golf captain, two regional titles.",
-        ],
       },
     ],
   },
 ];
 
-/**
- * Was three rows including "MS Excel · PowerPoint · Canva", which is résumé
- * padding that actively works against the argument the rest of the site makes.
- * Two rows, and only the things a reader would act on or remember.
- */
 const capabilities = [
   {
     label: 'Certifications',
@@ -165,50 +142,31 @@ const capabilities = [
   },
 ];
 
-/** Group boundaries carry meaning, so they use ink-3; entry hairlines are decorative. */
-function GroupHeading({ number, title }: { number: string; title: string }) {
-  return (
-    <Reveal className="ledger gap-y-3 border-t border-ink-3 pt-6 lg:gap-y-0">
-      <p className="meta text-ink">{number}</p>
-      <h3 className="h3">{title}</h3>
-    </Reveal>
-  );
-}
-
 function ExperienceEntry({ entry, delay }: { entry: Entry; delay: number }) {
   return (
     <Reveal
       as="li"
       delay={delay}
-      className="ledger gap-y-4 border-t border-rule py-8 lg:gap-y-0 lg:py-9"
+      className="ledger gap-y-3 border-t border-rule py-6 lg:gap-y-0 lg:py-7"
     >
       <div>
         <p className="meta">{entry.dates}</p>
         {entry.place ? <p className="meta mt-1.5">{entry.place}</p> : null}
       </div>
 
-      <div>
+      <div className="max-w-measure">
         <h4 className={entry.compact ? 'font-serif text-lg text-ink' : 'h3'}>{entry.title}</h4>
-
         {entry.role ? <p className="meta mt-2 text-clay-deep">{entry.role}</p> : null}
-        {entry.note ? <p className="meta mt-1.5">{entry.note}</p> : null}
 
-        <ul
-          className={
-            entry.compact
-              ? 'mt-4 space-y-2 text-sm text-ink-3'
-              : 'mt-5 space-y-2.5 text-[0.9375rem] text-ink-2'
-          }
-        >
-          {entry.points.map((point) => (
-            <li key={point} className="relative max-w-measure pl-5 leading-relaxed">
-              <span aria-hidden="true" className="absolute left-0 text-clay">
-                —
-              </span>
-              {point}
-            </li>
-          ))}
-        </ul>
+        <p className={`mt-3 ${entry.compact ? 'text-sm text-ink-3' : 'text-[0.9375rem] text-ink-2'}`}>
+          {entry.summary}
+        </p>
+
+        {entry.href && entry.hrefLabel ? (
+          <Link href={entry.href} className="meta link-underline mt-4 inline-block text-clay-deep">
+            {entry.hrefLabel} →
+          </Link>
+        ) : null}
       </div>
     </Reveal>
   );
@@ -218,10 +176,8 @@ export default function Experience() {
   return (
     <section id="experience" className="section-y bg-paper-sunk">
       <div className="shell">
-        {/* Deliberately a quieter entrance than Work or Now: a full-width rule
-            and a ledger row rather than another eyebrow-heading-rule fanfare.
-            Every section opening the same way is what makes a page feel
-            generated rather than authored. */}
+        {/* A quieter entrance than Work or Now. Every section opening the same
+            way is what makes a page feel generated rather than authored. */}
         <Reveal>
           <hr className="rule-line" />
         </Reveal>
@@ -235,25 +191,31 @@ export default function Experience() {
         </Reveal>
 
         {groups.map((group) => (
-          <div key={group.number} className="mt-16 lg:mt-20">
-            <GroupHeading number={group.number} title={group.title} />
-            <ul className="mt-6">
+          <div key={group.number} className="mt-14">
+            <Reveal className="ledger gap-y-2 border-t border-ink-3 pt-5 lg:gap-y-0">
+              <p className="meta text-ink">{group.number}</p>
+              <h3 className="font-serif text-lg text-ink">{group.title}</h3>
+            </Reveal>
+            <ul className="mt-4">
               {group.entries.map((entry, index) => (
-                <ExperienceEntry key={entry.title} entry={entry} delay={index * 70} />
+                <ExperienceEntry key={entry.title} entry={entry} delay={index * 60} />
               ))}
             </ul>
           </div>
         ))}
 
-        <div className="mt-16 lg:mt-20">
-          <GroupHeading number="04" title="Skills & interests" />
-          <ul className="mt-6">
+        <div className="mt-14">
+          <Reveal className="ledger gap-y-2 border-t border-ink-3 pt-5 lg:gap-y-0">
+            <p className="meta text-ink">04</p>
+            <h3 className="font-serif text-lg text-ink">Also</h3>
+          </Reveal>
+          <ul className="mt-4">
             {capabilities.map((capability, index) => (
               <Reveal
                 key={capability.label}
                 as="li"
-                delay={index * 70}
-                className="ledger gap-y-2 border-t border-rule py-6 lg:gap-y-0"
+                delay={index * 60}
+                className="ledger gap-y-2 border-t border-rule py-5 lg:gap-y-0"
               >
                 <p className="meta">{capability.label}</p>
                 <p className="max-w-measure text-[0.9375rem] text-ink-2">
