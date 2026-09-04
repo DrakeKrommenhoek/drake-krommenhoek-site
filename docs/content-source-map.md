@@ -95,7 +95,8 @@ codename, a colleague, an internal URL, or reproduces any slide.
 | HealthArk panel, Sep 2025, healthcare and life sciences | Two of three résumés agree; the 2025 version says "education" instead | Medium | NEEDS DRAKE |
 | Holy Family: honor roll, golf captain, two regional titles | Résumés | Medium | PUBLIC SAFE |
 | Club basketball at W&L | **Confirmed by Drake in session, 4 Sep 2026.** The Drive audit found no trace of it, but absence from Drive is not evidence of absence — he does not necessarily keep a document about a club team. Drake's word outranks the audit here | High | PUBLIC SAFE |
-| "Social Chair", campus AI initiative, club golf | **Not published.** None appear anywhere in Drive, and none have been confirmed. Ask before publishing any of them | Low | HELD |
+| "Social Chair" | **Settled, not open.** The brief claimed this title; Drive documented only Rush Chair, and Drake confirmed twice (4 Sep 2026) that Rush Chair is correct. Do not re-raise this | High | Resolved — the site says Rush Chair |
+| Campus AI initiative, club golf | **Not published.** Neither appears anywhere in Drive and neither has been confirmed. Unlike club basketball, which Drake corrected, these remain open. Ask before publishing either | Low | HELD |
 | DK Consulting | **Not published.** No Drive artifact names it directly | Low | NEEDS DRAKE |
 
 ## Writing

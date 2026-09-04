@@ -23,6 +23,20 @@ questions are in **`docs/MORNING_REVIEW.md`**. The hostile second-pass review is
 - **Branch:** work continued on `site-2026-full-refresh`, which contains everything from
   `claude/festive-wozniak-voawei` plus the previously-unpushed `feat/scroll-animations`.
 
+**Answered by Drake on 4 Sep 2026 — do not re-ask these.** They are questions 1, 3, 7 and
+10 in the list at the bottom of this file:
+
+| Question | Answer |
+| --- | --- |
+| Social Chair or Rush Chair? | **Rush Chair**, confirmed twice. The site says Rush Chair |
+| Ascend: Founder or Co-Founder? | He designed and built the MVP alone; the other two were a course team and are no longer involved. The site says it started as a three-person course team and that he built the MVP |
+| Keep or kill the two weak essays? | Held at `published: false`, kept in the repo |
+| GPA on the site? | **Omitted** |
+| Résumé PDF with his phone number in it? | **Publish as-is.** His explicit choice; the link is live in the nav, hero and footer |
+| Club basketball (the audit said NOT FOUND) | **It is real.** He corrected the audit. The site says he plays club basketball at W&L |
+
+Still unconfirmed and still off the site: the **campus AI initiative** and **club golf**.
+
 **Verification tooling added** (`scripts/`): `qa-shots.mjs` (35 screenshots per pass across
 five widths, with overflow and console-error detection), `a11y-check.mjs`, `check-motion.mjs`,
 `measure-ia.mjs`. All currently pass.
