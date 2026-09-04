@@ -121,8 +121,9 @@ Being blunt, because you will find these in thirty seconds otherwise.
   Handshake logos, which looks cluttered and leans on other people's trademarks.
 - **I deliberately did not screenshot the app's daily pages.** They carry the trainer's own
   letter definitions and prompts, which are his writing, not yours.
-- **No OG image.** Metadata declares `summary_large_image` and there is no image behind it,
-  so link previews will be bare. `app/icon.svg` exists; a proper OG card does not.
+- **The OG card is generic.** One card for the whole site
+  (`public/images/og/default.png`, regenerate with `node scripts/make-og.mjs`). Per-page
+  cards — the project name on each `/work` share — would be better and do not exist.
 - **The canonical domain is a guess.** `lib/site.ts` falls back to
   `https://drakekrommenhoek.com`, which I invented. Set `NEXT_PUBLIC_SITE_URL` or the
   sitemap and canonical tags will point somewhere that may not exist.
