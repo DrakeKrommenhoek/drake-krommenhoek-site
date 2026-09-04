@@ -127,7 +127,7 @@ const Hero = () => {
                 {/* Photo */}
                 <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', zIndex: 1 }}>
                   <Image
-                    src="/images/headshot/headshot.jpg.jpeg"
+                    src="/images/personal/headshot.jpg"
                     alt="Drake Krommenhoek"
                     fill
                     className="object-cover object-top"

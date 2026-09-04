@@ -1,231 +1,637 @@
+@import "./fonts.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Tokens. See docs/design-system.md for the reasoning behind every value here.
+   Colours are stored as space-separated RGB channels so Tailwind can apply
+   opacity modifiers (e.g. text-ink/70).
+   --------------------------------------------------------------------------- */
+
 :root {
-  --wl-blue: #002147;
-  --wl-blue-light: #003580;
-  --wl-blue-lighter: #4A90E2;
-  --wl-blue-lightest: #EDF3FB;
-  --cream: #F7F5F0;
-  --gold: #9B8B5E;
-  --gold-light: #C4AE78;
+  /* Light ground — warm paper, never clinical white */
+  --paper: 251 250 247;
+  --paper-sunk: 243 240 233;
+  --rule: 228 223 212;
+  --rule-strong: 181 173 156;
+
+  --ink: 27 26 23;
+  --ink-2: 69 66 59;
+  --ink-3: 107 102 94;
+
+  /* Dark ground — used as punctuation, not as a theme */
+  --night: 23 22 19;
+  --night-raised: 33 31 27;
+  --night-rule: 51 47 40;
+  --night-ink: 244 241 234;
+  --night-ink-2: 180 174 162;
+
+  /* The single accent */
+  --clay: 180 85 45;
+  --clay-deep: 142 63 30;
+  --clay-soft: 242 228 218;
+  --clay-lift: 224 137 94;
+
+  --shell-x: clamp(1.25rem, 5vw, 3.5rem);
+  --section-y: clamp(4.5rem, 10vw, 8.5rem);
+
+  --ease-entrance: cubic-bezier(0.22, 0.61, 0.24, 1);
 }
 
 * {
-  scroll-behavior: smooth;
+  min-width: 0;
 }
 
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+  scroll-padding-top: 5rem;
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
-  @apply text-gray-900 bg-white;
-  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+  background-color: rgb(var(--paper));
+  color: rgb(var(--ink-2));
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  font-synthesis-weight: none;
+  overflow-x: clip;
+}
+
+::selection {
+  background-color: rgb(var(--clay) / 0.18);
+  color: rgb(var(--ink));
+}
+
+/* One focus treatment for the whole site. Two rings so it stays visible on
+   both the paper ground and the dark punctuation sections. */
+:focus-visible {
+  outline: 2px solid rgb(var(--clay));
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+.on-night :focus-visible {
+  outline-color: rgb(var(--clay-lift));
+}
+
+/* ---------------------------------------------------------------------------
+   Layout primitives
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: var(--shell-x);
+  }
+
+  .shell-narrow {
+    width: 100%;
+    max-width: 52rem;
+    margin-inline: auto;
+    padding-inline: var(--shell-x);
+  }
+
+  .section-y {
+    padding-block: var(--section-y);
+  }
+
+  /* The ledger grid: a narrow mono margin column beside the content, which is
+     what gives the site its notebook feel. Collapses to a stacked block below
+     the lg breakpoint so the margin note reads as a label instead. */
+  .ledger {
+    display: grid;
+    gap: 2rem 3rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    .ledger {
+      grid-template-columns: 11rem minmax(0, 1fr);
+      gap: 0 4rem;
+    }
+  }
+
+  .meta {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.6875rem;
+    line-height: 1.4;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: rgb(var(--ink-3));
+  }
+
+  .on-night .meta {
+    color: rgb(var(--night-ink-2));
+  }
+
+  .rule-line {
+    height: 1px;
+    background-color: rgb(var(--rule));
+    border: 0;
+  }
+
+  .on-night .rule-line {
+    background-color: rgb(var(--night-rule));
+  }
+
+  /* --- Type ------------------------------------------------------------- */
+
+  .display {
+    font-family: var(--font-serif), Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2.6rem, 6.4vw, 4.75rem);
+    line-height: 1.03;
+    letter-spacing: -0.022em;
+    color: rgb(var(--ink));
+    text-wrap: balance;
+  }
+
+  .h2 {
+    font-family: var(--font-serif), Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(1.85rem, 3.4vw, 2.6rem);
+    line-height: 1.12;
+    letter-spacing: -0.017em;
+    color: rgb(var(--ink));
+    text-wrap: balance;
+  }
+
+  .h3 {
+    font-family: var(--font-serif), Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    line-height: 1.2;
+    letter-spacing: -0.012em;
+    color: rgb(var(--ink));
+  }
+
+  .on-night .display,
+  .on-night .h2,
+  .on-night .h3 {
+    color: rgb(var(--night-ink));
+  }
+
+  .lede {
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+    line-height: 1.68;
+    color: rgb(var(--ink-2));
+    max-width: 46ch;
+  }
+
+  .on-night .lede {
+    color: rgb(var(--night-ink-2));
+  }
+
+  .body-text {
+    max-width: 62ch;
+    color: rgb(var(--ink-2));
+  }
+
+  .on-night .body-text {
+    color: rgb(var(--night-ink-2));
+  }
+
+  /* --- Controls ---------------------------------------------------------- */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.7rem 1.35rem;
+    font-family: var(--font-mono), monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid transparent;
+    transition: background-color 0.18s, color 0.18s, border-color 0.18s;
+  }
+
+  .btn-primary {
+    background-color: rgb(var(--ink));
+    color: rgb(var(--paper));
+  }
+
+  .btn-primary:hover {
+    background-color: rgb(var(--clay-deep));
+  }
+
+  .btn-secondary {
+    border-color: rgb(var(--rule-strong));
+    color: rgb(var(--ink));
+  }
+
+  .btn-secondary:hover {
+    border-color: rgb(var(--ink));
+    background-color: rgb(var(--paper-sunk));
+  }
+
+  .on-night .btn-primary {
+    background-color: rgb(var(--night-ink));
+    color: rgb(var(--night));
+  }
+
+  .on-night .btn-primary:hover {
+    background-color: rgb(var(--clay-lift));
+  }
+
+  .on-night .btn-secondary {
+    border-color: rgb(var(--night-rule));
+    color: rgb(var(--night-ink));
+  }
+
+  .on-night .btn-secondary:hover {
+    border-color: rgb(var(--night-ink-2));
+    background-color: rgb(var(--night-raised));
+  }
+
+  /* Underline that grows from the left. Uses background-size rather than a
+     pseudo-element so it animates cheaply and inherits the text colour. */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    transition: background-size 0.28s var(--ease-entrance);
+    padding-bottom: 1px;
+  }
+
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link-underline {
+      transition: none;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll-reveal. Elements start hidden only when JS has marked the document as
+   able to reveal them, so the page is fully readable with JS disabled.
+   --------------------------------------------------------------------------- */
+
+[data-reveal] {
+  opacity: 1;
+}
+
+html[data-reveal-ready='true'] [data-reveal] {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.55s var(--ease-entrance),
+    transform 0.55s var(--ease-entrance);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html[data-reveal-ready='true'] [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-reveal-ready='true'] [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reading room. The writing section deliberately uses a different type
+   register from the rest of the site: serif body, longer measure, quieter
+   chrome. See docs/design-system.md § "Two rooms".
+   --------------------------------------------------------------------------- */
+
+.reading {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.1875rem;
+  line-height: 1.75;
+  color: rgb(var(--ink-2));
+  letter-spacing: 0.003em;
+}
+
+.reading > * + * {
+  margin-top: 1.45em;
+}
+
+.reading p {
+  max-width: 36rem;
+}
+
+.reading em {
+  font-style: italic;
+}
+
+.reading strong {
+  font-weight: 600;
+  color: rgb(var(--ink));
+}
+
+.reading h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: rgb(var(--ink));
+  margin-top: 2.6em;
+  margin-bottom: -0.5em;
+}
+
+.reading h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(var(--ink));
+  margin-top: 2.2em;
+  margin-bottom: -0.6em;
+}
+
+.reading blockquote {
+  border-left: 2px solid rgb(var(--clay) / 0.55);
+  padding-left: 1.35rem;
+  margin-left: 0;
+  color: rgb(var(--ink-3));
+  font-style: italic;
+}
+
+.reading blockquote p {
+  max-width: 34rem;
+}
+
+.reading hr {
+  border: 0;
+  width: 3.5rem;
+  height: 1px;
+  background-color: rgb(var(--rule-strong));
+  margin-block: 2.75em;
+}
+
+.reading ul,
+.reading ol {
+  max-width: 36rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.reading ul li,
+.reading ol li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.reading li + li {
+  margin-top: 0.55em;
+}
+
+.reading ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgb(var(--clay));
+}
+
+.reading ol {
+  counter-reset: reading-list;
+}
+
+.reading ol li::before {
+  counter-increment: reading-list;
+  content: counter(reading-list) '.';
+  position: absolute;
+  left: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85em;
+  color: rgb(var(--clay));
+}
+
+.reading a {
+  color: rgb(var(--clay-deep));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgb(var(--clay) / 0.4);
+  transition: text-decoration-color 0.2s;
+}
+
+.reading a:hover {
+  text-decoration-color: rgb(var(--clay));
+}
+
+/* An italic serif line set apart from the body — used for the epigraph-style
+   opening couplets in some of the essays. */
+.reading p em:only-child {
+  display: inline-block;
+  color: rgb(var(--ink-3));
+}
+
+/* ---------------------------------------------------------------------------
+   TEMPORARY COMPATIBILITY LAYER — DELETE WHEN THE REBUILD LANDS.
+
+   The 2026 design system above is in place, but the page components
+   (Hero, Experience, Upcoming, About, Contact, Navbar, Footer, and the
+   writing components) have not been rewritten yet. They still reference the
+   old utility classes. This block keeps the deployed site coherent in the
+   meantime. Every rule here is scheduled for removal — see
+   docs/OVERNIGHT_HANDOFF.md, "Step 1".
+   --------------------------------------------------------------------------- */
+
+.container-custom {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
 }
 
 section {
-  @apply py-20 px-4 sm:px-6 lg:px-8;
+  padding-block: 5rem;
+  padding-inline: 1rem;
 }
 
-.container-custom {
-  @apply max-w-6xl mx-auto;
+@media (min-width: 640px) {
+  section {
+    padding-inline: 1.5rem;
+  }
 }
 
 .section-title {
-  @apply text-4xl md:text-5xl text-wl-blue mb-4 text-center;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: rgb(var(--ink));
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .section-label {
-  @apply text-xs font-semibold uppercase text-gold mb-3 text-center block;
-  font-family: "DM Sans", sans-serif;
-  letter-spacing: 0.18em;
+  display: block;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: rgb(var(--clay-deep));
+  margin-bottom: 0.75rem;
+  text-align: center;
 }
 
 .section-divider {
-  @apply w-12 h-px bg-gold mx-auto mb-12;
+  width: 3rem;
+  height: 1px;
+  background-color: rgb(var(--clay) / 0.6);
+  margin: 0 auto 3rem;
 }
 
-.card {
-  @apply bg-white hover:border-gold/40 transition-all duration-300 p-6;
-  border: 1px solid #E8E8E4;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.card:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+.card,
+.exp-card {
+  background-color: rgb(var(--paper));
+  border: 1px solid rgb(var(--rule));
+  padding: 1.5rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 
 .exp-card {
-  @apply bg-white p-6 transition-all duration-300;
-  border-left: 2px solid #C4AE78;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 0;
+  border-left: 2px solid rgb(var(--clay) / 0.5);
 }
 
+.card:hover,
 .exp-card:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-  border-left-color: #9B8B5E;
-}
-
-.btn-primary {
-  @apply bg-wl-blue text-white px-8 py-3 font-medium transition-all duration-300;
-  font-family: "DM Sans", sans-serif;
-  letter-spacing: 0.04em;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-}
-
-.btn-primary:hover {
-  background-color: #003580;
-}
-
-.btn-secondary {
-  @apply border text-white px-8 py-3 font-medium transition-all duration-300;
-  border-color: rgba(255,255,255,0.5);
-  font-family: "DM Sans", sans-serif;
-  letter-spacing: 0.04em;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-}
-
-.btn-secondary:hover {
-  background-color: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.8);
+  border-color: rgb(var(--clay) / 0.5);
 }
 
 .btn-outline {
-  @apply border text-wl-blue px-8 py-3 font-medium transition-all duration-300;
-  border-color: #002147;
-  font-family: "DM Sans", sans-serif;
-  letter-spacing: 0.04em;
-  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.7rem 1.6rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid rgb(var(--ink));
+  color: rgb(var(--ink));
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .btn-outline:hover {
-  @apply bg-wl-blue text-white;
-}
-
-.link-hover {
-  @apply relative inline-block;
-}
-
-.link-hover::after {
-  content: '';
-  @apply absolute w-0 h-px bottom-0 left-0 transition-all duration-300;
-  background-color: var(--gold);
-}
-
-.link-hover:hover::after {
-  @apply w-full;
+  background-color: rgb(var(--ink));
+  color: rgb(var(--paper));
 }
 
 .tag {
-  @apply inline-block px-3 py-1 text-xs font-medium;
-  background-color: var(--wl-blue-lightest);
-  color: var(--wl-blue-light);
-  letter-spacing: 0.02em;
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  background-color: rgb(var(--paper-sunk));
+  color: rgb(var(--ink-2));
 }
 
-/* Article body prose */
+.link-hover {
+  position: relative;
+  display: inline-block;
+}
+
+/* The old writing prose class now points at the new reading-room styles. */
 .prose-writing {
-  font-family: "DM Sans", system-ui, sans-serif;
-  font-size: 1.0625rem;
-  line-height: 1.82;
-  color: #374151;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.1875rem;
+  line-height: 1.75;
+  color: rgb(var(--ink-2));
 }
 
 .prose-writing p {
-  margin-bottom: 1.6em;
+  margin-bottom: 1.45em;
+  max-width: 36rem;
 }
 
-.prose-writing h2 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--wl-blue);
-  letter-spacing: -0.01em;
-  margin-top: 2.5em;
-  margin-bottom: 0.75em;
-  line-height: 1.2;
-}
-
+.prose-writing h2,
 .prose-writing h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.25rem;
+  font-family: var(--font-serif), Georgia, serif;
   font-weight: 600;
-  color: var(--wl-blue);
-  margin-top: 2em;
+  color: rgb(var(--ink));
+  margin-top: 2.4em;
   margin-bottom: 0.6em;
   line-height: 1.25;
 }
 
+.prose-writing h2 {
+  font-size: 1.5rem;
+}
+
+.prose-writing h3 {
+  font-size: 1.25rem;
+}
+
 .prose-writing strong {
   font-weight: 600;
-  color: #1f2937;
-}
-
-.prose-writing em {
-  font-style: italic;
-  color: #4b5563;
-}
-
-.prose-writing hr {
-  border: none;
-  border-top: 1px solid var(--gold-light);
-  margin: 2.5em 0;
-  width: 4rem;
+  color: rgb(var(--ink));
 }
 
 .prose-writing blockquote {
-  border-left: 2px solid var(--gold);
-  padding-left: 1.25rem;
+  border-left: 2px solid rgb(var(--clay) / 0.55);
+  padding-left: 1.35rem;
   margin: 1.75em 0;
-  color: #6b7280;
+  color: rgb(var(--ink-3));
   font-style: italic;
+}
+
+.prose-writing hr {
+  border: 0;
+  width: 3.5rem;
+  height: 1px;
+  background-color: rgb(var(--rule-strong));
+  margin: 2.75em 0;
 }
 
 .prose-writing ul {
   list-style: none;
   padding: 0;
   margin: 1.25em 0 1.75em;
+  max-width: 36rem;
 }
 
 .prose-writing ul li {
-  padding-left: 1.25rem;
+  padding-left: 1.5rem;
   position: relative;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.55em;
 }
 
 .prose-writing ul li::before {
   content: '—';
   position: absolute;
   left: 0;
-  color: var(--gold);
+  color: rgb(var(--clay));
 }
 
 .prose-writing ol {
   padding-left: 1.5rem;
   margin: 1.25em 0 1.75em;
-}
-
-.prose-writing ol li {
-  margin-bottom: 0.5em;
+  max-width: 36rem;
 }
 
 .prose-writing a {
-  color: var(--wl-blue);
+  color: rgb(var(--clay-deep));
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(155, 139, 94, 0.5);
-  transition: text-decoration-color 0.2s;
-}
-
-.prose-writing a:hover {
-  text-decoration-color: var(--gold);
 }
