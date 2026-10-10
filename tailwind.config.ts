@@ -2,29 +2,28 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        'wl-blue': {
-          DEFAULT: '#002147',
-          light: '#003580',
-          lighter: '#4A90E2',
-          lightest: '#EDF3FB',
-        },
-        'cream': '#F7F5F0',
-        'gold': '#9B8B5E',
-        'gold-light': '#C4AE78',
+        paper: '#F4F1EA',
+        ink: '#16181D',
+        muted: '#5B5F66',
+        rule: '#D9D4C7',
+        navy: '#0B2545',
+        rust: '#B4532A',
       },
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['"DM Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        sans: ['var(--font-instrument)', 'Helvetica Neue', 'sans-serif'],
+        mono: ['var(--font-mono)', 'Menlo', 'monospace'],
       },
-      letterSpacing: {
-        'widest-2': '0.2em',
+      maxWidth: {
+        page: '76rem',
+        prose: '38rem',
       },
     },
   },

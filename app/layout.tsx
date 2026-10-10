@@ -1,28 +1,61 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next';
+import { Fraunces, Instrument_Sans, JetBrains_Mono } from 'next/font/google';
+import SiteHeader from '@/components/SiteHeader';
+import SiteFooter from '@/components/SiteFooter';
+import { site } from '@/lib/site';
+import './globals.css';
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  axes: ['opsz', 'SOFT'],
+  variable: '--font-fraunces',
+  display: 'swap',
+});
+
+const instrument = Instrument_Sans({
+  subsets: ['latin'],
+  variable: '--font-instrument',
+  display: 'swap',
+});
+
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: "Drake Krommenhoek | Washington & Lee University",
-  description: "Personal website of Drake Krommenhoek — Economics, Accounting and Philosophy student at Washington and Lee University with experience in investment banking, entrepreneurship, and leadership.",
-  keywords: ["Drake Krommenhoek", "Washington and Lee", "Economics", "Accounting", "Philosophy", "Investment Banking", "Student Portfolio"],
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} | Builder and economics student`,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
+  openGraph: {
+    type: 'website',
+    siteName: site.name,
+    title: site.name,
+    description: site.description,
+    url: '/',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: site.description }],
+  },
+  twitter: { card: 'summary_large_image', images: ['/og.png'] },
+  alternates: { canonical: '/' },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: '#F4F1EA',
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>{children}</body>
+    <html lang="en" className={`${fraunces.variable} ${instrument.variable} ${mono.variable}`}>
+      <body>
+        <SiteHeader />
+        <main id="main">{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }
