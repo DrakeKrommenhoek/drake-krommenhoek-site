@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { site } from '@/lib/site';
 
 const Hero = () => {
   const [hasHeadshot, setHasHeadshot] = useState(true);
@@ -84,9 +85,8 @@ const Hero = () => {
                 Contact
               </a>
               <a
-                href="/Krommenhoek_Resume_Feb.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={site.resume.href}
+                download={site.resume.filename}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',

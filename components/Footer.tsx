@@ -1,5 +1,7 @@
 'use client';
 
+import { site } from '@/lib/site';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -46,10 +48,9 @@ const Footer = () => {
             }}>Navigation</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }} className="space-y-2">
               {[
-                { label: 'Experience', href: '#experience' },
-                { label: 'Upcoming', href: '#upcoming' },
-                { label: 'Who Am I', href: '#about' },
-                { label: 'Contact', href: '#contact' },
+                { label: 'Experience', href: '/#experience' },
+                { label: 'About', href: '/#about' },
+                { label: 'Contact', href: '/#contact' },
               ].map(link => (
                 <li key={link.label}>
                   <a
@@ -85,16 +86,17 @@ const Footer = () => {
             }}>Connect</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }} className="space-y-2">
               {[
-                { label: 'drake.krommenhoek@gmail.com', href: 'mailto:drake.krommenhoek@gmail.com' },
-                { label: 'dkrommenhoek@mail.wlu.edu', href: 'mailto:dkrommenhoek@mail.wlu.edu' },
-                { label: 'LinkedIn', href: 'https://www.linkedin.com/in/drakekrommenhoek' },
-                { label: 'Resume PDF', href: '/Krommenhoek_Resume_Feb.pdf' },
+                { label: site.email, href: `mailto:${site.email}` },
+                { label: 'GitHub', href: site.github },
+                { label: 'LinkedIn', href: site.linkedin },
+                { label: 'Resume PDF', href: site.resume.href },
               ].map(link => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    target={link.href.startsWith('http') || link.href.endsWith('.pdf') ? '_blank' : undefined}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
                     rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    download={link.href === site.resume.href ? site.resume.filename : undefined}
                     style={{
                       fontFamily: '"DM Sans", sans-serif',
                       fontSize: '0.82rem',

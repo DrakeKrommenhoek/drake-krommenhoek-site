@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { site } from '@/lib/site';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const Contact = () => {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
-    window.location.href = `mailto:drake.krommenhoek@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -79,7 +80,7 @@ const Contact = () => {
                   Email
                 </p>
                 <div className="space-y-2">
-                  {['drake.krommenhoek@gmail.com', 'dkrommenhoek@mail.wlu.edu'].map(email => (
+                  {[site.email].map(email => (
                     <a
                       key={email}
                       href={`mailto:${email}`}
@@ -117,9 +118,8 @@ const Contact = () => {
                   Resume
                 </p>
                 <a
-                  href="/Krommenhoek_Resume_Feb.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={site.resume.href}
+                  download={site.resume.filename}
                   className="link-hover"
                   style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.88rem', color: '#374151', fontWeight: 400 }}
                 >
