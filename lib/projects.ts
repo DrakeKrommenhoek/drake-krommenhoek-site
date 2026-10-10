@@ -17,6 +17,19 @@ export interface ProjectSummary {
 
 export const projects: ProjectSummary[] = [
   {
+    slug: 'the-answer-movement',
+    name: 'The Answer Movement',
+    summary:
+      'A 28-day wellness app built on my trainer’s ABC framework: one letter, one workout, and one journal entry each day.',
+    role: 'Co-founder and builder',
+    status: 'built',
+    statusNote: 'live since February 2026',
+    period: 'February 2026 to present',
+    stack: ['JavaScript', 'PWA', 'Vercel Functions', 'Claude API'],
+    cover: 'SCREENSHOT: The Answer Movement daily workout screen',
+    live: 'https://the-answer-movement-app.vercel.app',
+  },
+  {
     slug: 'ascend',
     name: 'Ascend',
     summary:
@@ -29,19 +42,6 @@ export const projects: ProjectSummary[] = [
     cover: 'SCREENSHOT: Ascend dashboard, master calendar view',
     repo: 'https://github.com/DrakeKrommenhoek/Ascend_App',
     live: 'https://ascend-app-one.vercel.app',
-  },
-  {
-    slug: 'the-answer-movement',
-    name: 'The Answer Movement',
-    summary:
-      'A 28-day wellness app built on my trainer’s ABC framework: one letter, one workout, and one journal entry each day.',
-    role: 'Co-founder and builder',
-    status: 'built',
-    statusNote: 'live since February 2026',
-    period: 'February 2026 to present',
-    stack: ['JavaScript', 'PWA', 'Vercel Functions', 'Claude API'],
-    cover: 'SCREENSHOT: The Answer Movement daily workout screen',
-    live: 'https://the-answer-movement-app.vercel.app',
   },
 ];
 

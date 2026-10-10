@@ -36,8 +36,7 @@ export default function AboutPage() {
           </p>
           <p>
             Competition came first. I captained a high school golf team that won back-to-back regional
-            championships, and I grew up playing cards with my family, which is still the best training I know for
-            weighing risk and reading a table.
+            championships.
           </p>
           <p>
             My first business was reselling products online. From 2023 to 2025 I tracked what was in demand across

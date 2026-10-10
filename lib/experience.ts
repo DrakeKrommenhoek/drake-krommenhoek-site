@@ -1,5 +1,5 @@
 // Source: public/Krommenhoek_Resume_Feb.pdf, plus project start dates from each project's git history.
-// One role from the resume is intentionally excluded from the site.
+// Mountaingate Capital is listed by name, role, and dates only. Do not describe the work.
 
 export type EntryKind = 'Building' | 'Work' | 'Leadership';
 
@@ -14,6 +14,13 @@ export interface Entry {
 }
 
 export const entries: Entry[] = [
+  {
+    org: 'Mountaingate Capital',
+    role: 'Private equity intern',
+    kind: 'Work',
+    dates: 'Jun 2026 to Aug 2026',
+    points: [],
+  },
   {
     org: 'Ascend',
     role: 'Founder and builder',

@@ -45,11 +45,13 @@ export default function ExperiencePage() {
                   {e.role}
                   {e.location && `, ${e.location}`}
                 </p>
-                <ul className="prose-case max-w-prose">
-                  {e.points.map((p) => (
-                    <li key={p}>{p}</li>
-                  ))}
-                </ul>
+                {e.points.length > 0 && (
+                  <ul className="prose-case max-w-prose">
+                    {e.points.map((p) => (
+                      <li key={p}>{p}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </li>
           ))}

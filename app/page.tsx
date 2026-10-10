@@ -33,8 +33,8 @@ export default function Home() {
         <div className="grid-page mt-14 gap-y-10">
           <p className="rise col-span-4 max-w-prose text-[1.15rem] leading-relaxed lg:col-span-6" style={{ animationDelay: '600ms' }}>
             I study economics with minors in entrepreneurship and philosophy, and I build software around
-            problems I know firsthand: Ascend, for the chaos of college recruiting, and The Answer Movement, a
-            28-day wellness program I co-founded with my trainer.
+            problems I know firsthand: The Answer Movement, a 28-day wellness program I co-founded with my
+            trainer, and Ascend, for the chaos of college recruiting.
           </p>
           <div className="rise col-span-4 lg:col-span-5 lg:col-start-8" style={{ animationDelay: '700ms' }}>
             <div className="flex flex-wrap gap-3">
@@ -48,6 +48,9 @@ export default function Home() {
             <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
               <a href={`mailto:${site.email}`} className="link">
                 Get in touch
+              </a>
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="link">
+                LinkedIn
               </a>
               <a href={site.resume.href} download={site.resume.filename} className="link text-muted hover:text-ink">
                 Download resume

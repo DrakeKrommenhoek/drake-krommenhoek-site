@@ -6,7 +6,7 @@ import { projects } from '@/lib/projects';
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'Ascend and The Answer Movement: what Drake Krommenhoek has built, how, and what is still planned.',
+  description: 'The Answer Movement and Ascend:what Drake Krommenhoek has built, how, and what is still planned.',
   alternates: { canonical: '/projects' },
 };
 
