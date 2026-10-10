@@ -59,7 +59,7 @@ body {
     @apply btn text-ink hover:bg-ink hover:text-paper;
   }
 
-  .prose-case p + p {
+  .prose-case > * + * {
     @apply mt-5;
   }
 
