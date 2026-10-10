@@ -16,7 +16,7 @@ export interface Entry {
 export const entries: Entry[] = [
   {
     org: 'Mountaingate Capital',
-    role: 'Private equity intern',
+    role: 'Private Equity Intern',
     kind: 'Work',
     dates: 'Jun 2026 to Aug 2026',
     points: [],
@@ -50,14 +50,14 @@ export const entries: Entry[] = [
   },
   {
     org: 'RWEsearch and Health Innovation Summit, HealthArk',
-    role: 'Student guest speaker',
+    role: 'Student Guest Speaker',
     kind: 'Leadership',
     dates: 'Sep 2025',
     points: ['Spoke on a panel with industry leaders about AI use cases in healthcare and life sciences.'],
   },
   {
     org: 'Sigma Chi, Zeta Chapter',
-    role: 'Rush chair',
+    role: 'Rush Chair',
     kind: 'Leadership',
     dates: 'Aug 2025 to present',
     location: 'Lexington, VA',
@@ -65,7 +65,7 @@ export const entries: Entry[] = [
   },
   {
     org: 'Lucky Pie Pizza',
-    role: 'Busser and server in training',
+    role: 'Busser/Server in training',
     kind: 'Work',
     dates: 'Jun 2025 to Aug 2025',
     location: 'Louisville, CO',
@@ -73,7 +73,7 @@ export const entries: Entry[] = [
   },
   {
     org: 'AMB Investment Banking',
-    role: 'Target client research intern',
+    role: 'Target Client Research Intern',
     kind: 'Work',
     dates: 'May 2025 to Sep 2025',
     location: 'Remote',
@@ -84,7 +84,7 @@ export const entries: Entry[] = [
   },
   {
     org: 'Freelance e-commerce',
-    role: 'Product sourcing and resale',
+    role: 'E-commerce Fashion Product Sourcing and Resale Specialist',
     kind: 'Building',
     dates: 'May 2023 to Sep 2025',
     location: 'Boulder, CO',
@@ -95,7 +95,7 @@ export const entries: Entry[] = [
   },
   {
     org: 'Water World Colorado',
-    role: 'Advanced deep dive lifeguard',
+    role: 'Advanced Deep Dive Lifeguard',
     kind: 'Work',
     dates: 'Jun 2022 to Aug 2024',
     location: 'Denver, CO',
