@@ -1,5 +1,5 @@
 // Source: public/Krommenhoek_Resume_Feb.pdf, plus project start dates from each project's git history.
-// MountainGate is intentionally excluded from the site.
+// One role from the resume is intentionally excluded from the site.
 
 export type EntryKind = 'Building' | 'Work' | 'Leadership';
 
