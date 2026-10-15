@@ -27,7 +27,7 @@ export const projects: ProjectSummary[] = [
     role: 'Co-founder and builder',
     status: 'built',
     statusNote: 'live, 240 users in 3 countries',
-    period: 'February 2026 to present',
+    period: 'March 2026 to present',
     stack: ['JavaScript', 'PWA', 'Vercel Functions', 'Claude API'],
     cover: 'SCREENSHOT: The Answer Movement daily workout screen',
     live: 'https://the-answer-movement-app.vercel.app',

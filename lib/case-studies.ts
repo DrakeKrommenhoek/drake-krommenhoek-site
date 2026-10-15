@@ -269,13 +269,13 @@ const answer: CaseStudy = {
       blocks: [
         {
           kind: 'p',
-          text: 'In late February 2026 I built a working skeleton of the app, and four days later the first version shipped to people in my co-founder’s network on February 28, 2026. [CONFIRM: credit anyone else who helped build or launch it]',
+          text: 'I built a working skeleton of the app, and four days later the first version shipped to people in my co-founder’s network. [CONFIRM: credit anyone else who helped build or launch it]',
         },
         {
           kind: 'p',
           text: 'Before writing code we considered a native app stack with a no-code builder, a subscription service, and a video platform. We chose a single installable web app instead, with nothing to download from an app store.',
         },
-        { kind: 'figure', label: 'SCREENSHOT: first version of The Answer Movement, February 2026' },
+        { kind: 'figure', label: 'SCREENSHOT: first version of The Answer Movement, March 2026' },
       ],
     },
     {
@@ -321,7 +321,7 @@ const answer: CaseStudy = {
       blocks: [
         {
           kind: 'p',
-          text: 'The app has shipped continuously since launch, with more than 300 commits between February and September 2026 and a new program release each month.',
+          text: 'The app has shipped continuously since launch, with more than 300 commits by September 2026 and a new program release each month.',
         },
       ],
     },
@@ -416,9 +416,9 @@ const answer: CaseStudy = {
   ],
   timeline: [
     {
-      date: 'Feb 26 to 28, 2026',
+      date: 'Mar 2026',
       title: 'Built and shipped in four days',
-      detail: 'First version of the 28-day app went out on February 28.',
+      detail: 'The first version of the 28-day app went out to people in my co-founder’s network.',
       shot: 'SCREENSHOT: launch version',
     },
     {

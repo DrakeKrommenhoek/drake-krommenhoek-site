@@ -49,16 +49,17 @@ export default function AboutPage() {
             sounds best.
           </p>
           <p>
-            In 2026 I started building software. In February I helped ship the first version of{' '}
-            <Link href="/projects/the-answer-movement" className="text-navy underline decoration-navy/40 decoration-1 underline-offset-4 hover:decoration-navy">
-              The Answer Movement
-            </Link>
-            , a 28-day wellness program built with my longtime trainer, in four days. In March I built{' '}
+            In 2026 I started building software. In January I started{' '}
             <Link href="/projects/ascend" className="text-navy underline decoration-navy/40 decoration-1 underline-offset-4 hover:decoration-navy">
               Ascend
             </Link>
-            , a prototype of the recruiting system I wished I had, after living through the mess of spreadsheets,
-            portals, and deadlines myself.
+            , the recruiting system I wished I had after living through the mess of spreadsheets, portals, and
+            deadlines myself. In March I launched{' '}
+            <Link href="/projects/the-answer-movement" className="text-navy underline decoration-navy/40 decoration-1 underline-offset-4 hover:decoration-navy">
+              The Answer Movement
+            </Link>
+            , a 28-day wellness program built with my longtime trainer, which has since reached 240 people in three
+            countries.
           </p>
           <p>
             For Summer 2027 I am looking for roles in product management, product analytics, forward deployed

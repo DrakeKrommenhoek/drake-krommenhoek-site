@@ -1,5 +1,4 @@
 // Source: public/Krommenhoek_Drake_Resume.pdf (October 2026).
-// Mountaingate Capital is listed by name, role, and dates only. Do not describe the work.
 
 export type EntryKind = 'Building' | 'Work' | 'Leadership';
 
@@ -20,7 +19,13 @@ export const entries: Entry[] = [
     kind: 'Work',
     dates: 'May 2026 to Aug 2026',
     location: 'Denver, CO',
-    points: [],
+    points: [
+      'Built a three-statement model with bear, base, and bull DCF cases, public comps, and a sum-of-the-parts analysis on a public connected-fitness company, and defended the investment thesis in a live presentation and Q&A with the Mountaingate team.',
+      'Supported diligence across 5+ live platform and add-on processes, reviewing CIMs, QoE analyses, and customer retention data, and flagging open diligence questions for the deal team.',
+      'Mapped a 300+ company software partner ecosystem for a portfolio company add-on search, scoring acquisition fit and partnership fit for each against theses, risks, and diligence questions.',
+      'Built and presented an acquisition recommendation covering business model, financials, thesis, risks, and mitigants.',
+      'Built and presented an AI implementation playbook and persistent web reference for associates and VPs, covering 10+ deal-team workflows with risk governance guardrails and security considerations.',
+    ],
   },
   {
     org: 'Ascend',
