@@ -16,14 +16,26 @@ export const now = {
 export interface Book {
   title: string;
   author: string;
-  /** One line, in Drake's words, on what he took from it. */
-  note: string;
+  /** "Lately" or "Grew up on". */
+  shelf: 'Lately' | 'Grew up on';
+  /** Optional: one line, in Drake's words, on why he loves it. Rankings and ratings come later. */
+  note?: string;
 }
 
 export const books: Book[] = [
-  { title: '[BOOK: title]', author: '[BOOK: author]', note: '[BOOK: one line on what you took from it]' },
-  { title: '[BOOK: title]', author: '[BOOK: author]', note: '[BOOK: one line on what you took from it]' },
-  { title: '[BOOK: title]', author: '[BOOK: author]', note: '[BOOK: one line on what you took from it]' },
+  { title: 'The Four Agreements', author: 'Don Miguel Ruiz', shelf: 'Lately' },
+  { title: 'Man’s Search for Meaning', author: 'Viktor E. Frankl', shelf: 'Lately' },
+  { title: 'Greenlights', author: 'Matthew McConaughey', shelf: 'Lately' },
+  { title: 'The Happiness Advantage', author: 'Shawn Achor', shelf: 'Lately' },
+  { title: 'The Subtle Art of Not Giving a F*ck', author: 'Mark Manson', shelf: 'Lately' },
+  { title: 'The 7 Habits of Highly Effective People', author: 'Stephen R. Covey', shelf: 'Lately' },
+  { title: 'Septology', author: 'Jon Fosse', shelf: 'Lately' },
+  { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', shelf: 'Grew up on' },
+  { title: 'Fahrenheit 451', author: 'Ray Bradbury', shelf: 'Grew up on' },
+  { title: 'Harry Potter series', author: 'J.K. Rowling', shelf: 'Grew up on' },
+  { title: 'Percy Jackson and the Olympians', author: 'Rick Riordan', shelf: 'Grew up on' },
+  { title: 'The Always War', author: 'Margaret Peterson Haddix', shelf: 'Grew up on' },
+  { title: 'The Giving Tree', author: 'Shel Silverstein', shelf: 'Grew up on' },
 ];
 
 export const offTheClock = [

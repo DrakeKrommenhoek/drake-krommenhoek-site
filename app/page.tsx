@@ -7,39 +7,8 @@ import { projects } from '@/lib/projects';
 import { site } from '@/lib/site';
 import headshot from '@/public/images/drake-krommenhoek.jpg';
 
-const heroes = {
-  facts: {
-    headline: 'I’m Drake, an economics junior at Washington and Lee.',
-    intro: (
-      <>
-        This summer I did private equity diligence at Mountaingate Capital in Denver. During the school year I build
-        apps: The Answer Movement, a wellness program now used by 240 people in 3 countries, and Ascend, a recruiting
-        planner that placed top 10 of about 120 W&amp;L ventures.
-      </>
-    ),
-  },
-  casual: {
-    headline: 'Econ student at W&L. I build the apps I wish existed.',
-    intro: (
-      <>
-        PE intern at Mountaingate Capital this summer. Co-founder of The Answer Movement (240 users in 3 countries).
-        Builder of Ascend, a recruiting planner for college students.
-      </>
-    ),
-  },
-  hi: {
-    headline: 'Hi, I’m Drake.',
-    intro: (
-      <>
-        I study economics at Washington and Lee, spent the summer building models at a private equity firm in
-        Denver, and spend the school year building apps: The Answer Movement and Ascend.
-      </>
-    ),
-  },
-};
-
-// Which hero is live. Kept as data so the other drafts are easy to compare.
-const hero = heroes[(process.env.NEXT_PUBLIC_HERO as keyof typeof heroes) ?? 'facts'] ?? heroes.facts;
+// Headline is a placeholder until Drake picks one of his favorite quotes.
+const headline = 'Hi, I’m Drake.';
 
 export default function Home() {
   return (
@@ -76,9 +45,13 @@ export default function Home() {
               </div>
             </div>
             <h1 className="mt-7 text-balance font-display text-[2.15rem] font-normal leading-[1.08] tracking-[-0.025em] sm:mt-0 sm:text-[3rem] xl:text-[3.5rem]">
-              {hero.headline}
+              {headline}
             </h1>
-            <p className="mt-7 max-w-prose text-[1.15rem] leading-relaxed">{hero.intro}</p>
+            <p className="mt-7 max-w-prose text-[1.15rem] leading-relaxed">
+              I&rsquo;m a junior at Washington and Lee University, studying economics with minors in entrepreneurship
+              and philosophy. When I&rsquo;m not in class, I love playing anything active or competitive. From Euchre
+              with family to basketball and pickleball with friends, if you need an extra player, I&rsquo;ll be there.
+            </p>
             <div className="mt-9">
               <ContactActions />
               <p className="mt-4 text-[0.95rem] text-muted">
@@ -89,6 +62,25 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section aria-label="Why I care about AI" className="page pb-20 lg:pb-28">
+        <div className="max-w-[42rem] space-y-5 border-l-2 border-navy pl-6 text-[1.15rem] leading-relaxed lg:ml-[8.33%]">
+          <p>
+            Professionally, I&rsquo;m fascinated by AI. Not because it makes everything faster; frankly, I could
+            stand to stop and smell the roses more often. It&rsquo;s because AI is already lowering the barrier to
+            building new products, solving &ldquo;impossible&rdquo; problems, and changing the world for the better.
+          </p>
+          <p>
+            I&rsquo;m not blind to the opposite possibility, but I&rsquo;m an optimist, and I try not to let the
+            headlines dim my glow. I can&rsquo;t promise to leave the world better than I found it, but I&rsquo;m
+            going to try, and worrying about &ldquo;what if&rdquo; won&rsquo;t get it done.
+          </p>
+          <p className="text-muted">
+            I hope you enjoy the site. If you have questions, my contact info is easy to find, and I&rsquo;d love to
+            chat.
+          </p>
         </div>
       </section>
 

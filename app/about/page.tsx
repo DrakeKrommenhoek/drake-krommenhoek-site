@@ -16,9 +16,6 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  // Books show once they have a real title; placeholders only show while developing.
-  const shelf = showPlaceholders ? books : books.filter((b) => !isBlank(b.title));
-
   return (
     <>
       <PageIntro title="About" />
@@ -91,30 +88,29 @@ export default function AboutPage() {
         </dl>
       </section>
 
-      {shelf.length > 0 && (
-        <section aria-labelledby="reading-heading" className="page mt-20">
-          <h2 id="reading-heading" className="font-display text-[1.6rem] tracking-[-0.01em]">
-            Reading list
-          </h2>
-          <ul className="mt-6 border-t border-rule">
-            {shelf.map((b, i) => (
-              <li key={i} className="grid gap-1 border-b border-rule py-5 sm:grid-cols-[18rem_1fr] sm:gap-8">
-                <p>
-                  <span className="font-medium italic">
-                    <RichText text={b.title} />
-                  </span>
-                  <span className="text-muted">
-                    , <RichText text={b.author} />
-                  </span>
-                </p>
-                <p className="text-muted">
-                  <RichText text={b.note} />
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      <section aria-labelledby="reading-heading" className="page mt-20">
+        <h2 id="reading-heading" className="font-display text-[1.6rem] tracking-[-0.01em]">
+          Reading list
+        </h2>
+        <div className="mt-6 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+          {(['Lately', 'Grew up on'] as const).map((shelf) => (
+            <div key={shelf}>
+              <h3 className="text-muted">{shelf}</h3>
+              <ul className="mt-3 border-t border-rule">
+                {books
+                  .filter((b) => b.shelf === shelf)
+                  .map((b) => (
+                    <li key={b.title} className="border-b border-rule py-3">
+                      <span className="italic">{b.title}</span>
+                      <span className="text-muted">, {b.author}</span>
+                      {b.note && <p className="mt-1 text-muted">{b.note}</p>}
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
 }
