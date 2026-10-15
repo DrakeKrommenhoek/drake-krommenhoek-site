@@ -12,7 +12,7 @@ export interface ProjectSummary {
   stack: string[];
   /** What the cover screenshot should show, used as the placeholder label until coverImage exists. */
   cover: string;
-  /** Drop a 1600x1000 PNG in public/images/projects/ and point here, e.g. '/images/projects/ascend.png'. */
+  /** A 2400x1500 PNG in public/images/projects/, e.g. '/images/projects/ascend.png'. Keep key content in the top 1350px (case study crops to 16:9). */
   coverImage?: { src: string; alt: string };
   repo?: string;
   live?: string;
@@ -30,6 +30,10 @@ export const projects: ProjectSummary[] = [
     period: 'March 2026 to present',
     stack: ['JavaScript', 'PWA', 'Vercel Functions', 'Claude API'],
     cover: 'SCREENSHOT: The Answer Movement daily workout screen',
+    coverImage: {
+      src: '/images/projects/answer-movement.png',
+      alt: 'The Answer Movement on three phones: the Day 9 screen, I is for Imagination, in front, with the workout view on the left and the journal entry on the right',
+    },
     live: 'https://the-answer-movement-app.vercel.app',
   },
   {
@@ -43,6 +47,10 @@ export const projects: ProjectSummary[] = [
     period: 'January 2026 to present',
     stack: ['React', 'Vite', 'Tailwind CSS', 'PWA'],
     cover: 'SCREENSHOT: Ascend dashboard, master calendar view',
+    coverImage: {
+      src: '/images/projects/ascend.png',
+      alt: 'Ascend dashboard on a laptop with a color-coded week of classes and recruiting events, beside phones showing the Eagle, The Strategist archetype reveal and the recruiting pipeline',
+    },
     repo: 'https://github.com/DrakeKrommenhoek/Ascend_App',
     live: 'https://ascend-app-one.vercel.app',
   },
