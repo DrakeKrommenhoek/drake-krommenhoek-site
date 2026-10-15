@@ -17,6 +17,7 @@ const statement = [
 const tools = [
   { group: 'Build', items: 'Next.js, TypeScript, React, Supabase, Python, AI-assisted development' },
   { group: 'Analyze', items: 'Econometrics, regression, statistical analysis, Excel' },
+  { group: 'Finance', items: 'Three-statement modeling, DCF, public comps, market mapping, CIM and QoE review, FactSet' },
 ];
 
 export default function Home() {
@@ -35,7 +36,7 @@ export default function Home() {
               className="aspect-[4/5] w-full object-cover object-top"
             />
             <figcaption className="mt-3 font-mono text-[0.78rem] text-muted">
-              Lexington, Virginia · Colorado
+              The Colonnade, Washington and Lee University
             </figcaption>
           </figure>
 

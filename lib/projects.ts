@@ -10,7 +10,10 @@ export interface ProjectSummary {
   statusNote: string;
   period: string;
   stack: string[];
+  /** What the cover screenshot should show, used as the placeholder label until coverImage exists. */
   cover: string;
+  /** Drop a 1600x1000 PNG in public/images/projects/ and point here, e.g. '/images/projects/ascend.png'. */
+  coverImage?: { src: string; alt: string };
   repo?: string;
   live?: string;
 }
@@ -23,7 +26,7 @@ export const projects: ProjectSummary[] = [
       'A 28-day wellness app built on my trainer’s ABC framework: one letter, one workout, and one journal entry each day.',
     role: 'Co-founder and builder',
     status: 'built',
-    statusNote: 'live since February 2026',
+    statusNote: 'live, 240 users in 3 countries',
     period: 'February 2026 to present',
     stack: ['JavaScript', 'PWA', 'Vercel Functions', 'Claude API'],
     cover: 'SCREENSHOT: The Answer Movement daily workout screen',
@@ -36,8 +39,8 @@ export const projects: ProjectSummary[] = [
       'A planning system for college students that puts recruiting, classes, deadlines, and networking in one place.',
     role: 'Founder, designer, and builder',
     status: 'prototype',
-    statusNote: 'demoed March 2026',
-    period: 'March 2026 to present',
+    statusNote: 'top 10 of about 120 ventures',
+    period: 'January 2026 to present',
     stack: ['React', 'Vite', 'Tailwind CSS', 'PWA'],
     cover: 'SCREENSHOT: Ascend dashboard, master calendar view',
     repo: 'https://github.com/DrakeKrommenhoek/Ascend_App',

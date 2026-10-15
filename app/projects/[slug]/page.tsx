@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import CaseTimeline from '@/components/CaseTimeline';
 import EmailMenu from '@/components/EmailMenu';
 import Placeholder from '@/components/Placeholder';
+import ProjectCover from '@/components/ProjectCover';
 import RichText from '@/components/RichText';
 import StatusTag from '@/components/StatusTag';
 import { caseStudies, publishable, type Block } from '@/lib/case-studies';
@@ -124,7 +125,7 @@ export default function CaseStudyPage({ params }: Props) {
       </header>
 
       <div className="page">
-        <Placeholder label={project.cover} ratio="16 / 9" />
+        <ProjectCover project={project} index={projects.indexOf(project)} ratio="16 / 9" priority />
       </div>
 
       <div className="page grid-page mt-16 lg:mt-24">

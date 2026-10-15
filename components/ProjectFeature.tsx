@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Placeholder from '@/components/Placeholder';
+import ProjectCover from '@/components/ProjectCover';
 import StatusTag from '@/components/StatusTag';
 import type { ProjectSummary } from '@/lib/projects';
 
@@ -30,23 +30,7 @@ export default function ProjectFeature({ project, index = 0 }: { project: Projec
       </div>
       <div className="col-span-4 lg:col-span-7">
         <Link href={href} tabIndex={-1} aria-hidden="true" className="block">
-          <Placeholder
-            label={project.cover}
-            fallback={
-              <div
-                className={`flex aspect-[16/10] flex-col justify-between p-8 transition-colors sm:p-10 ${
-                  index % 2 === 0
-                    ? 'bg-navy text-paper hover:bg-ink'
-                    : 'border border-ink bg-[#EAE5DA] text-ink hover:bg-[#E2DCCF]'
-                }`}
-              >
-                <span className="font-mono text-[0.8rem] opacity-70">{project.period}</span>
-                <span className="font-display text-[2.4rem] leading-[1.02] tracking-[-0.02em] sm:text-[3.4rem]">
-                  {project.name}
-                </span>
-              </div>
-            }
-          />
+          <ProjectCover project={project} index={index} />
         </Link>
       </div>
     </article>

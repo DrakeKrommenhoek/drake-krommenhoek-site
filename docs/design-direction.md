@@ -24,8 +24,8 @@ Chosen 2026-10-09.
 ## Decisions
 - Resume: keep current PDF (approved exception)
 - Writing pages and subscribe API: removed
-- Email split (2026-10-15): "Email me" asks work or personal first. Work goes to krommenhoekconsulting@gmail.com
-  (create before launch), personal to drake.krommenhoek@gmail.com. Both set in `lib/site.ts`.
+- Email split (2026-10-15): "Email me" asks work or personal first. Work goes to dkconsulting@gmail.com,
+  personal to drake.krommenhoek@gmail.com. Both set in `lib/site.ts`.
 
 ## Homepage hero (2026-10-15)
 Applies the web principles from design thinking class: one focal point, Z reading pattern, intentional mobile.

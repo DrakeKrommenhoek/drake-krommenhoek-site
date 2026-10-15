@@ -1,4 +1,4 @@
-// Source: public/Krommenhoek_Resume_Feb.pdf, plus project start dates from each project's git history.
+// Source: public/Krommenhoek_Drake_Resume.pdf (October 2026).
 // Mountaingate Capital is listed by name, role, and dates only. Do not describe the work.
 
 export type EntryKind = 'Building' | 'Work' | 'Leadership';
@@ -18,23 +18,33 @@ export const entries: Entry[] = [
     org: 'Mountaingate Capital',
     role: 'Private Equity Intern',
     kind: 'Work',
-    dates: 'Jun 2026 to Aug 2026',
+    dates: 'May 2026 to Aug 2026',
+    location: 'Denver, CO',
     points: [],
   },
   {
     org: 'Ascend',
-    role: 'Founder and builder',
+    role: 'Founder, student productivity and recruiting platform',
     kind: 'Building',
-    dates: 'Mar 2026 to present',
-    points: ['Designed and built an interactive prototype of a planning system for college recruiting and coursework.'],
+    dates: 'Jan 2026 to present',
+    location: 'Lexington, VA',
+    points: [
+      'Took a class venture beyond MVP into a live progressive web app, owning product design, development, and deployment.',
+      'Won about $3,000 in development funding from the Entrepreneurship Society and placed top 10 of about 120 ventures.',
+    ],
     href: '/projects/ascend',
   },
   {
     org: 'The Answer Movement',
-    role: 'Co-founder and builder',
+    role: 'Co-founder and Product Lead',
     kind: 'Building',
-    dates: 'Feb 2026 to present',
-    points: ['Built and shipped a 28-day wellness web app, then kept improving it through monthly program releases.'],
+    dates: 'Mar 2026 to present',
+    location: 'Louisville, CO and Lexington, VA',
+    points: [
+      'Lead product for a 28-day wellness practice app built around a patented training device, launched to 240 users in 3 countries.',
+      'Built and lead the App Store roadmap (native rebuild, content pipeline, device integration), ahead of schedule for January 2027.',
+      'Placed top 10 of about 120 ventures at the W&L Entrepreneurship Summit.',
+    ],
     href: '/projects/the-answer-movement',
   },
   {
@@ -45,7 +55,7 @@ export const entries: Entry[] = [
     location: 'Lexington, VA',
     points: [
       'Selected to a team that develops a startup idea, builds pitch decks, and presents progress to secure funding.',
-      'Six or more hours a week on research, product design, web development, and alumni mentorship.',
+      'Ten or more hours a week on research, product design, web development, and alumni mentorship.',
     ],
   },
   {
@@ -53,7 +63,7 @@ export const entries: Entry[] = [
     role: 'Student Guest Speaker',
     kind: 'Leadership',
     dates: 'Sep 2025',
-    points: ['Spoke on a panel with industry leaders about AI use cases in healthcare and life sciences.'],
+    points: ['Selected to speak at a 2,800+ participant summit across 13 countries, on how AI can democratize education.'],
   },
   {
     org: 'Sigma Chi, Zeta Chapter',
@@ -109,11 +119,11 @@ export const entries: Entry[] = [
 export const education = [
   {
     school: 'Washington and Lee University',
-    detail: 'BS in Economics, minors in Philosophy and Entrepreneurship. GPA 3.8.',
+    detail: 'BS in Economics, minors in Entrepreneurship and Philosophy. GPA 3.8.',
     dates: 'Class of 2028',
     location: 'Lexington, VA',
     points: [
-      'Coursework: Managerial Finance, Accounting, Business Analytics, Microeconomic Theory.',
+      'Coursework: Managerial Finance, Econometrics, Entrepreneurship, Micro Theory, Buddhist Economics.',
       'Writing award for “The Monster Was Never In Your Closet,” one of 8 students selected from 400+ applicants.',
     ],
   },

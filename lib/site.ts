@@ -10,15 +10,14 @@ export const site = {
   description:
     'Drake Krommenhoek is an economics student at Washington and Lee who finds meaningful problems, studies them with data, and builds products that solve them.',
   // Two inboxes so work inquiries stay separate from personal mail.
-  // Create the professional inbox before launch; mail to an address that does not exist bounces.
   email: {
-    professional: 'krommenhoekconsulting@gmail.com',
+    professional: 'dkconsulting@gmail.com',
     personal: 'drake.krommenhoek@gmail.com',
   },
   github: 'https://github.com/DrakeKrommenhoek',
   linkedin: 'https://www.linkedin.com/in/drakekrommenhoek',
   resume: {
-    href: '/Krommenhoek_Resume_Feb.pdf',
+    href: '/Krommenhoek_Drake_Resume.pdf',
     filename: 'Drake_Krommenhoek_Resume.pdf',
   },
 } as const;

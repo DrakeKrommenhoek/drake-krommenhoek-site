@@ -29,7 +29,7 @@ npm run lint
 - `lib/projects.ts`: project cards (order here is the order on the site).
 - `lib/case-studies.ts`: case study sections and timelines.
 - `lib/experience.ts`: experience timeline and education.
-- `public/Krommenhoek_Resume_Feb.pdf`: the downloadable resume. If you rename it, update `lib/site.ts`.
+- `public/Krommenhoek_Drake_Resume.pdf`: the downloadable resume. If you rename it, update `lib/site.ts`.
 
 ### Placeholders
 
