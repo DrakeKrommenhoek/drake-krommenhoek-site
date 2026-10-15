@@ -12,7 +12,7 @@ export interface ProjectSummary {
   stack: string[];
   /** What the cover screenshot should show, used as the placeholder label until coverImage exists. */
   cover: string;
-  /** A 2400x1500 PNG in public/images/projects/, e.g. '/images/projects/ascend.png'. Keep key content in the top 1350px (case study crops to 16:9). */
+  /** A 2400x1500 PNG in public/images/projects/, e.g. '/images/projects/ascend.png'. Shown uncropped at 16:10 on both the homepage and the case study. */
   coverImage?: { src: string; alt: string };
   repo?: string;
   live?: string;
@@ -24,7 +24,7 @@ export const projects: ProjectSummary[] = [
     name: 'The Answer Movement',
     summary:
       'A 28-day wellness app built on my trainer’s ABC framework: one letter, one workout, and one journal entry each day.',
-    role: 'Co-founder and builder',
+    role: 'Co-founder and product lead',
     status: 'built',
     statusNote: 'live, 240 users in 3 countries',
     period: 'March 2026 to present',

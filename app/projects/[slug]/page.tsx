@@ -125,7 +125,7 @@ export default function CaseStudyPage({ params }: Props) {
       </header>
 
       <div className="page">
-        <ProjectCover project={project} index={projects.indexOf(project)} ratio="16 / 9" priority />
+        <ProjectCover project={project} index={projects.indexOf(project)} priority />
       </div>
 
       <div className="page grid-page mt-16 lg:mt-24">
