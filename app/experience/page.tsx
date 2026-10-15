@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageIntro from '@/components/PageIntro';
-import { education, entries } from '@/lib/experience';
+import { education, entries, type Entry } from '@/lib/experience';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -25,37 +25,25 @@ export default function ExperiencePage() {
           Timeline
         </h2>
         <ol className="border-t border-rule">
-          {entries.map((e) => (
-            <li key={e.org} className="grid-page gap-y-2 border-b border-rule py-8">
-              <div className="col-span-4 lg:col-span-3">
-                <p className="font-mono text-[0.85rem] text-muted">{e.dates}</p>
-                <p className="mt-1 text-[0.9rem] text-muted">{e.kind}</p>
-              </div>
-              <div className="col-span-4 lg:col-span-8">
-                <h3 className="font-display text-[1.5rem] leading-snug tracking-[-0.01em]">
-                  {e.href ? (
-                    <Link href={e.href} className="link">
-                      {e.org}
-                    </Link>
-                  ) : (
-                    e.org
-                  )}
-                </h3>
-                <p className="mt-1 text-muted">
-                  {e.role}
-                  {e.location && `, ${e.location}`}
-                </p>
-                {e.points.length > 0 && (
-                  <ul className="prose-case max-w-prose">
-                    {e.points.map((p) => (
-                      <li key={p}>{p}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </li>
+          {entries.filter((e) => !e.earlier).map((e) => (
+            <EntryRow key={e.org} entry={e} />
           ))}
         </ol>
+
+        {/* Older roles stay on the page but out of the way until someone asks for them. */}
+        <details className="group border-b border-rule">
+          <summary className="flex cursor-pointer list-none items-center justify-between py-6 text-muted hover:text-ink [&::-webkit-details-marker]:hidden">
+            <span className="font-display text-[1.25rem] tracking-[-0.01em]">Earlier experience</span>
+            <svg aria-hidden="true" viewBox="0 0 12 12" className="h-4 w-4 transition-transform group-open:rotate-180">
+              <path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+          </summary>
+          <ol className="border-t border-rule [&>li:last-child]:border-b-0">
+            {entries.filter((e) => e.earlier).map((e) => (
+              <EntryRow key={e.org} entry={e} />
+            ))}
+          </ol>
+        </details>
       </section>
 
       <section aria-labelledby="education-heading" className="page mt-20">
@@ -83,5 +71,38 @@ export default function ExperiencePage() {
         </ul>
       </section>
     </>
+  );
+}
+
+function EntryRow({ entry: e }: { entry: Entry }) {
+  return (
+    <li className="grid-page gap-y-2 border-b border-rule py-8">
+      <div className="col-span-4 lg:col-span-3">
+        <p className="font-mono text-[0.85rem] text-muted">{e.dates}</p>
+        <p className="mt-1 text-[0.9rem] text-muted">{e.kind}</p>
+      </div>
+      <div className="col-span-4 lg:col-span-8">
+        <h3 className="font-display text-[1.5rem] leading-snug tracking-[-0.01em]">
+          {e.href ? (
+            <Link href={e.href} className="link">
+              {e.org}
+            </Link>
+          ) : (
+            e.org
+          )}
+        </h3>
+        <p className="mt-1 text-muted">
+          {e.role}
+          {e.location && `, ${e.location}`}
+        </p>
+        {e.points.length > 0 && (
+          <ul className="prose-case max-w-prose">
+            {e.points.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </li>
   );
 }

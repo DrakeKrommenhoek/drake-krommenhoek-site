@@ -10,6 +10,8 @@ export interface Entry {
   location?: string;
   points: string[];
   href?: string;
+  /** Not on the current resume. Shown under "Earlier experience", collapsed by default. */
+  earlier?: boolean;
 }
 
 export const entries: Entry[] = [
@@ -80,6 +82,7 @@ export const entries: Entry[] = [
   },
   {
     org: 'Lucky Pie Pizza',
+    earlier: true,
     role: 'Busser/Server in training',
     kind: 'Work',
     dates: 'Jun 2025 to Aug 2025',
@@ -99,6 +102,7 @@ export const entries: Entry[] = [
   },
   {
     org: 'Freelance e-commerce',
+    earlier: true,
     role: 'E-commerce Fashion Product Sourcing and Resale Specialist',
     kind: 'Building',
     dates: 'May 2023 to Sep 2025',
@@ -110,6 +114,7 @@ export const entries: Entry[] = [
   },
   {
     org: 'Water World Colorado',
+    earlier: true,
     role: 'Advanced Deep Dive Lifeguard',
     kind: 'Work',
     dates: 'Jun 2022 to Aug 2024',
