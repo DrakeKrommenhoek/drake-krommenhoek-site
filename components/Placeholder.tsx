@@ -20,7 +20,7 @@ export default function Placeholder({ label, ratio = '16 / 10', className = '', 
       style={{ aspectRatio: ratio }}
       className={`flex items-center justify-center border border-dashed border-rust/60 bg-[#EFEBE2] p-6 text-center ${className}`}
     >
-      <span className="font-mono text-[0.8rem] leading-relaxed text-rust">[{label}]</span>
+      <span className="text-[0.85rem] leading-relaxed text-rust">[{label}]</span>
     </div>
   );
 }
@@ -28,5 +28,5 @@ export default function Placeholder({ label, ratio = '16 / 10', className = '', 
 /** Inline marker for an unconfirmed fact inside running text. */
 export function Pending({ children }: { children: React.ReactNode }) {
   if (!showPlaceholders) return null;
-  return <span className="font-mono text-[0.85em] text-rust">[{children}]</span>;
+  return <span className="text-[0.9em] text-rust">[{children}]</span>;
 }

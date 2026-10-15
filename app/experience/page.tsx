@@ -53,7 +53,7 @@ export default function ExperiencePage() {
         <ul className="mt-6 border-t border-rule">
           {education.map((ed) => (
             <li key={ed.school} className="grid-page gap-y-2 border-b border-rule py-8">
-              <p className="col-span-4 font-mono text-[0.85rem] text-muted lg:col-span-3">{ed.dates}</p>
+              <p className="col-span-4 text-[0.95rem] text-muted lg:col-span-3">{ed.dates}</p>
               <div className="col-span-4 lg:col-span-8">
                 <h3 className="font-display text-[1.5rem] leading-snug tracking-[-0.01em]">{ed.school}</h3>
                 <p className="mt-1 text-muted">{ed.location}</p>
@@ -78,7 +78,7 @@ function EntryRow({ entry: e }: { entry: Entry }) {
   return (
     <li className="grid-page gap-y-2 border-b border-rule py-8">
       <div className="col-span-4 lg:col-span-3">
-        <p className="font-mono text-[0.85rem] text-muted">{e.dates}</p>
+        <p className="text-[0.95rem] text-muted">{e.dates}</p>
         <p className="mt-1 text-[0.9rem] text-muted">{e.kind}</p>
       </div>
       <div className="col-span-4 lg:col-span-8">

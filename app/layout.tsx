@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Fraunces, Instrument_Sans, JetBrains_Mono } from 'next/font/google';
+import { Fraunces, Instrument_Sans } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import { site } from '@/lib/site';
@@ -15,13 +15,6 @@ const fraunces = Fraunces({
 const instrument = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-instrument',
-  display: 'swap',
-});
-
-const mono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-mono',
   display: 'swap',
 });
 
@@ -50,7 +43,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${instrument.variable} ${mono.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${instrument.variable}`}>
       <body>
         <SiteHeader />
         <main id="main">{children}</main>

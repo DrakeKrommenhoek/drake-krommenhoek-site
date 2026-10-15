@@ -3,6 +3,7 @@
 // visible placeholder. Do not replace a token without a source.
 
 import type { Status } from '@/components/StatusTag';
+import { isBlank, strip } from '@/lib/placeholders';
 
 export type Block =
   | { kind: 'p'; text: string }
@@ -467,10 +468,6 @@ export const caseStudies: Record<string, CaseStudy> = {
   [answer.slug]: answer,
 };
 
-const TOKEN = /\s*\[[A-Z][A-Z ]*:[^\]]+\]/g;
-const strip = (text: string) => text.replace(TOKEN, '').trim();
-/** Empty once tokens are removed, or only a label left over like "Reach:". */
-const isBlank = (text: string) => strip(text) === '' || strip(text).endsWith(':');
 
 /**
  * The published version of a case study: placeholder tokens removed, along with anything that was only a

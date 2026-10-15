@@ -47,7 +47,7 @@ export default function CaseTimeline({ milestones }: { milestones: Milestone[] }
           <span aria-hidden="true" className="absolute -left-8 top-1.5 h-[11px] w-[11px] rounded-full border border-navy bg-paper sm:-left-10" />
           <div className={`grid gap-5 ${m.shot ? 'sm:grid-cols-[1fr_14rem]' : ''}`}>
             <div>
-              <p className="font-mono text-[0.8rem] text-muted">
+              <p className="text-[0.85rem] text-muted">
                 {String(i + 1).padStart(2, '0')}
                 <span className="mx-2 text-rule">/</span>
                 <RichText text={m.date} />

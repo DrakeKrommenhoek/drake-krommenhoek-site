@@ -8,7 +8,7 @@ export default function SiteFooter() {
       <div className="page grid-page gap-y-10 py-14">
         <div className="col-span-4 lg:col-span-6">
           <p className="max-w-[22ch] font-display text-[1.75rem] leading-tight">
-            Working on a hard problem? I would like to hear about it.
+            Hiring for summer 2027, building something, or short a fourth for Euchre? Email me.
           </p>
           <ContactActions className="mt-6" />
         </div>

@@ -15,7 +15,7 @@ const word: Record<Status, string> = {
 /** Marks whether something exists in working code, as a mockup, or only on the roadmap. */
 export default function StatusTag({ status, children }: { status: Status; children?: React.ReactNode }) {
   return (
-    <span className={`inline-flex items-center gap-2 font-mono text-[0.78rem] ${status === 'planned' ? 'text-rust' : 'text-muted'}`}>
+    <span className={`inline-flex items-center gap-2 text-[0.85rem] ${status === 'planned' ? 'text-rust' : 'text-muted'}`}>
       <span aria-hidden="true" className={`h-1.5 w-1.5 rounded-full ${tone[status]}`} />
       <span>
         {word[status]}

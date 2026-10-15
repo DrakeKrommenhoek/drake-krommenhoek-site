@@ -8,7 +8,7 @@ export const site = {
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : 'http://localhost:3000'),
   description:
-    'Drake Krommenhoek is an economics student at Washington and Lee who finds meaningful problems, studies them with data, and builds products that solve them.',
+    'Drake Krommenhoek: economics at Washington and Lee, Class of 2028. Co-founder of The Answer Movement, builder of Ascend, and 2026 private equity intern at Mountaingate Capital.',
   // Two inboxes so work inquiries stay separate from personal mail.
   email: {
     professional: 'dkconsulting@gmail.com',

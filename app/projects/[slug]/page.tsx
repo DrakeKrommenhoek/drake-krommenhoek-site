@@ -131,10 +131,9 @@ export default function CaseStudyPage({ params }: Props) {
       <div className="page grid-page mt-16 lg:mt-24">
         <nav aria-label="Case study sections" className="col-span-4 hidden lg:col-span-3 lg:block">
           <ol className="sticky top-24 space-y-2 text-[0.95rem] text-muted">
-            {study.sections.map((s, i) => (
+            {study.sections.map((s) => (
               <li key={s.id}>
                 <a href={`#${s.id}`} className="link hover:text-ink">
-                  <span className="mr-3 font-mono text-[0.8rem]">{String(i + 1).padStart(2, '0')}</span>
                   {s.title}
                 </a>
               </li>
@@ -143,10 +142,9 @@ export default function CaseStudyPage({ params }: Props) {
         </nav>
 
         <div className="col-span-4 lg:col-span-8 lg:col-start-5">
-          {study.sections.map((s, i) => (
+          {study.sections.map((s) => (
             <section key={s.id} id={s.id} aria-labelledby={`${s.id}-heading`} className="scroll-mt-24 border-t border-rule py-12 first:border-t-0 first:pt-0">
               <h2 id={`${s.id}-heading`} className="flex items-baseline gap-4 font-display text-[1.9rem] leading-tight tracking-[-0.01em]">
-                <span className="font-mono text-[0.85rem] font-normal text-muted">{String(i + 1).padStart(2, '0')}</span>
                 {s.title}
               </h2>
               <div className="prose-case mt-6 max-w-prose text-[1.08rem] leading-[1.7]">

@@ -45,7 +45,7 @@ export default function ProjectCover({
               : 'border border-ink bg-[#EAE5DA] text-ink hover:bg-[#E2DCCF]'
           }`}
         >
-          <span className="font-mono text-[0.8rem] opacity-70">{project.period}</span>
+          <span className="text-[0.9rem] opacity-70">{project.period}</span>
           <span className="font-display text-[2.4rem] leading-[1.02] tracking-[-0.02em] sm:text-[3.4rem]">
             {project.name}
           </span>

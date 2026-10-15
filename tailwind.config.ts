@@ -19,7 +19,6 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-fraunces)', 'Georgia', 'serif'],
         sans: ['var(--font-instrument)', 'Helvetica Neue', 'sans-serif'],
-        mono: ['var(--font-mono)', 'Menlo', 'monospace'],
       },
       maxWidth: {
         page: '76rem',
