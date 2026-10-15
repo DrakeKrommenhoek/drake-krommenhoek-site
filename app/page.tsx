@@ -1,8 +1,12 @@
+import { Fragment } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import AnalyticalWorkSlot from '@/components/AnalyticalWorkSlot';
+import ContactActions from '@/components/ContactActions';
 import ProjectFeature from '@/components/ProjectFeature';
 import { projects } from '@/lib/projects';
 import { site } from '@/lib/site';
+import headshot from '@/public/images/drake-krommenhoek.jpg';
 
 const statement = [
   'I find problems worth solving,',
@@ -18,55 +22,77 @@ const tools = [
 export default function Home() {
   return (
     <>
-      <section className="page pb-20 pt-16 sm:pt-24 lg:pb-28 lg:pt-32">
-        <p className="rise text-[1rem] text-muted">
-          Drake Krommenhoek, economics at Washington and Lee, Class of 2028
-        </p>
-        <h1 className="mt-6 font-display text-[2.6rem] font-normal leading-[1.04] tracking-[-0.03em] sm:text-[3.6rem] lg:text-[4.25rem] xl:text-[4.75rem]">
-          {statement.map((line, i) => (
-            <span key={line} className="rise block text-balance" style={{ animationDelay: `${120 + i * 140}ms` }}>
-              {line}
-            </span>
-          ))}
-        </h1>
+      <section className="page pb-20 pt-8 sm:pt-16 lg:pb-28 lg:pt-20">
+        <div className="grid-page items-center gap-y-8">
+          {/* Photo: the single focal point. Top right on desktop (Z pattern), first thing on mobile. */}
+          <figure className="rise col-span-4 hidden sm:col-span-2 sm:block lg:order-2 lg:col-span-4 lg:col-start-9">
+            <Image
+              src={headshot}
+              alt="Drake Krommenhoek"
+              placeholder="blur"
+              priority
+              sizes="(min-width: 1024px) 26vw, (min-width: 640px) 40vw, 90vw"
+              className="aspect-[4/5] w-full object-cover object-top"
+            />
+            <figcaption className="mt-3 font-mono text-[0.78rem] text-muted">
+              Lexington, Virginia · Colorado
+            </figcaption>
+          </figure>
 
-        <div className="grid-page mt-14 gap-y-10">
-          <p className="rise col-span-4 max-w-prose text-[1.15rem] leading-relaxed lg:col-span-6" style={{ animationDelay: '600ms' }}>
-            I study economics with minors in entrepreneurship and philosophy, and I build software around
-            problems I know firsthand: The Answer Movement, a 28-day wellness program I co-founded with my
-            trainer, and Ascend, for the chaos of college recruiting.
-          </p>
-          <div className="rise col-span-4 lg:col-span-5 lg:col-start-8" style={{ animationDelay: '700ms' }}>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/projects" className="btn-solid">
-                Explore the projects
-              </Link>
-              <a href={site.github} target="_blank" rel="noopener noreferrer" className="btn-ghost">
-                View GitHub
-              </a>
+          <div className="col-span-4 lg:order-1 lg:col-span-8">
+            {/* Mobile: the photo pairs with the name so the actions stay above the fold. */}
+            <div className="rise flex items-center gap-5 sm:hidden">
+              <Image
+                src={headshot}
+                alt="Drake Krommenhoek"
+                placeholder="blur"
+                priority
+                sizes="8rem"
+                className="aspect-[4/5] w-[7.5rem] shrink-0 object-cover object-top"
+              />
+              <div>
+                <p className="font-display text-[1.4rem] leading-tight">{site.name}</p>
+                <p className="mt-1 text-[0.95rem] leading-snug text-muted">
+                  Economics, Washington and Lee, Class of 2028
+                </p>
+              </div>
             </div>
-            <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-              <a href={`mailto:${site.email}`} className="link">
-                Get in touch
-              </a>
-              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="link">
-                LinkedIn
-              </a>
-              <a href={site.resume.href} download={site.resume.filename} className="link text-muted hover:text-ink">
-                Download resume
-              </a>
+            <p className="rise hidden text-[1rem] text-muted sm:block" style={{ animationDelay: '80ms' }}>
+              {site.name} · Economics, Washington and Lee, Class of 2028
             </p>
+            <h1 className="mt-7 text-balance sm:mt-5 font-display text-[2.15rem] font-normal leading-[1.06] tracking-[-0.03em] sm:text-[3rem] xl:text-[3.5rem]">
+              {statement.map((line, i) => (
+                <Fragment key={line}>
+                  <span className="rise inline-block" style={{ animationDelay: `${160 + i * 120}ms` }}>
+                    {line}
+                  </span>{' '}
+                </Fragment>
+              ))}
+            </h1>
+            <p className="rise mt-7 max-w-prose text-[1.15rem] leading-relaxed" style={{ animationDelay: '560ms' }}>
+              I study economics and build software for problems I know firsthand: The Answer Movement, a 28-day
+              wellness app I co-founded with my trainer, and Ascend, for the chaos of college recruiting.
+            </p>
+            <div className="rise mt-9" style={{ animationDelay: '660ms' }}>
+              <ContactActions />
+              <p className="mt-4 text-[0.95rem] text-muted">
+                Looking for Summer 2027 roles in product, analytics, and venture.{' '}
+                <a href="#projects" className="link text-ink">
+                  See my work
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section aria-labelledby="projects-heading" className="page">
+      <section id="projects" aria-labelledby="projects-heading" className="page scroll-mt-20">
         <h2 id="projects-heading" className="font-display text-[1.6rem] tracking-[-0.01em]">
           Selected projects
         </h2>
         <div className="mt-6">
-          {projects.map((project) => (
-            <ProjectFeature key={project.slug} project={project} />
+          {projects.map((project, i) => (
+            <ProjectFeature key={project.slug} project={project} index={i} />
           ))}
           <AnalyticalWorkSlot />
         </div>

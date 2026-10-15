@@ -9,7 +9,12 @@ export const site = {
       : 'http://localhost:3000'),
   description:
     'Drake Krommenhoek is an economics student at Washington and Lee who finds meaningful problems, studies them with data, and builds products that solve them.',
-  email: 'drake.krommenhoek@gmail.com',
+  // Two inboxes so work inquiries stay separate from personal mail.
+  // Create the professional inbox before launch; mail to an address that does not exist bounces.
+  email: {
+    professional: 'krommenhoekconsulting@gmail.com',
+    personal: 'drake.krommenhoek@gmail.com',
+  },
   github: 'https://github.com/DrakeKrommenhoek',
   linkedin: 'https://www.linkedin.com/in/drakekrommenhoek',
   resume: {
@@ -17,6 +22,30 @@ export const site = {
     filename: 'Drake_Krommenhoek_Resume.pdf',
   },
 } as const;
+
+export const contactOptions = [
+  {
+    id: 'professional',
+    label: 'Work inquiry',
+    hint: 'Roles, projects, and consulting',
+    email: site.email.professional,
+    subject: 'Work inquiry',
+  },
+  {
+    id: 'personal',
+    label: 'Personal',
+    hint: 'Everything else',
+    email: site.email.personal,
+    subject: 'Hello',
+  },
+] as const;
+
+/**
+ * Bracketed tokens like [METRIC: ...] and screenshot slots show while developing so they are easy to find.
+ * Production builds hide them. Set NEXT_PUBLIC_SHOW_PLACEHOLDERS=1 to show them in a preview deploy.
+ */
+export const showPlaceholders =
+  process.env.NODE_ENV !== 'production' || process.env.NEXT_PUBLIC_SHOW_PLACEHOLDERS === '1';
 
 export const nav = [
   { name: 'Projects', href: '/projects' },

@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import CaseTimeline from '@/components/CaseTimeline';
+import EmailMenu from '@/components/EmailMenu';
 import Placeholder from '@/components/Placeholder';
 import RichText from '@/components/RichText';
 import StatusTag from '@/components/StatusTag';
-import { caseStudies, type Block } from '@/lib/case-studies';
+import { caseStudies, publishable, type Block } from '@/lib/case-studies';
 import { getProject, projects } from '@/lib/projects';
-import { site } from '@/lib/site';
+import { showPlaceholders, site } from '@/lib/site';
 
 interface Props {
   params: { slug: string };
@@ -70,8 +71,9 @@ function BlockView({ block }: { block: Block }) {
 
 export default function CaseStudyPage({ params }: Props) {
   const project = getProject(params.slug);
-  const study = caseStudies[params.slug];
-  if (!project || !study) notFound();
+  const draft = caseStudies[params.slug];
+  if (!project || !draft) notFound();
+  const study = showPlaceholders ? draft : publishable(draft);
 
   const next = projects[(projects.indexOf(project) + 1) % projects.length];
 
@@ -165,9 +167,7 @@ export default function CaseStudyPage({ params }: Props) {
           </Link>
         </div>
         <div className="col-span-4 lg:col-span-5 lg:col-start-8 lg:self-end">
-          <a href={`mailto:${site.email}`} className="btn-ghost">
-            Get in touch
-          </a>
+          <EmailMenu variant="ghost" />
         </div>
       </aside>
     </article>

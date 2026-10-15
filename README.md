@@ -25,7 +25,7 @@ npm run lint
 
 ## Where content lives
 
-- `lib/site.ts`: name, email, GitHub, LinkedIn, resume path, nav.
+- `lib/site.ts`: name, work and personal email, GitHub, LinkedIn, resume path, nav.
 - `lib/projects.ts`: project cards (order here is the order on the site).
 - `lib/case-studies.ts`: case study sections and timelines.
 - `lib/experience.ts`: experience timeline and education.
@@ -33,7 +33,7 @@ npm run lint
 
 ### Placeholders
 
-Any text like `[METRIC: ...]`, `[SCREENSHOT: ...]`, or `[CONFIRM: ...]` in `lib/` renders as a visible rust-colored placeholder. Replace a token only with a fact you can source. Screenshot slots are `cover` in `lib/projects.ts` and `figure` blocks and `shot` fields in `lib/case-studies.ts`.
+Any text like `[METRIC: ...]`, `[SCREENSHOT: ...]`, or `[CONFIRM: ...]` in `lib/` renders as a visible rust-colored placeholder in `npm run dev`. Production builds hide them, along with anything that was only a placeholder (set `NEXT_PUBLIC_SHOW_PLACEHOLDERS=1` to show them in a preview deploy). Replace a token only with a fact you can source. Screenshot slots are `cover` in `lib/projects.ts` and `figure` blocks and `shot` fields in `lib/case-studies.ts`.
 
 ## Design
 

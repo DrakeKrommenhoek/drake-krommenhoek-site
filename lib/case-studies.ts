@@ -466,3 +466,35 @@ export const caseStudies: Record<string, CaseStudy> = {
   [ascend.slug]: ascend,
   [answer.slug]: answer,
 };
+
+const TOKEN = /\s*\[[A-Z][A-Z ]*:[^\]]+\]/g;
+const strip = (text: string) => text.replace(TOKEN, '').trim();
+/** Empty once tokens are removed, or only a label left over like "Reach:". */
+const isBlank = (text: string) => strip(text) === '' || strip(text).endsWith(':');
+
+/**
+ * The published version of a case study: placeholder tokens removed, along with anything that was only a
+ * placeholder (screenshot slots, unfinished metrics, empty sections). Used when placeholders are hidden.
+ */
+export function publishable(study: CaseStudy): CaseStudy {
+  const blocks = (list: Block[]): Block[] =>
+    list.flatMap((b): Block[] => {
+      if (b.kind === 'figure') return [];
+      if (b.kind === 'p') return isBlank(b.text) ? [] : [{ ...b, text: strip(b.text) }];
+      if (b.kind === 'list') {
+        const items = b.items.filter((i) => !isBlank(i)).map(strip);
+        return items.length ? [{ ...b, items }] : [];
+      }
+      return [b];
+    });
+
+  return {
+    ...study,
+    sections: study.sections
+      .map((s) => ({ ...s, blocks: blocks(s.blocks) }))
+      .filter((s) => s.blocks.length > 0 || s.timeline),
+    timeline: study.timeline
+      .filter((m) => !isBlank(m.date) && !isBlank(m.detail))
+      .map(({ shot: _shot, ...m }) => ({ ...m, date: strip(m.date), detail: strip(m.detail) })),
+  };
+}

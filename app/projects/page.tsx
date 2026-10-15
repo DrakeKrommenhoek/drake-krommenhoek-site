@@ -20,8 +20,8 @@ export default function ProjectsPage() {
         </p>
       </PageIntro>
       <section className="page" aria-label="Project list">
-        {projects.map((project) => (
-          <ProjectFeature key={project.slug} project={project} />
+        {projects.map((project, i) => (
+          <ProjectFeature key={project.slug} project={project} index={i} />
         ))}
         <AnalyticalWorkSlot headingLevel="h2" />
       </section>

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageIntro from '@/components/PageIntro';
 import headshot from '@/public/images/drake-krommenhoek.jpg';
-import { site } from '@/lib/site';
+import EmailMenu from '@/components/EmailMenu';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -68,9 +68,7 @@ export default function AboutPage() {
             Outside of that: golf, basketball, pickleball, travel, and scuba.
           </p>
           <div className="flex flex-wrap gap-3 pt-4">
-            <a href={`mailto:${site.email}`} className="btn-solid">
-              Get in touch
-            </a>
+            <EmailMenu />
             <Link href="/experience" className="btn-ghost">
               See my experience
             </Link>

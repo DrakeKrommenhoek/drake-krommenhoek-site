@@ -45,7 +45,7 @@ export default function CaseTimeline({ milestones }: { milestones: Milestone[] }
       {milestones.map((m, i) => (
         <li key={m.title} className="relative">
           <span aria-hidden="true" className="absolute -left-8 top-1.5 h-[11px] w-[11px] rounded-full border border-navy bg-paper sm:-left-10" />
-          <div className="grid gap-5 sm:grid-cols-[1fr_14rem]">
+          <div className={`grid gap-5 ${m.shot ? 'sm:grid-cols-[1fr_14rem]' : ''}`}>
             <div>
               <p className="font-mono text-[0.8rem] text-muted">
                 {String(i + 1).padStart(2, '0')}

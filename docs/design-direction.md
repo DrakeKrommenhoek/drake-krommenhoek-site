@@ -24,5 +24,13 @@ Chosen 2026-10-09.
 ## Decisions
 - Resume: keep current PDF (approved exception)
 - Writing pages and subscribe API: removed
-- Primary email: drake.krommenhoek@gmail.com
+- Email split (2026-10-15): "Email me" asks work or personal first. Work goes to krommenhoekconsulting@gmail.com
+  (create before launch), personal to drake.krommenhoek@gmail.com. Both set in `lib/site.ts`.
+
+## Homepage hero (2026-10-15)
+Applies the web principles from design thinking class: one focal point, Z reading pattern, intentional mobile.
+- Desktop: name top left, photo top right (the focal point), statement down the left, actions at the bottom.
+- Mobile: a compact photo sits beside the name so the actions stay above the fold.
+- Three actions in priority order: Email me (work or personal), LinkedIn, Resume PDF.
+- Placeholder tokens and screenshot slots are hidden in production; project covers fall back to a typographic card.
 - Project repos (read-only): `../Ascend_App`, `../the-answer-movement-app`

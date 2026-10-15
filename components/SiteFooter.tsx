@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ContactActions from '@/components/ContactActions';
 import { nav, site } from '@/lib/site';
 
 export default function SiteFooter() {
@@ -9,9 +10,7 @@ export default function SiteFooter() {
           <p className="max-w-[22ch] font-display text-[1.75rem] leading-tight">
             Working on a hard problem? I would like to hear about it.
           </p>
-          <a href={`mailto:${site.email}`} className="link mt-5 inline-block text-[1.05rem]">
-            {site.email}
-          </a>
+          <ContactActions className="mt-6" />
         </div>
 
         <nav aria-label="Footer" className="col-span-2 lg:col-span-3">
