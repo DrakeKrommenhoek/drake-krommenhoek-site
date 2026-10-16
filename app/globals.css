@@ -10,6 +10,7 @@
   --muted: 92 92 92;
   --rule: 226 226 226;
   --wash: 244 244 244;
+  --accent: 11 37 69;
   color-scheme: light;
 }
 
@@ -19,6 +20,7 @@
   --muted: 160 160 160;
   --rule: 46 46 46;
   --wash: 26 26 26;
+  --accent: 122 162 230;
   color-scheme: dark;
 }
 

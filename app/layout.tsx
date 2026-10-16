@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Dancing_Script, Fraunces, Instrument_Sans } from 'next/font/google';
+import { Fraunces, Instrument_Sans, Pinyon_Script } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import { site } from '@/lib/site';
@@ -18,9 +18,10 @@ const instrument = Instrument_Sans({
   display: 'swap',
 });
 
-const script = Dancing_Script({
+// Script for the name in the header only (inspired by Mayor's logo). Everything else stays plain.
+const script = Pinyon_Script({
   subsets: ['latin'],
-  weight: ['500', '600'],
+  weight: ['400'],
   variable: '--font-script',
   display: 'swap',
 });

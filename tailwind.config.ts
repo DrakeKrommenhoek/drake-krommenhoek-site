@@ -15,8 +15,8 @@ const config: Config = {
         muted: 'rgb(var(--muted) / <alpha-value>)',
         rule: 'rgb(var(--rule) / <alpha-value>)',
         wash: 'rgb(var(--wash) / <alpha-value>)',
-        // Former W&L navy accent, now the same as ink. Kept as a name so links and buttons keep working.
-        navy: 'rgb(var(--ink) / <alpha-value>)',
+        // W&L navy, the one accent color. Lighter in dark mode so it stays readable.
+        navy: 'rgb(var(--accent) / <alpha-value>)',
         rust: '#B4532A',
       },
       fontFamily: {

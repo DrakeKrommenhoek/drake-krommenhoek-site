@@ -47,3 +47,10 @@ cream + serif + mono-label recipe that AI tools default to. Changes:
   accent is retired; `navy` now aliases ink so existing classes keep working.
 - Name and nav are set in Dancing Script (`font-script`). Headings stay Fraunces, body stays Instrument Sans.
 - Light mode 7am to 7pm on the visitor's clock, dark otherwise (`themeScript` in `app/layout.tsx`).
+
+## White, black, and blue; script name only (2026-10-16, later)
+- Drake found the all-cursive version less professional. Palette is white, black, and W&L navy (`--accent`).
+- Only the header name is script (Pinyon Script), inspired by mayorclothing.com's logo. Nav tabs are plain
+  sans in all caps with wide letter spacing. To try another script, swap the font in `app/layout.tsx`
+  (options compared: Pinyon Script, Great Vibes, Allura, Mrs Saint Delafield, Herr Von Muellerhoff,
+  Monsieur La Doulaise).
