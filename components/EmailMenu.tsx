@@ -53,7 +53,7 @@ export default function EmailMenu({ variant = 'solid' }: { variant?: 'solid' | '
       {open && (
         <div
           id={panelId}
-          className="absolute left-0 top-full z-30 mt-2 w-[min(22rem,calc(100vw-2.5rem))] border border-ink bg-paper shadow-[0_10px_30px_-10px_rgba(22,24,29,0.25)]"
+          className="absolute left-0 top-full z-30 mt-2 w-[min(22rem,calc(100vw-2.5rem))] border border-ink bg-paper shadow-[0_10px_30px_-10px_rgba(0,0,0,0.35)]"
         >
           <p className="border-b border-rule px-4 py-2.5 text-[0.9rem] text-muted">What is this about?</p>
           <ul>

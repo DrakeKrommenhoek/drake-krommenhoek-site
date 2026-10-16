@@ -42,7 +42,7 @@ export default function ProjectCover({
           className={`flex flex-col justify-between p-8 transition-colors sm:p-10 ${
             index % 2 === 0
               ? 'bg-navy text-paper hover:bg-ink'
-              : 'border border-ink bg-[#EAE5DA] text-ink hover:bg-[#E2DCCF]'
+              : 'border border-ink bg-wash text-ink hover:bg-rule'
           }`}
         >
           <span className="text-[0.9rem] opacity-70">{project.period}</span>

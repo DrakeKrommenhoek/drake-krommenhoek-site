@@ -18,7 +18,7 @@ export default function Placeholder({ label, ratio = '16 / 10', className = '', 
       role="img"
       aria-label={`Placeholder: ${label}`}
       style={{ aspectRatio: ratio }}
-      className={`flex items-center justify-center border border-dashed border-rust/60 bg-[#EFEBE2] p-6 text-center ${className}`}
+      className={`flex items-center justify-center border border-dashed border-rust/60 bg-wash p-6 text-center ${className}`}
     >
       <span className="text-[0.85rem] leading-relaxed text-rust">[{label}]</span>
     </div>

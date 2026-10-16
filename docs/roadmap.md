@@ -22,6 +22,19 @@ a resume. Pick these up after midterms.
 - Turn it into a travel log Drake controls instead of Instagram. First use: his time in Sydney.
   Each entry: place, dates, a few photos, a short note.
 
+## Look and feel
+- **Animation (Drake wants one).** Ideas that fit the black-and-white, cursive style: the name in the header
+  writing itself in on first load (SVG stroke animation of the script), a slow fade between light and dark
+  at sunrise and sunset, or project covers easing in as they scroll into view. Respect
+  `prefers-reduced-motion` (globals.css already turns motion off for it).
+- **Real sunrise and sunset.** Light/dark currently flips at 7am and 7pm on the visitor's clock
+  (`themeScript` in `app/layout.tsx`). A sunrise calculation from the visitor's time zone would be more exact.
+  Consider a small sun/moon toggle so people can override it.
+- **Project covers in dark mode.** Both covers have a baked-in cream background (#F4F1EA) from before the
+  black-and-white switch. Re-export them on white, or with a transparent background, so they sit cleanly in
+  both modes.
+- The mobile hero repeats the name (header and the card beside the photo). Consider dropping one.
+
 ## Still open from the redesign
 - About page: the moment recruiting broke for him and made him build Ascend (placeholder in `app/about/page.tsx`).
 - Now section: what he's reading right now (placeholder in `lib/personal.ts`).

@@ -9,16 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: '#F4F1EA',
-        ink: '#16181D',
-        muted: '#5B5F66',
-        rule: '#D9D4C7',
-        navy: '#0B2545',
+        // Black and white. Values live in app/globals.css so light and dark mode swap in one place.
+        paper: 'rgb(var(--paper) / <alpha-value>)',
+        ink: 'rgb(var(--ink) / <alpha-value>)',
+        muted: 'rgb(var(--muted) / <alpha-value>)',
+        rule: 'rgb(var(--rule) / <alpha-value>)',
+        wash: 'rgb(var(--wash) / <alpha-value>)',
+        // Former W&L navy accent, now the same as ink. Kept as a name so links and buttons keep working.
+        navy: 'rgb(var(--ink) / <alpha-value>)',
         rust: '#B4532A',
       },
       fontFamily: {
         display: ['var(--font-fraunces)', 'Georgia', 'serif'],
         sans: ['var(--font-instrument)', 'Helvetica Neue', 'sans-serif'],
+        script: ['var(--font-script)', 'cursive'],
       },
       maxWidth: {
         page: '76rem',

@@ -41,3 +41,9 @@ cream + serif + mono-label recipe that AI tools default to. Changes:
 - Copy states the role list once, drops "lesson" sentences, and keeps details only Drake could write.
 - Added Now (homepage), Off the clock and Reading list (About). Content lives in `lib/personal.ts`.
 - Email picker kept, with a soft shadow instead of the hard offset one.
+
+## Black and white, cursive, day/night (2026-10-16)
+- Palette is black and white only (tokens in `app/globals.css`, mapped in `tailwind.config.ts`). The W&L navy
+  accent is retired; `navy` now aliases ink so existing classes keep working.
+- Name and nav are set in Dancing Script (`font-script`). Headings stay Fraunces, body stays Instrument Sans.
+- Light mode 7am to 7pm on the visitor's clock, dark otherwise (`themeScript` in `app/layout.tsx`).

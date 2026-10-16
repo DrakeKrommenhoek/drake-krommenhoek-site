@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light by day, dark by night: an inline script in app/layout.tsx sets data-theme from the visitor's clock. */
+:root,
+:root[data-theme='light'] {
+  --paper: 255 255 255;
+  --ink: 12 12 12;
+  --muted: 92 92 92;
+  --rule: 226 226 226;
+  --wash: 244 244 244;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --paper: 12 12 12;
+  --ink: 242 242 242;
+  --muted: 160 160 160;
+  --rule: 46 46 46;
+  --wash: 26 26 26;
+  color-scheme: dark;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,6 +30,7 @@ html {
 
 body {
   @apply bg-paper font-sans text-ink;
+  transition: background-color 400ms ease, color 400ms ease;
   font-size: 1.0625rem;
   line-height: 1.6;
 }

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Fraunces, Instrument_Sans } from 'next/font/google';
+import { Dancing_Script, Fraunces, Instrument_Sans } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import { site } from '@/lib/site';
@@ -17,6 +17,17 @@ const instrument = Instrument_Sans({
   variable: '--font-instrument',
   display: 'swap',
 });
+
+const script = Dancing_Script({
+  subsets: ['latin'],
+  weight: ['500', '600'],
+  variable: '--font-script',
+  display: 'swap',
+});
+
+// Runs before the page paints so there is no flash: light mode while the sun is (roughly) up, dark after.
+// Uses the visitor's own clock. Re-checks every 10 minutes for anyone who leaves the tab open.
+const themeScript = `(function(){function t(){var h=new Date().getHours();document.documentElement.dataset.theme=h>=7&&h<19?'light':'dark'}t();setInterval(t,6e5)})()`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -38,12 +49,18 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#F4F1EA',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FFFFFF' },
+    { media: '(prefers-color-scheme: dark)', color: '#0C0C0C' },
+  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${instrument.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${instrument.variable} ${script.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <SiteHeader />
         <main id="main">{children}</main>
