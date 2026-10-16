@@ -2,29 +2,31 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        'wl-blue': {
-          DEFAULT: '#002147',
-          light: '#003580',
-          lighter: '#4A90E2',
-          lightest: '#EDF3FB',
-        },
-        'cream': '#F7F5F0',
-        'gold': '#9B8B5E',
-        'gold-light': '#C4AE78',
+        // Black and white. Values live in app/globals.css so light and dark mode swap in one place.
+        paper: 'rgb(var(--paper) / <alpha-value>)',
+        ink: 'rgb(var(--ink) / <alpha-value>)',
+        muted: 'rgb(var(--muted) / <alpha-value>)',
+        rule: 'rgb(var(--rule) / <alpha-value>)',
+        wash: 'rgb(var(--wash) / <alpha-value>)',
+        // W&L navy, the one accent color. Lighter in dark mode so it stays readable.
+        navy: 'rgb(var(--accent) / <alpha-value>)',
+        rust: '#B4532A',
       },
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['"DM Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        sans: ['var(--font-instrument)', 'Helvetica Neue', 'sans-serif'],
+        script: ['var(--font-script)', 'cursive'],
       },
-      letterSpacing: {
-        'widest-2': '0.2em',
+      maxWidth: {
+        page: '76rem',
+        prose: '38rem',
       },
     },
   },

@@ -1,28 +1,72 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next';
+import { Fraunces, Instrument_Sans, Pinyon_Script } from 'next/font/google';
+import SiteHeader from '@/components/SiteHeader';
+import SiteFooter from '@/components/SiteFooter';
+import { site } from '@/lib/site';
+import './globals.css';
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  axes: ['opsz', 'SOFT'],
+  variable: '--font-fraunces',
+  display: 'swap',
+});
+
+const instrument = Instrument_Sans({
+  subsets: ['latin'],
+  variable: '--font-instrument',
+  display: 'swap',
+});
+
+// Script for the name in the header only (inspired by Mayor's logo). Everything else stays plain.
+const script = Pinyon_Script({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-script',
+  display: 'swap',
+});
+
+// Runs before the page paints so there is no flash: light mode while the sun is (roughly) up, dark after.
+// Uses the visitor's own clock. Re-checks every 10 minutes for anyone who leaves the tab open.
+const themeScript = `(function(){function t(){var h=new Date().getHours();document.documentElement.dataset.theme=h>=7&&h<19?'light':'dark'}t();setInterval(t,6e5)})()`;
 
 export const metadata: Metadata = {
-  title: "Drake Krommenhoek | Washington & Lee University",
-  description: "Personal website of Drake Krommenhoek — Economics, Accounting and Philosophy student at Washington and Lee University with experience in investment banking, entrepreneurship, and leadership.",
-  keywords: ["Drake Krommenhoek", "Washington and Lee", "Economics", "Accounting", "Philosophy", "Investment Banking", "Student Portfolio"],
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} | Builder and economics student`,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
+  openGraph: {
+    type: 'website',
+    siteName: site.name,
+    title: site.name,
+    description: site.description,
+    url: '/',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: site.description }],
+  },
+  twitter: { card: 'summary_large_image', images: ['/og.png'] },
+  alternates: { canonical: '/' },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FFFFFF' },
+    { media: '(prefers-color-scheme: dark)', color: '#0C0C0C' },
+  ],
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${fraunces.variable} ${instrument.variable} ${script.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap"
-          rel="stylesheet"
-        />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        <main id="main">{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }

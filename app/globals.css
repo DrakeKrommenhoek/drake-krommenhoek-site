@@ -2,230 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --wl-blue: #002147;
-  --wl-blue-light: #003580;
-  --wl-blue-lighter: #4A90E2;
-  --wl-blue-lightest: #EDF3FB;
-  --cream: #F7F5F0;
-  --gold: #9B8B5E;
-  --gold-light: #C4AE78;
+/* Light by day, dark by night: an inline script in app/layout.tsx sets data-theme from the visitor's clock. */
+:root,
+:root[data-theme='light'] {
+  --paper: 255 255 255;
+  --ink: 12 12 12;
+  --muted: 92 92 92;
+  --rule: 226 226 226;
+  --wash: 244 244 244;
+  --accent: 11 37 69;
+  color-scheme: light;
 }
 
-* {
-  scroll-behavior: smooth;
+:root[data-theme='dark'] {
+  --paper: 12 12 12;
+  --ink: 242 242 242;
+  --muted: 160 160 160;
+  --rule: 46 46 46;
+  --wash: 26 26 26;
+  --accent: 122 162 230;
+  color-scheme: dark;
 }
 
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply text-gray-900 bg-white;
-  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
-}
-
-section {
-  @apply py-20 px-4 sm:px-6 lg:px-8;
-}
-
-.container-custom {
-  @apply max-w-6xl mx-auto;
-}
-
-.section-title {
-  @apply text-4xl md:text-5xl text-wl-blue mb-4 text-center;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.section-label {
-  @apply text-xs font-semibold uppercase text-gold mb-3 text-center block;
-  font-family: "DM Sans", sans-serif;
-  letter-spacing: 0.18em;
-}
-
-.section-divider {
-  @apply w-12 h-px bg-gold mx-auto mb-12;
-}
-
-.card {
-  @apply bg-white hover:border-gold/40 transition-all duration-300 p-6;
-  border: 1px solid #E8E8E4;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.card:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-.exp-card {
-  @apply bg-white p-6 transition-all duration-300;
-  border-left: 2px solid #C4AE78;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.exp-card:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-  border-left-color: #9B8B5E;
-}
-
-.btn-primary {
-  @apply bg-wl-blue text-white px-8 py-3 font-medium transition-all duration-300;
-  font-family: "DM Sans", sans-serif;
-  letter-spacing: 0.04em;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-}
-
-.btn-primary:hover {
-  background-color: #003580;
-}
-
-.btn-secondary {
-  @apply border text-white px-8 py-3 font-medium transition-all duration-300;
-  border-color: rgba(255,255,255,0.5);
-  font-family: "DM Sans", sans-serif;
-  letter-spacing: 0.04em;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-}
-
-.btn-secondary:hover {
-  background-color: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.8);
-}
-
-.btn-outline {
-  @apply border text-wl-blue px-8 py-3 font-medium transition-all duration-300;
-  border-color: #002147;
-  font-family: "DM Sans", sans-serif;
-  letter-spacing: 0.04em;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-}
-
-.btn-outline:hover {
-  @apply bg-wl-blue text-white;
-}
-
-.link-hover {
-  @apply relative inline-block;
-}
-
-.link-hover::after {
-  content: '';
-  @apply absolute w-0 h-px bottom-0 left-0 transition-all duration-300;
-  background-color: var(--gold);
-}
-
-.link-hover:hover::after {
-  @apply w-full;
-}
-
-.tag {
-  @apply inline-block px-3 py-1 text-xs font-medium;
-  background-color: var(--wl-blue-lightest);
-  color: var(--wl-blue-light);
-  letter-spacing: 0.02em;
-}
-
-/* Article body prose */
-.prose-writing {
-  font-family: "DM Sans", system-ui, sans-serif;
+  @apply bg-paper font-sans text-ink;
+  transition: background-color 400ms ease, color 400ms ease;
   font-size: 1.0625rem;
-  line-height: 1.82;
-  color: #374151;
+  line-height: 1.6;
 }
 
-.prose-writing p {
-  margin-bottom: 1.6em;
+::selection {
+  @apply bg-navy text-paper;
 }
 
-.prose-writing h2 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--wl-blue);
-  letter-spacing: -0.01em;
-  margin-top: 2.5em;
-  margin-bottom: 0.75em;
-  line-height: 1.2;
+:focus-visible {
+  outline: 2px solid theme('colors.navy');
+  outline-offset: 3px;
 }
 
-.prose-writing h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--wl-blue);
-  margin-top: 2em;
-  margin-bottom: 0.6em;
-  line-height: 1.25;
+@layer components {
+  .page {
+    @apply mx-auto w-full max-w-page px-5 sm:px-8 lg:px-12;
+  }
+
+  .grid-page {
+    @apply grid grid-cols-4 gap-x-5 sm:gap-x-8 lg:grid-cols-12;
+  }
+
+  /* Underline that draws in on hover or keyboard focus */
+  .link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 200ms ease;
+  }
+
+  .link:hover,
+  .link:focus-visible,
+  .link[aria-current='page'] {
+    background-size: 100% 1px;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 border border-ink px-5 py-3 text-[0.95rem] font-medium transition-colors;
+  }
+
+  .btn-solid {
+    @apply btn bg-ink text-paper hover:bg-navy hover:border-navy;
+  }
+
+  .btn-ghost {
+    @apply btn text-ink hover:bg-ink hover:text-paper;
+  }
+
+  .prose-case > * + * {
+    @apply mt-5;
+  }
+
+  .prose-case ul {
+    @apply mt-4 space-y-2;
+  }
+
+  .prose-case li {
+    @apply relative pl-5;
+  }
+
+  .prose-case li::before {
+    content: '';
+    @apply absolute left-0 top-[0.7em] h-px w-2.5 bg-muted;
+  }
 }
 
-.prose-writing strong {
-  font-weight: 600;
-  color: #1f2937;
-}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-.prose-writing em {
-  font-style: italic;
-  color: #4b5563;
-}
-
-.prose-writing hr {
-  border: none;
-  border-top: 1px solid var(--gold-light);
-  margin: 2.5em 0;
-  width: 4rem;
-}
-
-.prose-writing blockquote {
-  border-left: 2px solid var(--gold);
-  padding-left: 1.25rem;
-  margin: 1.75em 0;
-  color: #6b7280;
-  font-style: italic;
-}
-
-.prose-writing ul {
-  list-style: none;
-  padding: 0;
-  margin: 1.25em 0 1.75em;
-}
-
-.prose-writing ul li {
-  padding-left: 1.25rem;
-  position: relative;
-  margin-bottom: 0.5em;
-}
-
-.prose-writing ul li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: var(--gold);
-}
-
-.prose-writing ol {
-  padding-left: 1.5rem;
-  margin: 1.25em 0 1.75em;
-}
-
-.prose-writing ol li {
-  margin-bottom: 0.5em;
-}
-
-.prose-writing a {
-  color: var(--wl-blue);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: rgba(155, 139, 94, 0.5);
-  transition: text-decoration-color 0.2s;
-}
-
-.prose-writing a:hover {
-  text-decoration-color: var(--gold);
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
