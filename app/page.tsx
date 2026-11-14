@@ -49,8 +49,10 @@ export default function Home() {
             </h1>
             <p className="mt-7 max-w-prose text-[1.15rem] leading-relaxed">
               I&rsquo;m a junior at Washington and Lee University, studying economics with minors in entrepreneurship
-              and philosophy. When I&rsquo;m not in class, I love playing anything active or competitive. From Euchre
-              with family to basketball and pickleball with friends, if you need an extra player, I&rsquo;ll be there.
+              and philosophy. I co-founded The Answer Movement, a wellness app that 240 people in three countries
+              have used, built Ascend, a recruiting planner for college students, and spent last summer in private
+              equity at Mountaingate Capital in Denver. Outside of work, I&rsquo;ll play anything competitive, from
+              Euchre with family to basketball and pickleball with friends.
             </p>
             <div className="mt-9">
               <ContactActions />
@@ -68,18 +70,17 @@ export default function Home() {
       <section aria-label="Why I care about AI" className="page pb-20 lg:pb-28">
         <div className="max-w-[42rem] space-y-5 border-l-2 border-navy pl-6 text-[1.15rem] leading-relaxed lg:ml-[8.33%]">
           <p>
-            Professionally, I&rsquo;m fascinated by AI. Not because it makes everything faster; frankly, I could
-            stand to stop and smell the roses more often. It&rsquo;s because AI is already lowering the barrier to
-            building new products, solving &ldquo;impossible&rdquo; problems, and changing the world for the better.
+            Most of what I build right now involves AI. Speed isn&rsquo;t what draws me to it; frankly, I could stand
+            to stop and smell the roses more often. What draws me is how far it lowers the barrier to building. I
+            shipped two products as an economics major, and at Mountaingate I built an AI playbook for the deal team.
           </p>
           <p>
-            I&rsquo;m not blind to the opposite possibility, but I&rsquo;m an optimist, and I try not to let the
-            headlines dim my glow. I can&rsquo;t promise to leave the world better than I found it, but I&rsquo;m
-            going to try, and worrying about &ldquo;what if&rdquo; won&rsquo;t get it done.
+            I take the risks seriously, but I&rsquo;m an optimist. I can&rsquo;t promise to leave the world better
+            than I found it, but I&rsquo;m going to try, and worrying about &ldquo;what if&rdquo; won&rsquo;t get it
+            done.
           </p>
           <p className="text-muted">
-            I hope you enjoy the site. If you have questions, my contact info is easy to find, and I&rsquo;d love to
-            chat.
+            Thanks for stopping by. If anything here raises a question, I&rsquo;d love to chat.
           </p>
         </div>
       </section>
