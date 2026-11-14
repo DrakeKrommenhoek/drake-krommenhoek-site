@@ -70,14 +70,13 @@ export default function Home() {
       <section aria-label="Why I care about AI" className="page pb-20 lg:pb-28">
         <div className="max-w-[42rem] space-y-5 border-l-2 border-navy pl-6 text-[1.15rem] leading-relaxed lg:ml-[8.33%]">
           <p>
-            Most of what I build right now involves AI. Speed isn&rsquo;t what draws me to it; frankly, I could stand
-            to stop and smell the roses more often. What draws me is how far it lowers the barrier to building. I
-            shipped two products as an economics major, and at Mountaingate I built an AI playbook for the deal team.
+            Most of what I build right now involves AI. What draws me to it is how far it lowers the barrier of entry
+            to creating innovative solutions. I shipped two products as an economics major, and at Mountaingate I
+            built an AI playbook for the deal team.
           </p>
           <p>
-            I take the risks seriously, but I&rsquo;m an optimist. I can&rsquo;t promise to leave the world better
-            than I found it, but I&rsquo;m going to try, and worrying about &ldquo;what if&rdquo; won&rsquo;t get it
-            done.
+            I take the risks seriously, but I&rsquo;m an optimist, and I&rsquo;d rather spend my time building than
+            worrying about &ldquo;what if.&rdquo;
           </p>
           <p className="text-muted">
             Thanks for stopping by. If anything here raises a question, I&rsquo;d love to chat.
