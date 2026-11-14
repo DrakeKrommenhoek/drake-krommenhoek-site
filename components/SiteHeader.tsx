@@ -34,12 +34,12 @@ export default function SiteHeader() {
         Skip to content
       </a>
       <div className="page flex h-16 items-center justify-between">
-        <Link href="/" className="font-script text-[1.9rem] leading-none">
+        <Link href="/" className="text-[0.95rem] font-semibold whitespace-nowrap uppercase leading-none tracking-[0.16em] sm:text-[1.05rem]">
           {site.name}
         </Link>
 
-        <nav aria-label="Main" className="hidden md:block">
-          <ul className="flex items-center gap-7 text-[0.78rem] font-medium uppercase tracking-[0.14em]">
+        <nav aria-label="Main" className="hidden lg:block">
+          <ul className="flex items-center gap-5 text-[0.78rem] xl:gap-7 font-medium uppercase tracking-[0.14em]">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
@@ -69,7 +69,7 @@ export default function SiteHeader() {
 
         <button
           type="button"
-          className="-mr-2 px-2 py-1 text-[0.78rem] font-medium uppercase tracking-[0.14em] md:hidden"
+          className="-mr-2 px-2 py-1 text-[0.78rem] font-medium uppercase tracking-[0.14em] lg:hidden"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="mobile-nav"
@@ -79,7 +79,7 @@ export default function SiteHeader() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Main" className="border-t border-rule md:hidden">
+        <nav id="mobile-nav" aria-label="Main" className="border-t border-rule lg:hidden">
           <ul className="page flex flex-col py-4">
             {nav.map((item) => (
               <li key={item.href}>

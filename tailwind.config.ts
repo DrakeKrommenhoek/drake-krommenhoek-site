@@ -22,7 +22,6 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-fraunces)', 'Georgia', 'serif'],
         sans: ['var(--font-instrument)', 'Helvetica Neue', 'sans-serif'],
-        script: ['var(--font-script)', 'cursive'],
       },
       maxWidth: {
         page: '76rem',

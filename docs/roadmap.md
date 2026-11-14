@@ -6,7 +6,8 @@ a resume. Pick these up after midterms.
 ## Headline
 - Replace "Hi, I'm Drake." (`app/page.tsx`, `headline`) with one of Drake's favorite quotes. He hasn't picked it yet.
 
-## Books (`lib/personal.ts`, `books`)
+## Books (`lib/personal.ts`, `books`; shown at `/reading`)
+- Done 2026-11-14: Reading is its own tab. `note` and `rating` fields render as soon as they are filled in.
 - Rank and rate each book, with a short testimony on why he loves it (`note` field already exists).
 - Add more: "and many others."
 

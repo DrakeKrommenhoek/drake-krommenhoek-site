@@ -3,11 +3,12 @@
 // along with any line that was only a placeholder, until Drake fills it in.
 
 export const now = {
-  updated: 'October 2026',
+  updated: 'November 2026',
   items: [
-    'Junior fall at Washington and Lee, and rush chair for Sigma Chi.',
+    'Junior fall at Washington and Lee University in Lexington, Virginia.',
     'Recruiting for a Summer 2027 internship in product, analytics, or venture capital, in New York, Denver, or Atlanta.',
-    'Leading the native App Store rebuild of The Answer Movement, aiming for January 2027.',
+    'Building Ascend and leading the native App Store rebuild of The Answer Movement, aiming for January 2027.',
+    'Rush chair for Sigma Chi.',
     'Reading: [NOW: the book you are reading right now]',
     '[NOW: one more thing on your mind this month, e.g. a class you like or a trip coming up]',
   ],
@@ -18,9 +19,13 @@ export interface Book {
   author: string;
   /** "Lately" or "Grew up on". */
   shelf: 'Lately' | 'Grew up on';
-  /** Optional: one line, in Drake's words, on why he loves it. Rankings and ratings come later. */
+  /** Optional: one line, in Drake's words, on why he loves it. */
   note?: string;
+  /** Optional: Drake's rating out of 5. Shown on the Reading page once set. */
+  rating?: number;
 }
+
+// Books show on the Reading page in the order listed here, so reorder a shelf to rank it.
 
 export const books: Book[] = [
   { title: 'The Four Agreements', author: 'Don Miguel Ruiz', shelf: 'Lately' },

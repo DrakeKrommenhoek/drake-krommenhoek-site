@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Fraunces, Instrument_Sans, Pinyon_Script } from 'next/font/google';
+import { Fraunces, Instrument_Sans } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import { site } from '@/lib/site';
@@ -15,14 +15,6 @@ const fraunces = Fraunces({
 const instrument = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-instrument',
-  display: 'swap',
-});
-
-// Script for the name in the header only (inspired by Mayor's logo). Everything else stays plain.
-const script = Pinyon_Script({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-script',
   display: 'swap',
 });
 
@@ -58,7 +50,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${instrument.variable} ${script.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${fraunces.variable} ${instrument.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

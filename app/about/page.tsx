@@ -5,7 +5,7 @@ import PageIntro from '@/components/PageIntro';
 import headshot from '@/public/images/drake-krommenhoek.jpg';
 import EmailMenu from '@/components/EmailMenu';
 import RichText from '@/components/RichText';
-import { books, offTheClock } from '@/lib/personal';
+import { offTheClock } from '@/lib/personal';
 import { isBlank } from '@/lib/placeholders';
 import { showPlaceholders } from '@/lib/site';
 
@@ -88,28 +88,10 @@ export default function AboutPage() {
         </dl>
       </section>
 
-      <section aria-labelledby="reading-heading" className="page mt-20">
-        <h2 id="reading-heading" className="font-display text-[1.6rem] tracking-[-0.01em]">
-          Reading list
-        </h2>
-        <div className="mt-6 grid gap-x-10 gap-y-10 sm:grid-cols-2">
-          {(['Lately', 'Grew up on'] as const).map((shelf) => (
-            <div key={shelf}>
-              <h3 className="text-muted">{shelf}</h3>
-              <ul className="mt-3 border-t border-rule">
-                {books
-                  .filter((b) => b.shelf === shelf)
-                  .map((b) => (
-                    <li key={b.title} className="border-b border-rule py-3">
-                      <span className="italic">{b.title}</span>
-                      <span className="text-muted">, {b.author}</span>
-                      {b.note && <p className="mt-1 text-muted">{b.note}</p>}
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+      <section className="page mt-16">
+        <Link href="/reading" className="link">
+          What I&rsquo;ve been reading
+        </Link>
       </section>
     </>
   );

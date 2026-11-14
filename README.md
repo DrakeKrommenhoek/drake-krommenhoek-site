@@ -22,6 +22,7 @@ npm run lint
 | `/projects/[slug]` | `app/projects/[slug]/page.tsx` (case studies) |
 | `/about` | `app/about/page.tsx` |
 | `/experience` | `app/experience/page.tsx` |
+| `/reading` | `app/reading/page.tsx` |
 
 ## Where content lives
 
@@ -29,6 +30,7 @@ npm run lint
 - `lib/projects.ts`: project cards (order here is the order on the site).
 - `lib/case-studies.ts`: case study sections and timelines.
 - `lib/experience.ts`: experience timeline and education.
+- `lib/personal.ts`: the Now section, the Reading page book list, and Off the clock.
 - `public/Krommenhoek_Drake_Resume.pdf`: the downloadable resume. If you rename it, update `lib/site.ts`.
 
 ### Placeholders

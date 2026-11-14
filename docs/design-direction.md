@@ -54,3 +54,10 @@ cream + serif + mono-label recipe that AI tools default to. Changes:
   sans in all caps with wide letter spacing. To try another script, swap the font in `app/layout.tsx`
   (options compared: Pinyon Script, Great Vibes, Allura, Mrs Saint Delafield, Herr Von Muellerhoff,
   Monsieur La Doulaise).
+
+## More professional pass (2026-11-14)
+- Header name is no longer script. It uses the same plain sans, all caps, wide tracking as the nav tabs,
+  one step larger and heavier. Pinyon Script is no longer loaded.
+- Footer headline replaced with a plain "Contact" heading and one line in Drake's voice.
+- Now section order: junior fall at W&L, recruiting, projects, then rush chair.
+- Reading is its own tab (`/reading`), moved out of About. Books still live in `lib/personal.ts`.

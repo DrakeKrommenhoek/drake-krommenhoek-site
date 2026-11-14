@@ -7,9 +7,8 @@ export default function SiteFooter() {
     <footer className="mt-32 border-t border-rule">
       <div className="page grid-page gap-y-10 py-14">
         <div className="col-span-4 lg:col-span-6">
-          <p className="max-w-[22ch] font-display text-[1.75rem] leading-tight">
-            Hiring for summer 2027, building something, or short a fourth for Euchre? Email me.
-          </p>
+          <h2 className="font-display text-[1.75rem] leading-tight">Contact</h2>
+          <p className="mt-2 max-w-[34ch] text-muted">Email is the fastest way to reach me. I&rsquo;d love to chat.</p>
           <ContactActions className="mt-6" />
         </div>
 
